@@ -1,0 +1,8 @@
+  .navbar{
+    position: fixed;
+    z-index: 3;
+    background-color: rgb(255, 115, 0,0.8) !important;
+  }
+  .navbar .link{
+    color: white;
+  }

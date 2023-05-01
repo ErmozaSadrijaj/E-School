@@ -1,0 +1,68 @@
+  @import url('https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+  body{
+    background-color: rgb(255, 255, 255) ;
+
+}
+*{
+    font-family: 'Quicksand', sans-serif;
+}
+#section1 .gjimnaziImg{
+    width: 100%;
+    height:80vh  !important;
+}
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80vh;
+    z-index: 2;
+    background-color: rgba(0, 0, 0, 0.5); 
+  }
+
+#section1 .teksti {
+    position: absolute;
+    top: 50%;
+    left: 30px;
+    transform: translateY(-50%);
+    z-index: 3;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+}
+#section1 h2,h4{
+    color: rgb(255, 115, 0,0.8);
+    font-size: 5vh;
+    padding: 3vh;
+}
+
+#section2 .content2 img{
+    width: 60vh;
+    height: 40vh;
+    margin: 5vh;
+}
+
+#section3{
+    background-color: #ff7100;
+    padding: 5vh 20vh;
+    text-align: center;
+    color: white;
+}
+
+.rh1{
+    background-color: rgb(255, 115, 0,0.8);
+    border-left:2vh solid #212529;
+    width: 100%;
+}
+#rsection2,#rsection3,#rsection4{
+    background-color: rgb(255, 115, 0,0.2);
+    padding: 0;
+}
+#ksection1{
+    background-image: url('../images/logoKontakti.png');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.m-custom{
+    margin: 10rem;
+}

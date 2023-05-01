@@ -1,0 +1,36 @@
+.logo{
+    height: 20vh;
+}
+.blogCard{
+    width: 18%;
+    background-color: rgb(255, 115, 0,1);
+}
+.blogCard:hover{
+    cursor: pointer;
+    -webkit-box-shadow: -7px 10px 20px -3px rgba(0,0,0,0.75);
+-moz-box-shadow: -7px 10px 20px -3px rgba(0,0,0,0.75);
+box-shadow: -7px 10px 20px -3px rgba(0,0,0,0.75);
+transition: 0.3s ease-in-out;
+}
+.topHeader{
+    color: white;
+}
+.oneTag{
+    font-weight: bold;
+    background-color: #ff7100;
+    border-radius: 10px;
+}
+.oneTag:hover{
+    background-color: #cc5c00;
+    cursor: pointer;
+}
+.iksbutoni:hover{
+    color: #ff7100;
+    cursor: pointer;
+}
+.readMoreBtn{
+    text-decoration: none;
+    color: white;
+    height: fit-content;
+    border-radius: 5px;
+}
