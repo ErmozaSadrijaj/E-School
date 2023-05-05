@@ -1,0 +1,53 @@
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import '../assets/css/nxenesi.css';
+
+export default function Nxenesi() {
+  const [userData, setUserData] = useState({});
+
+  useEffect(() => {
+    async function fetchData() {
+        try {
+          const result = await axios('https://localhost:44334/nxenesi/N-123456789');
+          setUserData(result.data);
+        } catch (error) {
+          console.error(error);
+        }
+      }
+    fetchData();
+  }, []);
+
+  if (!userData.nxenesiID) {
+    return <div>Loading data...</div>;
+  }
+
+  return (
+    <div className='d-flex justify-content-center flex-column'>
+      <div id="section1" className='d-flex flex-row flex-wrap justify-content-center mt-4'>
+        <div className="d-flex flex-row flex-wrap w-50 mt-5 sec2 p-3 rounded">
+          <div id="content1" className=" d-flex flex-column align-items-start justify-content-end">
+            <img src="https://cdn-icons-png.flaticon.com/512/2815/2815428.png" className="w-50 p-0 mb-2 border rounded" alt='User' />
+            <p><b>Emri dhe Mbiemri:</b>{userData.emri_mbiemri}</p>
+            <p><b>ID:</b>{userData.nxenesiID}</p>
+            <p><b>Email:</b>{userData.email}</p>
+          </div>
+          <div id="content2" className="d-flex flex-column align-items-start justify-content-end">
+            <h3 className='border-bottom border-dark p-2'>Te Dhenat Personale:</h3>
+            <br />
+            <p><b>Vendbanimi:</b>{userData.vendbanimi}</p>
+            <p><b>Nr.Telefonit:</b>{userData.nrTelefonit}</p>
+            <p><b>Drejtimi:</b>{userData.drejtimi}</p>
+            <p><b>Emri i Prindit:</b>{userData.emriPrindit}</p>
+          </div>
+        </div>
+      </div>
+      <br /><br /><hr /><br /><br />
+      <div id="section2" className="d-flex flex-row flex-wrap justify-content-around align-items-center m-5">
+        <button className='p-4 fs-3 rounded bg-primary text-white bold'>Gjenero Mungesat</button>
+        <button className='p-4 fs-3 rounded bg-primary text-white bold'>Gjenero Notat</button>
+        <button className='p-4 fs-3 rounded bg-primary text-white bold'>Gjenero Vërejtjet</button>
+      </div>
+      <br /><br /><br />
+    </div>
+  );
+}

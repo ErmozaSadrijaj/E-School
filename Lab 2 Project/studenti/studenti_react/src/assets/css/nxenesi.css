@@ -1,0 +1,17 @@
+#section1 p{
+    font-size: 20px;
+   
+}
+button:hover{
+    color: #ff7100 !important;
+    transition: 0.2s ease-in-out;
+}
+b{
+    font-size: 22px;
+}
+.sec2{
+    box-shadow: -26px 27px 21px -24px rgba(255,113,0,0.57);
+    -webkit-box-shadow: -26px 27px 21px -24px rgba(255,113,0,0.57);
+    -moz-box-shadow: -26px 27px 21px -24px rgba(255,113,0,0.57);    
+    
+}
