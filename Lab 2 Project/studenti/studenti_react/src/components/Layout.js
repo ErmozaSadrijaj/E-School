@@ -28,7 +28,7 @@ const Layout = (props) => {
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
             <NavItem>
-              <NavLink className='link' tag={Link} to="/">Profili</NavLink>
+              <NavLink className='link' tag={Link} to="/nxenesi">Profili</NavLink>
             </NavItem>
             <NavItem>
               <NavLink className='link' tag={Link} to="/lendet">Lendet</NavLink>
