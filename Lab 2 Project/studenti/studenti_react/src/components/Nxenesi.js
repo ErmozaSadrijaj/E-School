@@ -1,31 +1,30 @@
+
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import '../assets/css/nxenesi.css';
 
 export default function Nxenesi() {
   const [userData, setUserData] = useState({});
-
   useEffect(() => {
     async function fetchData() {
-        try {
-          const result = await axios('https://localhost:44334/nxenesi/N-123456789');
-          setUserData(result.data);
-        } catch (error) {
-          console.error(error);
-        }
+      try {
+        const result = await axios.get('https://localhost:44334/nxenesi/N-123456789');
+        const userData = result.data[0]
+          
+        setUserData(userData); // set state here
+      } catch (error) {
+        console.error(error);
       }
+    }
+  
     fetchData();
   }, []);
-
-  if (!userData.nxenesiID) {
-    return <div>Loading data...</div>;
-  }
 
   return (
     <div className='d-flex justify-content-center flex-column'>
       <div id="section1" className='d-flex flex-row flex-wrap justify-content-center mt-4'>
         <div className="d-flex flex-row flex-wrap w-50 mt-5 sec2 p-3 rounded">
-          <div id="content1" className=" d-flex flex-column align-items-start justify-content-end">
+          <div id="content1" className=" d-flex flex-column align-items-start justify-content-end w-50">
             <img src="https://cdn-icons-png.flaticon.com/512/2815/2815428.png" className="w-50 p-0 mb-2 border rounded" alt='User' />
             <p><b>Emri dhe Mbiemri:</b>{userData.emri_mbiemri}</p>
             <p><b>ID:</b>{userData.nxenesiID}</p>

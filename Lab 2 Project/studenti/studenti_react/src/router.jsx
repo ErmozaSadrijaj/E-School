@@ -1,4 +1,4 @@
-import {createBrowserRouter} from 'react-router-dom'
+import {createBrowserRouter,Navigate} from 'react-router-dom'
 import Nxenesi from './components/Nxenesi'
 import Layout from './components/Layout'
 import Lendet from './components/Lendet'
@@ -9,7 +9,7 @@ const router = createBrowserRouter([
         children:[
             {
                 path:'/',
-                element:<Nxenesi/>
+                element:<Navigate to="/nxenesi" replace />
             },
             {
                 path:'/nxenesi',

@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace studenti.Controllers
 {
-    [Route("admin/[controller]")]
+    [Route("/[controller]")]
     [ApiController]
     public class NxenesiController : ControllerBase
     {
@@ -25,7 +25,27 @@ namespace studenti.Controllers
 
         public JsonResult Get()
         {
-            string query = @"select nxenesiID,emri_mbiemri,email,passwordi,fotoPath,vendbanimi,nrTelefonit,drejtimi,emriPrindit,prindiID from dbo.nxenesi";
+            string query = @"select nxenesiID,emri_mbiemri,email,fjalekalimi,fotoPath,vendbanimi,nrTelefonit,drejtimi,emriPrindit,prindiID from dbo.nxenesi";
+            DataTable table = new DataTable();
+            string sqlDataSource = _configuration.GetConnectionString("DBAppCon");
+            SqlDataReader myReader;
+            using (SqlConnection myCon = new SqlConnection(sqlDataSource))
+            {
+                myCon.Open();
+                using (SqlCommand myCommand = new SqlCommand(query, myCon))
+                {
+                    myReader = myCommand.ExecuteReader();
+                    table.Load(myReader); ;
+                    myReader.Close();
+                    myCon.Close();
+                }
+            }
+            return new JsonResult(table);
+        }
+        [HttpGet("{id}")]
+        public JsonResult Get(string id)
+        {
+            string query = "SELECT nxenesiID, emri_mbiemri, email, fjalekalimi, fotoPath, vendbanimi, nrTelefonit, drejtimi, emriPrindit, prindiID FROM dbo.nxenesi WHERE nxenesiID = '" + id + "'";
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("DBAppCon");
             SqlDataReader myReader;
@@ -79,7 +99,7 @@ namespace studenti.Controllers
             string query = @"update dbo.nxenesi set 
                             emri_mbiemri = '" + nx.emri_mbiemri + @"',
                             email = '" + nx.email + @"',
-                            passwordi = '" + nx.passwordi + @"',
+                            fjalekalimi = '" + nx.passwordi + @"',
                             fotoPath = '" + nx.fotoPath + @"'                         
                             vendbanimi = '" + nx.vendbanimi + @"',
                             nrTelefonit = '" + nx.nrTelefonit + @"',
