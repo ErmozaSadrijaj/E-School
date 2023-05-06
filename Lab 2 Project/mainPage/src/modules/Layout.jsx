@@ -34,7 +34,7 @@ const Layout = (props) => {
               <NavLink className='link' tag={Link} to="/rrethNesh">Rreth Nesh</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink className='link' tag={Link} to="http://localhost:3000/blogs">Blogi</NavLink>
+              <NavLink className='link' tag={Link} to="http://localhost:3003/blogs">Blogi</NavLink>
             </NavItem>
             <NavItem>
               <NavLink className='link' tag={Link} to="/kontakti">Kontakti</NavLink>
@@ -42,7 +42,7 @@ const Layout = (props) => {
           </Nav>
           <Nav navbar>
             <NavItem>
-              <NavLink className='link' tag={Link} to="/login">Kyqu</NavLink>
+              <NavLink className='link' tag={Link} to="/identifikohu">Identifikohu</NavLink>
             </NavItem>
           </Nav>
         </Collapse>

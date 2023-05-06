@@ -18,21 +18,21 @@ const Layout = (props) => {
                 <Collapse isOpen={isOpen} navbar>
                     <Nav className="mr-auto" navbar>
                         <NavItem>
-                        <NavLink className='link' tag={Link} to="http://localhost:3002">Faqja Kryesore</NavLink>
+                        <NavLink className='link' tag={Link} to="http://localhost:3001">Faqja Kryesore</NavLink>
                         </NavItem>
                         <NavItem>
-                        <NavLink className='link' tag={Link} to="http://localhost:3002/rrethNesh">Rreth Nesh</NavLink>
+                        <NavLink className='link' tag={Link} to="http://localhost:3001/rrethNesh">Rreth Nesh</NavLink>
                         </NavItem>
                         <NavItem>
-                        <NavLink className='link' tag={Link} to="http://localhost:3000/blogs">Blogi</NavLink>
+                        <NavLink className='link' tag={Link} to="http://localhost:3003/blogs">Blogi</NavLink>
                         </NavItem>
                         <NavItem>
-                        <NavLink className='link' tag={Link} to="http://localhost:3002/kontakti">Kontakti</NavLink>
+                        <NavLink className='link' tag={Link} to="http://localhost:3001/kontakti">Kontakti</NavLink>
                         </NavItem>
                     </Nav>
                     <Nav navbar>
                         <NavItem>
-                        <NavLink className='link' tag={Link} to="http://localhost:3002/login">Kyqu</NavLink>
+                        <NavLink className='link' tag={Link} to="http://localhost:3001/identifikohu">Kyqu</NavLink>
                         </NavItem>
                     </Nav>
                 </Collapse>
