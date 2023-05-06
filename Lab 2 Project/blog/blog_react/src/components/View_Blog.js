@@ -11,7 +11,7 @@ function View_Blog() {
     /* blogs dhe sortimi ne nje blog */
     const [blogPosts, setBlogPosts] = useState([]);
     useEffect(() => {
-      axios.get('http://localhost:3001/blogs')
+      axios.get('http://localhost:3002/blogs')
         .then(response => setBlogPosts(response.data))
         .catch(error => console.error(error));
     }, []);
@@ -20,7 +20,7 @@ function View_Blog() {
 
     const [comments, setComments] = useState([]);
     useEffect(() => {
-      axios.get(`http://localhost:3001/comments/${id}`)
+      axios.get(`http://localhost:3002/comments/${id}`)
         .then(response => setComments(response.data))
         .catch(error => console.error(error));
     }, []);

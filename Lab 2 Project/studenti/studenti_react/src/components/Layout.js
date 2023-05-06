@@ -4,7 +4,7 @@ import { Outlet } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { Container, Row, Col } from 'react-bootstrap';
 import { FaFacebook, FaInstagram } from 'react-icons/fa';
-
+import {id} from '../router'
 import {
   Collapse,
   Navbar,
@@ -28,21 +28,21 @@ const Layout = (props) => {
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
             <NavItem>
-              <NavLink className='link' tag={Link} to="/nxenesi">Profili</NavLink>
+              <NavLink className='link' tag={Link} to={`/nxenesi/id=${id}`}>Profili</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink className='link' tag={Link} to="/lendet">Lendet</NavLink>
+              <NavLink className='link' tag={Link} to={`/nxenesi/id=${id}/lendet`}>Lendet</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink className='link' tag={Link} to="http://localhost:3000/blogs">Blogi</NavLink>
+              <NavLink className='link' tag={Link} to="http://localhost:3003/blogs">Blogi</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink className='link' tag={Link} to="/kontakti">Libraria</NavLink>
+              <NavLink className='link' tag={Link} to="/">Libraria</NavLink>
             </NavItem>
           </Nav>
           <Nav navbar>
             <NavItem>
-              <NavLink className='link' tag={Link} to="/login">Dil</NavLink>
+              <NavLink className='link' tag={Link} to="http://localhost:3001">Dil</NavLink>
             </NavItem>
           </Nav>
         </Collapse>

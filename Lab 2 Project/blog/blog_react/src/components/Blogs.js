@@ -10,7 +10,7 @@ function Blogs() {
     /* ketu marrim Tags nga node JS*/
     const [tags, setTags] = useState([]);
     useEffect(() => {
-      axios.get('http://localhost:3001/tags')
+      axios.get('http://localhost:3002/tags')
         .then(response => setTags(response.data))
         .catch(error => console.error(error));
     }, []);
@@ -19,7 +19,7 @@ function Blogs() {
      /* ketu marrim Blogs nga node JS*/
     const [blogPosts, setBlogPosts] = useState([]);
     useEffect(() => {
-      axios.get('http://localhost:3001/blogs')
+      axios.get('http://localhost:3002/blogs')
         .then(response => setBlogPosts(response.data))
         .catch(error => console.error(error));
     }, []);

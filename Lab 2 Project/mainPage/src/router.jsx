@@ -4,6 +4,7 @@ import FaqjaKryesore from "./modules/faqjaKryesore";
 import Kontakti from "./modules/kontakti";
 import RrethNesh from "./modules/rrethNesh";
 import NotFound from "./modules/notFound";
+import Identifikohu from "./modules/Identifikohu";
 
 const router = createBrowserRouter([
     {
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
             {
                 path:'/kontakti',
                 element:<Kontakti/>
+            },
+            {
+                path:'/identifikohu',
+                element:<Identifikohu/>
             }
             
         ]
