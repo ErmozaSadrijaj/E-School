@@ -17,5 +17,7 @@ namespace studenti.Models
         public string drejtimi { get; set; }
         public string emriPrindit { get; set; }
         public string prindiID { get; set; }
+        public string drejtimiID { get; set; }
+        public string mesimdhenesiID { get; set; }
     }
 }

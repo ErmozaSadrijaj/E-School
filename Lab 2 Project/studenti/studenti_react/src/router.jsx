@@ -5,7 +5,8 @@ import Lendet from './components/Lendet'
 import Mungesat from './components/Mungesat';
 import Notat from './components/Notat';
 import Veretjet from './components/Veretjet';
-export const id = 'N-123456789';
+import Lenda from './components/Lenda'
+export const id = '1';
 const router = createBrowserRouter([
     {
         path:'/',
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
             {
                 path:`/nxenesi/id=${id}/veretjet`,
                 element:<Veretjet/>
+            },
+            {
+                path:`/nxenesi/id=${id}/lendet/:lendaID`,
+                element: <Lenda />
             }
         ]
     }
