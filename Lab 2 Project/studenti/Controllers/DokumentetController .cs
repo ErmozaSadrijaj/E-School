@@ -13,11 +13,11 @@ namespace studenti.Controllers
 {
     [Route("/[controller]")]
     [ApiController]
-    public class LendaController : ControllerBase
+    public class DokumentetController : ControllerBase
     {
         private readonly IConfiguration _configuration;
 
-        public LendaController(IConfiguration configuration)
+        public DokumentetController(IConfiguration configuration)
         {
             _configuration = configuration;
         }
@@ -25,7 +25,7 @@ namespace studenti.Controllers
 
         public JsonResult Get()
         {
-            string query = @"select ID,emri,mesimdhenesi,viti,gjenerata from dbo.lenda";
+            string query = @"select ID,titulli,linku,dataPublikimit,lendaID from dbo.dokumentet";
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("DBAppCon");
             SqlDataReader myReader;
@@ -42,10 +42,11 @@ namespace studenti.Controllers
             }
             return new JsonResult(table);
         }
+        /*Ketu merren lendet per nxenesit me ane te ID te nxenesit */
         [HttpGet("{id}")]
         public JsonResult Get(string id)
         {
-            string query = "select ID,emri,mesimdhenesi,viti,gjenerata from dbo.lenda WHERE ID = '" + id + "'";
+            string query = "select ID,titulli,linku,dataPublikimit,lendaID from dokumentet where lendaID = '" + id + "'";
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("DBAppCon");
             SqlDataReader myReader;
@@ -63,13 +64,13 @@ namespace studenti.Controllers
             return new JsonResult(table);
         }
         [HttpPost]
-        public JsonResult Post(Lenda le)
+        public JsonResult Post(Dokumentet dok)
         {
-            string query = @"insert into dbo.nxenesi values
-                            ('" + le.emri + @"',
-                            '" + le.mesimdhenesi + @"',
-                            '" + le.viti + @"',
-                            '" + le.gjenerata + @"'),                        
+            string query = @"insert into dbo.dokumentet values
+                            ('" + dok.titulli + @"',
+                            '" + dok.linku + @"',
+                            '" + dok.dataPublikimit + @"',
+                            '" + dok.lendaID + @"'),                        
                             ";
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("DBAppCon");
@@ -89,15 +90,15 @@ namespace studenti.Controllers
         }
 
         [HttpPut]
-        public JsonResult Put(Lenda le)
+        public JsonResult Put(Dokumentet dok)
         {
-            string query = @"update dbo.nxenesi set 
-                            emri = '" + le.emri + @"',
-                            mesimdhenesi = '" + le.mesimdhenesi + @"',
-                            viti = '" + le.viti + @"',
-                            gjenerata = '" + le.gjenerata + @"'      ,                   
+            string query = @"update dbo.dokumentet set 
+                            titulli = '" + dok.titulli + @"',
+                            linku = '" + dok.linku + @"',
+                            dataPublikimit = '" + dok.dataPublikimit + @"',
+                            lendaID = '" + dok.lendaID + @"'      ,                   
 
-                            where ID = " + le.ID + @"
+                            where ID = " + dok.ID + @"
                             ";
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("DBAppCon");
@@ -119,7 +120,7 @@ namespace studenti.Controllers
         [HttpDelete("{id}")]
         public JsonResult Delete(int id)
         {
-            string query = @"delete from dbo.lenda 
+            string query = @"delete from dbo.dokumenetet 
                             where ID = " + id + @"
                             ";
             DataTable table = new DataTable();

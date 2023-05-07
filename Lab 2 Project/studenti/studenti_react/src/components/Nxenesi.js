@@ -3,11 +3,10 @@ import { useEffect, useState } from 'react';
 import {Link} from 'react-router-dom'
 import axios from 'axios';
 import '../assets/css/nxenesi.css';
-
+import {id} from '../router'
 export default function Nxenesi() {
   
   const [userData, setUserData] = useState({});
-  const id = 'N-123456789';
   useEffect(() => {
     async function fetchData() {
       try {

@@ -25,7 +25,7 @@ namespace studenti.Controllers
 
         public JsonResult Get()
         {
-            string query = @"select nxenesiID,emri_mbiemri,email,fjalekalimi,fotoPath,vendbanimi,nrTelefonit,drejtimi,emriPrindit,prindiID from dbo.nxenesi";
+            string query = @"select ID,nxenesiID,emri_mbiemri,email,fjalekalimi,fotoPath,vendbanimi,nrTelefonit,drejtimi,emriPrindit,prindiID,drejtimiID,mesimdhenesiID from dbo.nxenesi";
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("DBAppCon");
             SqlDataReader myReader;
@@ -45,7 +45,7 @@ namespace studenti.Controllers
         [HttpGet("{id}")]
         public JsonResult Get(string id)
         {
-            string query = "SELECT nxenesiID, emri_mbiemri, email, fjalekalimi, fotoPath, vendbanimi, nrTelefonit, drejtimi, emriPrindit, prindiID FROM dbo.nxenesi WHERE nxenesiID = '" + id + "'";
+            string query = "SELECT ID,nxenesiID,emri_mbiemri,email,fjalekalimi,fotoPath,vendbanimi,nrTelefonit,drejtimi,emriPrindit,prindiID,drejtimiID,mesimdhenesiID from dbo.nxenesi WHERE ID = '" + id + "'";
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("DBAppCon");
             SqlDataReader myReader;
@@ -74,7 +74,9 @@ namespace studenti.Controllers
                             '" + nx.nrTelefonit + @"',
                             '" + nx.drejtimi + @"',
                             '" + nx.emriPrindit + @"',
-                            '" + nx.prindiID + @"'),                        
+                            '" + nx.prindiID + @"',
+                            '" + nx.drejtimiID + @"',
+                            '" + nx.mesimdhenesiID + @"'),                        
                             ";
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("DBAppCon");
@@ -105,7 +107,9 @@ namespace studenti.Controllers
                             nrTelefonit = '" + nx.nrTelefonit + @"',
                             drejtimi = '" + nx.drejtimi + @"',
                             emriPrindit = '" + nx.emriPrindit + @"',
-                            emriPrindit = '" + nx.emriPrindit + @"',
+                            prindiID = '" + nx.prindiID + @"',
+                            drejtimiID = '" + nx.drejtimiID + @"',
+                            mesimdhenesiID = '" + nx.mesimdhenesiID + @"',
 
                             where nxenesiID = " + nx.nxenesiID + @"
                             ";
@@ -130,7 +134,7 @@ namespace studenti.Controllers
         public JsonResult Delete(int id)
         {
             string query = @"delete from dbo.nxenesi 
-                            where nxenesiID = " + id + @"
+                            where ID = " + id + @"
                             ";
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("DBAppCon");

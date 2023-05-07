@@ -13,11 +13,11 @@ namespace studenti.Controllers
 {
     [Route("/[controller]")]
     [ApiController]
-    public class LendaController : ControllerBase
+    public class Lenda_NxenesiController : ControllerBase
     {
         private readonly IConfiguration _configuration;
 
-        public LendaController(IConfiguration configuration)
+        public Lenda_NxenesiController(IConfiguration configuration)
         {
             _configuration = configuration;
         }
@@ -25,7 +25,7 @@ namespace studenti.Controllers
 
         public JsonResult Get()
         {
-            string query = @"select ID,emri,mesimdhenesi,viti,gjenerata from dbo.lenda";
+            string query = @"select ID,nxenesi,lenda,nxenesiID,lendaID from dbo.lenda_nxenesi";
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("DBAppCon");
             SqlDataReader myReader;
@@ -42,10 +42,11 @@ namespace studenti.Controllers
             }
             return new JsonResult(table);
         }
+        /*Ketu merren lendet per nxenesit me ane te ID te nxenesit */
         [HttpGet("{id}")]
         public JsonResult Get(string id)
         {
-            string query = "select ID,emri,mesimdhenesi,viti,gjenerata from dbo.lenda WHERE ID = '" + id + "'";
+            string query = "select distinct ln.ID, ln.nxenesi,ln.lenda,ln.nxenesiID,ln.lendaID,l.viti from lenda_nxenesi ln inner join lenda l on ln.ID = ln.lendaID where ln.nxenesiID = '" + id + "'";
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("DBAppCon");
             SqlDataReader myReader;
@@ -63,13 +64,13 @@ namespace studenti.Controllers
             return new JsonResult(table);
         }
         [HttpPost]
-        public JsonResult Post(Lenda le)
+        public JsonResult Post(Lenda_Nxenesi le)
         {
-            string query = @"insert into dbo.nxenesi values
-                            ('" + le.emri + @"',
-                            '" + le.mesimdhenesi + @"',
-                            '" + le.viti + @"',
-                            '" + le.gjenerata + @"'),                        
+            string query = @"insert into dbo.lenda_nxenesi values
+                            ('" + le.nxenesi + @"',
+                            '" + le.lenda + @"',
+                            '" + le.nxenesiID + @"',
+                            '" + le.lendaID + @"'),                        
                             ";
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("DBAppCon");
@@ -89,13 +90,13 @@ namespace studenti.Controllers
         }
 
         [HttpPut]
-        public JsonResult Put(Lenda le)
+        public JsonResult Put(Lenda_Nxenesi le)
         {
-            string query = @"update dbo.nxenesi set 
-                            emri = '" + le.emri + @"',
-                            mesimdhenesi = '" + le.mesimdhenesi + @"',
-                            viti = '" + le.viti + @"',
-                            gjenerata = '" + le.gjenerata + @"'      ,                   
+            string query = @"update dbo.lenda_nxenesi set 
+                            nxenesi = '" + le.nxenesi + @"',
+                            lenda = '" + le.lenda + @"',
+                            nxenesiID = '" + le.nxenesiID + @"',
+                            lendaID = '" + le.lendaID + @"'      ,                   
 
                             where ID = " + le.ID + @"
                             ";
@@ -119,7 +120,7 @@ namespace studenti.Controllers
         [HttpDelete("{id}")]
         public JsonResult Delete(int id)
         {
-            string query = @"delete from dbo.lenda 
+            string query = @"delete from dbo.lenda_nxenesi 
                             where ID = " + id + @"
                             ";
             DataTable table = new DataTable();
