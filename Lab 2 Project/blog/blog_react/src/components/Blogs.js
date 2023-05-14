@@ -6,6 +6,7 @@ import Logo from '../assets/images/logo.png'
 import Footer from './Footer' 
 import { AiOutlineCloseCircle } from 'react-icons/ai'
 import {Link} from 'react-router-dom'
+
 function Blogs() {
     /* ketu marrim Tags nga node JS*/
     const [tags, setTags] = useState([]);
