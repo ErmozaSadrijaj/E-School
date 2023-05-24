@@ -13,7 +13,7 @@ export default function Nxenesi() {
         const result = await axios.get(`https://localhost:44334/nxenesi/${id}`);
         const userData = result.data[0]
           
-        setUserData(userData); // set state here
+        setUserData(userData); 
       } catch (error) {
         console.error(error);
       }

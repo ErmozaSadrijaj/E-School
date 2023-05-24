@@ -51,7 +51,6 @@ insert into nxenesi values('N-123456789','emri-mbiemri','email','12345678910','f
 insert into nxenesi values('N-123226789','emri-mbiemri2','email2','12345678910','foto2','vendbanimi2','nrTel2','drejtimi2','emriPrindit2',1,1,1)
 
 select * from nxenesi
-drop table nxenesi
 
 create table drejtimi(
 	ID int primary key identity(1,1),
@@ -80,7 +79,6 @@ insert into lenda values('Fizik',1,3,'19/20')
 insert into lenda values('Kimi',1,3,'19/20')
 
 select * from lenda
-drop table lenda
 
 create table lenda_nxenesi (
 	ID int primary key identity(1,1),
@@ -95,10 +93,12 @@ create table lenda_nxenesi (
 insert into lenda_nxenesi values('emri dhe mbiemri','Matematike',1,1)
 insert into lenda_nxenesi values('emri dhe mbiemri','Fizik',2,2)
 insert into lenda_nxenesi values('emri dhe mbiemri','Kimi',1,3)
+insert into lenda_nxenesi values('emri dhe mbiemri','Fizik',1,5)
+
 
 select distinct ln.ID, ln.nxenesi,ln.lenda,ln.nxenesiID,ln.lendaID,l.viti from lenda_nxenesi ln inner join lenda l
-on ln.ID = ln.lendaID where ln.nxenesiID = 1
-drop table lenda_nxenesi
+on l.ID = ln.lendaID where ln.nxenesiID = 1
+
 
 create table dokumentet(
 	ID int primary key identity(1,1),
@@ -115,4 +115,3 @@ insert into dokumentet values ('Tema 2 e lendes','linku','2023-02-19 15:20:02',1
 insert into dokumentet values ('Tema 3 e lendes','linku','2023-02-26 15:20:02',1)
 insert into dokumentet values ('Tema 4 e lendes','linku','2023-03-02 15:20:02',1)
 select * from dokumentet
-drop table dokumentet

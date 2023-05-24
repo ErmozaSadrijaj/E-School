@@ -46,7 +46,7 @@ namespace studenti.Controllers
         [HttpGet("{id}")]
         public JsonResult Get(string id)
         {
-            string query = "select distinct ln.ID, ln.nxenesi,ln.lenda,ln.nxenesiID,ln.lendaID,l.viti from lenda_nxenesi ln inner join lenda l on ln.ID = ln.lendaID where ln.nxenesiID = '" + id + "'";
+            string query = "select distinct ln.ID, ln.nxenesi,ln.lenda,ln.nxenesiID,ln.lendaID,l.viti from lenda_nxenesi ln inner join lenda l on l.ID = ln.lendaID where ln.nxenesiID = '" + id + "'";
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("DBAppCon");
             SqlDataReader myReader;

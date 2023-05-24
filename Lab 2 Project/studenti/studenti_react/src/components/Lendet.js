@@ -31,7 +31,7 @@ export default function Lendet(){
                     <ol>
                         {lendetViti1.map((obj, index) => (
                             <li key={index}>
-                                <a href={`${window.location.href}/${obj.lendaID}`}>{obj.lenda}</a>
+                                    <a href={`${window.location.href}/lendaID=${obj.lendaID}`}>{obj.lenda}</a>
                             </li>
                         ))}
                     </ol>

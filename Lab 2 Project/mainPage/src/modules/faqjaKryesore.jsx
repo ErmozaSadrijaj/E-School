@@ -37,23 +37,23 @@ export default function faqjaKryesore(){
                 </div>
                 <div className="trofeu m-3">
                     <p>20000</p>
-                    <p>Student te diplomuar</p>
+                    <p>Student Aktiv</p>
                 </div>
                 <div className="trofeu m-3">
                     <p>20000</p>
-                    <p>Student te diplomuar</p>
+                    <p>Mesimdhenes</p>
                 </div>
                 <div className="trofeu m-3">
-                    <p>20000</p>
-                    <p>Student te diplomuar</p>
+                    <p>200</p>
+                    <p>Trofe ne gara nderkombatre</p>
                 </div>
                 <div className="trofeu m-3">
-                    <p>20000</p>
-                    <p>Student te diplomuar</p>
+                    <p>300</p>
+                    <p>Trofe ne gara kombetare</p>
                 </div>
                 <div className="trofeu m-3">
-                    <p>20000</p>
-                    <p>Student te diplomuar</p>
+                    <p>Nga 1950</p>
+                    <p>Duke shkruar histori</p>
                 </div>
             </div>
 

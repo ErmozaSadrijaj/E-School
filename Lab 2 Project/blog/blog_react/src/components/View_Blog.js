@@ -41,7 +41,7 @@ function View_Blog() {
                 </div>
             </div>
             
-            <div id='section2' className='d-flex mt-2 justify-content-center px-1 fs-5 '>
+            <div id='section2' className='d-flex mt-2 justify-content-center px-1 mx-5 rounded fs-5 '>
                 {blogPost?.permbatja}
             </div>
         
@@ -50,7 +50,7 @@ function View_Blog() {
                 <hr/>
                 <div>
                     {comments.map((comment) => (
-                        <div className='komentSection bg-warning d-flex justify-content-start flex-wrap flex-column '>
+                        <div className='komentSection bg-warning d-flex justify-content-start flex-wrap flex-column mx-1 p-2'>
                             <h6>{comment.autoriID}:</h6>
                             <p>{comment.komenti}</p>
                             <p className='d-flex justify-content-end'><b>{comment.data}</b></p>
