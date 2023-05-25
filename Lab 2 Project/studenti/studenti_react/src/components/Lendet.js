@@ -1,6 +1,5 @@
 import '../assets/css/lendet.css'
 import { useEffect, useState } from 'react';
-import {Link} from 'react-router-dom'
 import axios from 'axios';
 import {id} from '../router'
 export default function Lendet(){

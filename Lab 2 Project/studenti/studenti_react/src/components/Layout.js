@@ -48,7 +48,7 @@ const Layout = (props) => {
         </Collapse>
       </Navbar>
       <Outlet/>
-      <footer className="bg-dark text-light py-3">
+      <footer className=" bg-dark text-light py-3">
       <Container>
         <Row>
           <Col xs={12} md={4} className="text-center text-md-left">
