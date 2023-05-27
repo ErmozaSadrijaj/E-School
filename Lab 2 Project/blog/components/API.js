@@ -21,6 +21,13 @@ app.get('/blogs', async (req, res) => {
   res.send(blogPosts);
 });
 
+app.get('/blogs/:autoriID', async (req, res) => {
+  const autoriID = parseInt(req.params.autoriID);
+  const blogPosts = await mongoose.connection.db.collection('blogs')
+    .find({ autoriID: autoriID })
+    .toArray();
+  res.send(blogPosts);
+});
 
 
 app.get('/tags', async (req, res) => {

@@ -47,10 +47,13 @@ create table nxenesi(
 	FOREIGN KEY (mesimdhenesiID) REFERENCES stafi(ID),
 
 )
+
+
 insert into nxenesi values('N-123456789','emri-mbiemri','email','12345678910','foto','vendbanimi','nrTel','drejtimi','emriPrindit',1,1,1)
 insert into nxenesi values('N-123226789','emri-mbiemri2','email2','12345678910','foto2','vendbanimi2','nrTel2','drejtimi2','emriPrindit2',1,1,1)
 
 select * from nxenesi
+
 
 create table drejtimi(
 	ID int primary key identity(1,1),
@@ -77,6 +80,7 @@ insert into lenda values('Kimi',1,2,'19/20')
 insert into lenda values('Matematike',1,3,'19/20')
 insert into lenda values('Fizik',1,3,'19/20')
 insert into lenda values('Kimi',1,3,'19/20')
+insert into lenda values('Astrologji',1,3,'19/20')
 
 select * from lenda
 
@@ -99,6 +103,35 @@ insert into lenda_nxenesi values('emri dhe mbiemri','Fizik',1,5)
 select distinct ln.ID, ln.nxenesi,ln.lenda,ln.nxenesiID,ln.lendaID,l.viti from lenda_nxenesi ln inner join lenda l
 on l.ID = ln.lendaID where ln.nxenesiID = 1
 
+
+select distinct nx.emri_mbiemri,nx.fotoPath,nx.nxenesiID , s.emri_mbiemri from nxenesi nx
+join lenda_nxenesi ln on nx.ID = ln.nxenesiID
+join lenda l on ln.lendaID = l.ID
+join stafi s on s.ID = l.mesimdhenesi
+where s.ID = 1 and s.roli = 'mesimdhenes'
+
+/*create table lenda_stafi (
+	ID int primary key identity(1,1),
+	lendaID int,
+	stafiID int,
+	FOREIGN KEY (lendaID) REFERENCES lenda(ID),
+	FOREIGN KEY (stafiID) REFERENCES stafi(ID)
+)
+
+insert into lenda_stafi values(1,1)
+insert into lenda_stafi values(2,1)
+insert into lenda_stafi values(3,1)
+insert into lenda_stafi values(5,1)
+insert into lenda_stafi values(10,1)
+
+
+select distinct nx.emri_mbiemri as 'nx',s.emri_mbiemri,l.emri from lenda_stafi ls
+join stafi s on s.ID = ls.stafiID
+join lenda l on l.ID = ls.lendaID
+join lenda_nxenesi ln on ln.lendaID = ls.lendaID
+join nxenesi nx on ln.nxenesiID = nx.ID
+where ls.stafiID = 1
+*/
 
 create table dokumentet(
 	ID int primary key identity(1,1),

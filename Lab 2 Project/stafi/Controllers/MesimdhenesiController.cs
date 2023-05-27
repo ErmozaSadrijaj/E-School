@@ -63,6 +63,7 @@ namespace stafi.Controllers
             }
             return new JsonResult(table);
         }
+        
 
         [HttpPost]
         public JsonResult Post(Stafi st)
