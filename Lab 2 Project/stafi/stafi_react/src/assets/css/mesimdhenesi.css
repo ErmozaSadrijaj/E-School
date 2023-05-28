@@ -44,3 +44,6 @@ transition: 0.3s ease-in-out;
     height: fit-content;
     border-radius: 5px;
 }
+.studentCard{
+    background-color:rgba(0, 115, 255, .1) ;
+}

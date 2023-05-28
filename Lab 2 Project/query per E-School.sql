@@ -52,6 +52,14 @@ create table nxenesi(
 insert into nxenesi values('N-123456789','emri-mbiemri','email','12345678910','foto','vendbanimi','nrTel','drejtimi','emriPrindit',1,1,1)
 insert into nxenesi values('N-123226789','emri-mbiemri2','email2','12345678910','foto2','vendbanimi2','nrTel2','drejtimi2','emriPrindit2',1,1,1)
 
+insert into nxenesi values('N-123226289','Nxenesi 3','email2','12345678910','foto2','vendbanimi2','nrTel2','drejtimi2','emriPrindit2',1,1,2)
+insert into nxenesi values('N-123256789','Nxenesi 4','email2','12345678910','foto2','vendbanimi2','nrTel2','drejtimi2','emriPrindit2',1,1,1)
+insert into nxenesi values('N-121226789','Nxenesi 5','email2','12345678910','foto2','vendbanimi2','nrTel2','drejtimi2','emriPrindit2',1,1,2)
+insert into nxenesi values('N-123229789','Nxenesi 6','email2','12345678910','foto2','vendbanimi2','nrTel2','drejtimi2','emriPrindit2',1,1,2)
+insert into nxenesi values('N-123226709','Nxenesi 7','email2','12345678910','foto2','vendbanimi2','nrTel2','drejtimi2','emriPrindit2',1,1,2)
+insert into nxenesi values('N-103226789','Nxenesi 8','email2','12345678910','foto2','vendbanimi2','nrTel2','drejtimi2','emriPrindit2',1,1,1)
+
+
 select * from nxenesi
 
 
@@ -86,8 +94,6 @@ select * from lenda
 
 create table lenda_nxenesi (
 	ID int primary key identity(1,1),
-	nxenesi varchar(255),
-	lenda varchar(255),
 	nxenesiID int,
 	lendaID int,
 	FOREIGN KEY (nxenesiID) REFERENCES nxenesi(ID),
@@ -95,9 +101,17 @@ create table lenda_nxenesi (
 )
 
 insert into lenda_nxenesi values('emri dhe mbiemri','Matematike',1,1)
-insert into lenda_nxenesi values('emri dhe mbiemri','Fizik',2,2)
+insert into lenda_nxenesi values('emri dhe mbiemri2','Fizik',2,2)
 insert into lenda_nxenesi values('emri dhe mbiemri','Kimi',1,3)
 insert into lenda_nxenesi values('emri dhe mbiemri','Fizik',1,5)
+
+insert into lenda_nxenesi values('nxenesi 2','Fizik',2,5)
+insert into lenda_nxenesi values('nxenesi 3','Fizik',3,5)
+insert into lenda_nxenesi values('nxenesi 4','Fizik',4,5)
+insert into lenda_nxenesi values('nxenesi 5','Fizik',5,5)
+insert into lenda_nxenesi values('nxenesi 6','Fizik',6,5)
+
+
 
 
 select distinct ln.ID, ln.nxenesi,ln.lenda,ln.nxenesiID,ln.lendaID,l.viti from lenda_nxenesi ln inner join lenda l

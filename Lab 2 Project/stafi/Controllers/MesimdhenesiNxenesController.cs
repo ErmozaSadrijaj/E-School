@@ -25,7 +25,7 @@ namespace stafi.Controllers
         [HttpGet("{id}")]
         public JsonResult Get(string id)
         {
-            string query = "select distinct nx.emri_mbiemri,nx.fotoPath,nx.nxenesiID , s.emri_mbiemri from nxenesi nx join lenda_nxenesi ln on nx.ID = ln.nxenesiID join lenda l on ln.lendaID = l.ID join stafi s on s.ID = l.mesimdhenesi WHERE s.ID = '" + id + "' and s.roli = 'mesimdhenes'";
+            string query = "select distinct nx.emri_mbiemri,nx.fotoPath,nx.nxenesiID,nx.mesimdhenesiID , s.emri_mbiemri from nxenesi nx join lenda_nxenesi ln on nx.ID = ln.nxenesiID join lenda l on ln.lendaID = l.ID join stafi s on s.ID = l.mesimdhenesi WHERE s.ID = '" + id + "' and s.roli = 'mesimdhenes'";
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("DBAppCon");
             SqlDataReader myReader;

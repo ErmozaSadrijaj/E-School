@@ -19,6 +19,8 @@ export default function Lendet(){
       fetchData();
     }, []);
 
+    
+
     const lendetViti1 = userData.filter(obj => obj.viti === 1);
           const lendetViti2 = userData.filter(obj => obj.viti === 2);
           const lendetViti3 = userData.filter(obj => obj.viti === 3);
