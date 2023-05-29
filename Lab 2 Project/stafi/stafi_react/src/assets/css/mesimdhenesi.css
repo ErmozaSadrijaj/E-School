@@ -47,3 +47,7 @@ transition: 0.3s ease-in-out;
 .studentCard{
     background-color:rgba(0, 115, 255, .1) ;
 }
+
+.vendosBtn:hover{
+    color: #ff7100 !important;
+}

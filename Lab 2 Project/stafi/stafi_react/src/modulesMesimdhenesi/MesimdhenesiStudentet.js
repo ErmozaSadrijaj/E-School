@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import '../assets/css/mesimdhenesi.css';
 import { id } from '../router';
-import { Link } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
+import VendosNotenModal from './VendosNotenModal';
 
 export default function MesimdhenesiStudentet() {
   const [userData, setUserData] = useState([]);
@@ -33,6 +33,21 @@ export default function MesimdhenesiStudentet() {
     item.nxenesiID.includes(searchText)
   );
 
+  const [showModal, setShowModal] = useState(false);
+  const [selectedNxenesiID, setSelectedNxenesiID] = useState('');
+  const [selectedEmriMbiemri, setSelectedEmriMbiemri] = useState('');
+  const [SelectedNxID, setSelectedNxID] = useState('');
+
+  const openModal = (nxenesiID, emri_mbiemri,nxID) => {
+    setSelectedNxenesiID(nxenesiID);
+    setSelectedEmriMbiemri(emri_mbiemri);
+    setSelectedNxID(nxID);
+    setShowModal(true);
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+  };
   return (
     <div>
       <br /><br />
@@ -59,19 +74,23 @@ export default function MesimdhenesiStudentet() {
             </div>
             <div className='buttons d-flex flex-row justify-content-between'>
              
-              <Button className='fw-bold border px-2 bg-primary text-light' >
-                Vendos Noten
-              </Button>
-              <Button className='fw-bold border px-2 bg-primary text-light ' disabled={item.mesimdhenesiID == id ? false : true}>
-                Vendos Vëretjen
-              </Button>
-              <Button className='fw-bold border px-2 bg-primary text-light' disabled={item.mesimdhenesiID == id ? false : true}>
-                Vendos Mungesat
-              </Button>
+            <Button className='vendosBtn fw-bold border px-2 bg-primary text-light' onClick={() => openModal(item.nxenesiID,item.emri_mbiemri,item.ID)}>
+              Vendos Noten
+            </Button>
+            <Button className='vendosBtn fw-bold border px-2 bg-primary text-light ' disabled={item.mesimdhenesiID == id ? false : true} >
+              Vendos Vëretjen
+            </Button>
+            <Button className='vendosBtn fw-bold border px-2 bg-primary text-light' disabled={item.mesimdhenesiID == id ? false : true} >
+              Vendos Mungesat
+            </Button>
             </div>
           </div>
         ))}
       </div>
+
+      <VendosNotenModal showModal={showModal} closeModal={closeModal} nxenesiID={selectedNxenesiID} emriMbiemri={selectedEmriMbiemri} nxID={SelectedNxID}/>
+
     </div>
+    
   );
 }
