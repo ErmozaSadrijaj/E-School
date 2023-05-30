@@ -12,7 +12,7 @@ export default function Mungesat() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const result = await axios.get(`https://localhost:44334/mungesat/${id}`);
+        const result = await axios.get(`https://localhost:5001/mungesat/${id}`);
         const userData = result.data;
         setUserData(userData);
       } catch (error) {

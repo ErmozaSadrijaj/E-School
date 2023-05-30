@@ -62,6 +62,26 @@ namespace studenti.Controllers
             }
             return new JsonResult(table);
         }
+        [HttpGet("lendetEMesimdhenesit/{id}")]
+        public JsonResult GetLendetEMesimdhenesit(string id)
+        {
+            string query = "select distinct l.ID,l.emri,l.viti from lenda l  join stafi s on s.ID = l.mesimdhenesi where s.ID = '" + id + "'";
+            DataTable table = new DataTable();
+            string sqlDataSource = _configuration.GetConnectionString("DBAppCon");
+            SqlDataReader myReader;
+            using (SqlConnection myCon = new SqlConnection(sqlDataSource))
+            {
+                myCon.Open();
+                using (SqlCommand myCommand = new SqlCommand(query, myCon))
+                {
+                    myReader = myCommand.ExecuteReader();
+                    table.Load(myReader); ;
+                    myReader.Close();
+                    myCon.Close();
+                }
+            }
+            return new JsonResult(table);
+        }
         [HttpPost]
         public JsonResult Post(Lenda le)
         {

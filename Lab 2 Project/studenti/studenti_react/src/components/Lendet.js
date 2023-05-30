@@ -1,29 +1,37 @@
 import '../assets/css/lendet.css'
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import {id} from '../router'
+import {id,userRole} from '../router'
+
+
+
 export default function Lendet(){
 
     const [userData, setUserData] = useState([]);
-    useEffect(() => {
-      async function fetchData() {
-        try {
-          const result = await axios.get(`https://localhost:44334/lenda_nxenesi/${id}`);
-          const userData = result.data
-          setUserData(userData); // set state here
-        } catch (error) {
-          console.error(error);
-        }
-      }
-    
-      fetchData();
-    }, []);
-
+        useEffect(() => {
+            async function fetchData() {
+              try {
+                let result = null
+                if(userRole !== 'mesimdhenesi'){
+                     result = await axios.get(`https://localhost:5001/lenda_nxenesi/${id}`);
+                }else{
+                     result = await axios.get(`https://localhost:5001/lenda/lendetEMesimdhenesit/${id}`);
+                }
+                const userData = result.data
+                setUserData(userData); // set state here
+              } catch (error) {
+                console.error(error);
+              }
+            }
+          
+            fetchData();
+          }, []);
     
 
     const lendetViti1 = userData.filter(obj => obj.viti === 1);
           const lendetViti2 = userData.filter(obj => obj.viti === 2);
           const lendetViti3 = userData.filter(obj => obj.viti === 3);
+          
     return(
         <div>
             <div id="lendetContent1" className="d-flex flex-row flex-wrap justify-content-center align-items-center p-5">
@@ -32,7 +40,7 @@ export default function Lendet(){
                     <ol>
                         {lendetViti1.map((obj, index) => (
                             <li key={index}>
-                                    <a href={`${window.location.href}/lendaID=${obj.lendaID}`}>{obj.lenda}</a>
+                                    <a href={`${window.location.href}/lendaID=${obj.lendaID}`}>{obj.lenda}{obj.emri}</a>
                             </li>
                         ))}
                     </ol>
@@ -43,7 +51,7 @@ export default function Lendet(){
                     <ol>
                         {lendetViti2.map((obj, index) => (
                                 <li key={index}>
-                                    <a href={`${window.location.href}/lendaID=${obj.lendaID}`}>{obj.lenda}</a>
+                                    <a href={`${window.location.href}/lendaID=${obj.lendaID}`}>{obj.lenda}{obj.emri}</a>
                                 </li>
                             ))}
                     </ol>
@@ -53,7 +61,7 @@ export default function Lendet(){
                     <ol>
                         {lendetViti3.map((obj, index) => (
                                 <li key={index}>
-                                    <a href={`${window.location.href}/lendaID=${obj.lendaID}`}>{obj.lenda}</a>
+                                    <a href={`${window.location.href}/lendaID=${obj.lendaID}`}>{obj.lenda}{obj.emri}</a>
                                 </li>
                             ))}
                     </ol>

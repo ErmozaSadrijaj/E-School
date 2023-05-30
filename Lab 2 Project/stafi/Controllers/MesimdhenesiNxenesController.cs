@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using mungesa.Models;
 using nota.Models;
 using stafi.Models;
 using System;
@@ -9,6 +10,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
+using veretje.Models;
 
 namespace stafi.Controllers
 {
@@ -64,6 +66,26 @@ namespace stafi.Controllers
             }
             return new JsonResult(table);
         }
+        [HttpGet("mesimdhenesitEStudentit/{studentId}")]
+        public JsonResult GetMesimdhenesitEStudentit(string studentId)
+        {
+            string query = "select distinct s.ID,s.emri_mbiemri,s.stafiID from stafi s join lenda l on s.ID = l.mesimdhenesi join lenda_nxenesi ln on ln.lendaID = l.ID where ln.nxenesiID = '" + studentId + "'";
+            DataTable table = new DataTable();
+            string sqlDataSource = _configuration.GetConnectionString("DBAppCon");
+            SqlDataReader myReader;
+            using (SqlConnection myCon = new SqlConnection(sqlDataSource))
+            {
+                myCon.Open();
+                using (SqlCommand myCommand = new SqlCommand(query, myCon))
+                {
+                    myReader = myCommand.ExecuteReader();
+                    table.Load(myReader); ;
+                    myReader.Close();
+                    myCon.Close();
+                }
+            }
+            return new JsonResult(table);
+        }
         [HttpPost]
         public JsonResult Post(Nota nt)
         {
@@ -74,6 +96,56 @@ namespace stafi.Controllers
                             '" + nt.notaNumer + @"', 
                             '" + nt.notaShkronje + @"',
                             '" + nt.dataVendosjes + @"')
+                            ";
+            DataTable table = new DataTable();
+            string sqlDataSource = _configuration.GetConnectionString("DBAppCon");
+            SqlDataReader myReader;
+            using (SqlConnection myCon = new SqlConnection(sqlDataSource))
+            {
+                myCon.Open();
+                using (SqlCommand myCommand = new SqlCommand(query, myCon))
+                {
+                    myReader = myCommand.ExecuteReader();
+                    table.Load(myReader); ;
+                    myReader.Close();
+                    myCon.Close();
+                }
+            }
+            return new JsonResult("Added Successfully");
+        }
+        [HttpPost("veretjet")]
+        public JsonResult PostVeretjet(Veretje vt)
+        {
+            string query = @"insert into dbo.veretjet values
+                            ('" + vt.komenti + @"',
+                            '" + vt.stafiID + @"',
+                            '" + vt.nxenesiID + @"',
+                            '" + vt.dataVendosjes + @"')
+                            ";
+            DataTable table = new DataTable();
+            string sqlDataSource = _configuration.GetConnectionString("DBAppCon");
+            SqlDataReader myReader;
+            using (SqlConnection myCon = new SqlConnection(sqlDataSource))
+            {
+                myCon.Open();
+                using (SqlCommand myCommand = new SqlCommand(query, myCon))
+                {
+                    myReader = myCommand.ExecuteReader();
+                    table.Load(myReader); ;
+                    myReader.Close();
+                    myCon.Close();
+                }
+            }
+            return new JsonResult("Added Successfully");
+        }
+        [HttpPost("mungesat")]
+        public JsonResult PostMungesat(Mungesat mu)
+        {
+            string query = @"insert into dbo.mungesatDitore values
+                            ('" + mu.meArsyje + @"',
+                            '" + mu.paArsyje + @"',
+                            '" + mu.nxenesiID + @"',
+                            '" + mu.dataVendosjes + @"')
                             ";
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("DBAppCon");

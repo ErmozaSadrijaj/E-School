@@ -1,12 +1,15 @@
 import {createBrowserRouter,Navigate} from 'react-router-dom'
 import Nxenesi from './components/Nxenesi'
-import Layout from './components/Layout'
+import Layout from './components/NxenesiLayout'
 import Lendet from './components/Lendet'
 import Mungesat from './components/Mungesat';
 import Notat from './components/Notat';
 import Veretjet from './components/Veretjet';
 import Lenda from './components/Lenda'
 export const id = '1';
+localStorage.setItem('UserRole','mesimdhenesi')
+export const userRole = localStorage.getItem('UserRole')
+
 const router = createBrowserRouter([
     {
         path:'/',
@@ -14,30 +17,30 @@ const router = createBrowserRouter([
         children:[
             {
                 path:'/',
-                element:<Navigate to={`/nxenesi/id=${id}`} replace />
+                element:<Navigate to={`/${userRole}/id=${id}`} replace />
             },
             {
-                path:`/nxenesi/id=${id}`,
+                path:`/${userRole}/id=${id}`,
                 element:<Nxenesi/>
             },
             {
-                path:`/nxenesi/id=${id}/lendet`,
+                path:`/${userRole}/id=${id}/lendet`,
                 element:<Lendet/>
             },
             {
-                path:`/nxenesi/id=${id}/mungesat`,
+                path:`/${userRole}/id=${id}/mungesat`,
                 element:<Mungesat/>
             },
             {
-                path:`/nxenesi/id=${id}/notat`,
+                path:`/${userRole}/id=${id}/notat`,
                 element:<Notat/>
             },
             {
-                path:`/nxenesi/id=${id}/veretjet`,
+                path:`/${userRole}/id=${id}/veretjet`,
                 element:<Veretjet/>
             },
             {
-                path:`/nxenesi/id=${id}/lendet/:lendaID`,
+                path:`/${userRole}/id=${id}/lendet/:lendaID`,
                 element: <Lenda />
             }
         ]

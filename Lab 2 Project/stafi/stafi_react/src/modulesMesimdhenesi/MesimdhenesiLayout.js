@@ -5,7 +5,15 @@ import { Link } from 'react-router-dom';
 import { Container, Row, Col } from 'react-bootstrap';
 import { FaFacebook, FaInstagram } from 'react-icons/fa';
 import {id} from '../router'
-import {Collapse,Navbar,NavbarToggler,NavbarBrand,Nav,NavItem,NavLink} from 'reactstrap';
+import {
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink,
+} from 'reactstrap';
 
 const MesimdhenesiLayout = (props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -21,6 +29,9 @@ const MesimdhenesiLayout = (props) => {
           <Nav className="mr-auto" navbar>
             <NavItem>
               <NavLink className='link' tag={Link} to={`/mesimdhenesi/id=${id}`}>Profili</NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink className='link' tag={Link} to={`http://localhost:3005/mesimdhenesi/id=${id}/lendet`}>Lendet</NavLink>
             </NavItem>
             <NavItem>
               <NavLink className='link' tag={Link} to={`/mesimdhenesi/id=${id}/studentet`}>Studentet</NavLink>
@@ -40,7 +51,7 @@ const MesimdhenesiLayout = (props) => {
         </Collapse>
       </Navbar>
       <Outlet/>
-      <footer className=" footer text-light py-3">
+      <footer className=" bg-dark text-light py-3">
       <Container>
         <Row>
           <Col xs={12} md={4} className="text-center text-md-left">

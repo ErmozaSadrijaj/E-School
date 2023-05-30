@@ -11,7 +11,7 @@ export default function Lenda() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const result = await axios.get(`https://localhost:44334/Dokumentet/${id}`);
+        const result = await axios.get(`https://localhost:5001/Dokumentet/${id}`);
         const userData = result.data;
         setUserData(userData); // set state here
       } catch (error) {

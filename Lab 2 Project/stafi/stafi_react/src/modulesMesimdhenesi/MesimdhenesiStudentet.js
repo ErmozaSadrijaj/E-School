@@ -4,6 +4,9 @@ import '../assets/css/mesimdhenesi.css';
 import { id } from '../router';
 import { Button } from 'react-bootstrap';
 import VendosNotenModal from './VendosNotenModal';
+import VendosVeretjeModal from './VendosVeretjeModal';
+import VendosMungesatModal from './VendosMungesatModal';
+
 
 export default function MesimdhenesiStudentet() {
   const [userData, setUserData] = useState([]);
@@ -33,20 +36,43 @@ export default function MesimdhenesiStudentet() {
     item.nxenesiID.includes(searchText)
   );
 
-  const [showModal, setShowModal] = useState(false);
+  const [showNotenModal, setShowNotenModal] = useState(false);
+  const [showVeretjeModal, setShowVeretjeModal] = useState(false);
+  const [showMungesatModal, setShowMungesatModal] = useState(false);
   const [selectedNxenesiID, setSelectedNxenesiID] = useState('');
   const [selectedEmriMbiemri, setSelectedEmriMbiemri] = useState('');
-  const [SelectedNxID, setSelectedNxID] = useState('');
+  const [selectedNxID, setSelectedNxID] = useState('');
 
-  const openModal = (nxenesiID, emri_mbiemri,nxID) => {
+  const openNotenModal = (nxenesiID, emri_mbiemri, nxID) => {
     setSelectedNxenesiID(nxenesiID);
     setSelectedEmriMbiemri(emri_mbiemri);
     setSelectedNxID(nxID);
-    setShowModal(true);
+    setShowNotenModal(true);
   };
 
-  const closeModal = () => {
-    setShowModal(false);
+  const openVeretjeModal = (nxenesiID, emri_mbiemri, nxID) => {
+    setSelectedNxenesiID(nxenesiID);
+    setSelectedEmriMbiemri(emri_mbiemri);
+    setSelectedNxID(nxID);
+    setShowVeretjeModal(true);
+  };
+
+  const openMungesatModal = (nxenesiID, emri_mbiemri, nxID) => {
+    setSelectedNxenesiID(nxenesiID);
+    setSelectedEmriMbiemri(emri_mbiemri);
+    setSelectedNxID(nxID);
+    setShowMungesatModal(true);
+  };
+  const closeNotenModal = () => {
+    setShowNotenModal(false);
+  };
+
+  const closeVeretjeModal = () => {
+    setShowVeretjeModal(false);
+  };
+
+  const closeMungesatModal = () => {
+    setShowMungesatModal(false);
   };
   return (
     <div>
@@ -74,13 +100,13 @@ export default function MesimdhenesiStudentet() {
             </div>
             <div className='buttons d-flex flex-row justify-content-between'>
              
-            <Button className='vendosBtn fw-bold border px-2 bg-primary text-light' onClick={() => openModal(item.nxenesiID,item.emri_mbiemri,item.ID)}>
+            <Button className='vendosBtn fw-bold border px-2 bg-primary text-light' onClick={() => openNotenModal(item.nxenesiID,item.emri_mbiemri,item.ID)}>
               Vendos Noten
             </Button>
-            <Button className='vendosBtn fw-bold border px-2 bg-primary text-light ' disabled={item.mesimdhenesiID == id ? false : true} >
+            <Button className='vendosBtn fw-bold border px-2 bg-primary text-light ' disabled={item.mesimdhenesiID == id ? false : true} onClick={() => openVeretjeModal(item.nxenesiID,item.emri_mbiemri,item.ID)}>
               Vendos Vëretjen
             </Button>
-            <Button className='vendosBtn fw-bold border px-2 bg-primary text-light' disabled={item.mesimdhenesiID == id ? false : true} >
+            <Button className='vendosBtn fw-bold border px-2 bg-primary text-light' disabled={item.mesimdhenesiID == id ? false : true} onClick={() => openMungesatModal(item.nxenesiID,item.emri_mbiemri,item.ID)}>
               Vendos Mungesat
             </Button>
             </div>
@@ -88,8 +114,11 @@ export default function MesimdhenesiStudentet() {
         ))}
       </div>
 
-      <VendosNotenModal showModal={showModal} closeModal={closeModal} nxenesiID={selectedNxenesiID} emriMbiemri={selectedEmriMbiemri} nxID={SelectedNxID}/>
+      <VendosNotenModal showModal={showNotenModal} closeModal={closeNotenModal} nxenesiID={selectedNxenesiID} emriMbiemri={selectedEmriMbiemri} nxID={selectedNxID} />
+      <VendosVeretjeModal showModal={showVeretjeModal} closeModal={closeVeretjeModal} nxenesiID={selectedNxenesiID} emriMbiemri={selectedEmriMbiemri} nxID={selectedNxID} />
+      <VendosMungesatModal showModal={showMungesatModal} closeModal={closeMungesatModal} nxenesiID={selectedNxenesiID} emriMbiemri={selectedEmriMbiemri} nxID={selectedNxID} />
 
+    
     </div>
     
   );

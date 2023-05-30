@@ -4,7 +4,8 @@ import { Outlet } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { Container, Row, Col } from 'react-bootstrap';
 import { FaFacebook, FaInstagram } from 'react-icons/fa';
-import {id} from '../router'
+import {id,userRole} from '../router'
+
 import {
   Collapse,
   Navbar,
@@ -15,23 +16,28 @@ import {
   NavLink,
 } from 'reactstrap';
 
-const Layout = (props) => {
+const NxenesiLayout = (props) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
-
+  const backgroundColor = userRole === 'mesimdhenesi' ? 'rgba(0, 115, 255, 1)' : 'rgba(255, 115, 0, 0.8)'
   return (
     <div>
-      <Navbar className='container-fluid' color="light" light expand="md">
+      <Navbar className='container-fluid' style={{backgroundColor}}  light expand="md">
         <NavbarBrand href="/">Logo</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
             <NavItem>
-              <NavLink className='link' tag={Link} to={`/nxenesi/id=${id}`}>Profili</NavLink>
+              <NavLink className='link' tag={Link} to={`/${userRole}/id=${id}`}>Profili</NavLink>
             </NavItem>
+            {userRole == 'mesimdhenesi' ? (
+              <NavItem >
+                <NavLink className='link' tag={Link} to="http://localhost:3006/mesimdhenesi/id=1/studentet">Studentet</NavLink>
+              </NavItem>
+            ) : null}
             <NavItem>
-              <NavLink className='link' tag={Link} to={`/nxenesi/id=${id}/lendet`}>Lendet</NavLink>
+              <NavLink className='link' tag={Link} to={`/${userRole}/id=${id}/lendet`}>Lendet</NavLink>
             </NavItem>
             <NavItem>
               <NavLink className='link' tag={Link} to="http://localhost:3003/blogs">Blogi</NavLink>
@@ -68,4 +74,4 @@ const Layout = (props) => {
   );
 }
 
-export default Layout;
+export default NxenesiLayout;

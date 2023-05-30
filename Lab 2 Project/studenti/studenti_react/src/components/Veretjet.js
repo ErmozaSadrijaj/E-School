@@ -13,7 +13,7 @@ export default function Veretjet() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const result = await axios.get(`https://localhost:44334/veretjet/${id}`);
+        const result = await axios.get(`https://localhost:5001/veretjet/${id}`);
         const userData = result.data;
         setUserData(userData);
       } catch (error) {

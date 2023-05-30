@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Pc\\Desktop\\E_School\\E-School\\Lab 2 Project\\studenti\\studenti.csproj": {}
+    "D:\\UBT\\E-School\\Lab 2 Project\\studenti\\studenti.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Pc\\Desktop\\E_School\\E-School\\Lab 2 Project\\studenti\\studenti.csproj": {
+    "D:\\UBT\\E-School\\Lab 2 Project\\studenti\\studenti.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Pc\\Desktop\\E_School\\E-School\\Lab 2 Project\\studenti\\studenti.csproj",
+        "projectUniqueName": "D:\\UBT\\E-School\\Lab 2 Project\\studenti\\studenti.csproj",
         "projectName": "studenti",
-        "projectPath": "C:\\Users\\Pc\\Desktop\\E_School\\E-School\\Lab 2 Project\\studenti\\studenti.csproj",
+        "projectPath": "D:\\UBT\\E-School\\Lab 2 Project\\studenti\\studenti.csproj",
         "packagesPath": "C:\\Users\\Pc\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Pc\\Desktop\\E_School\\E-School\\Lab 2 Project\\studenti\\obj\\",
+        "outputPath": "D:\\UBT\\E-School\\Lab 2 Project\\studenti\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Pc\\AppData\\Roaming\\NuGet\\NuGet.Config",

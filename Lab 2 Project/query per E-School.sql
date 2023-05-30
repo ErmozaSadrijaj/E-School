@@ -118,34 +118,13 @@ select distinct ln.ID, ln.nxenesi,ln.lenda,ln.nxenesiID,ln.lendaID,l.viti from l
 on l.ID = ln.lendaID where ln.nxenesiID = 1
 
 
-select distinct nx.emri_mbiemri,nx.fotoPath,nx.nxenesiID , s.emri_mbiemri from nxenesi nx
+select distinct l.viti,l.emri from nxenesi nx
 join lenda_nxenesi ln on nx.ID = ln.nxenesiID
 join lenda l on ln.lendaID = l.ID
 join stafi s on s.ID = l.mesimdhenesi
-where s.ID = 1 and s.roli = 'mesimdhenes'
-
-/*create table lenda_stafi (
-	ID int primary key identity(1,1),
-	lendaID int,
-	stafiID int,
-	FOREIGN KEY (lendaID) REFERENCES lenda(ID),
-	FOREIGN KEY (stafiID) REFERENCES stafi(ID)
-)
-
-insert into lenda_stafi values(1,1)
-insert into lenda_stafi values(2,1)
-insert into lenda_stafi values(3,1)
-insert into lenda_stafi values(5,1)
-insert into lenda_stafi values(10,1)
+where s.ID = 1 and s.roli = 'mesimdhenes' and nx.nxenesiID = 'N-123456789'
 
 
-select distinct nx.emri_mbiemri as 'nx',s.emri_mbiemri,l.emri from lenda_stafi ls
-join stafi s on s.ID = ls.stafiID
-join lenda l on l.ID = ls.lendaID
-join lenda_nxenesi ln on ln.lendaID = ls.lendaID
-join nxenesi nx on ln.nxenesiID = nx.ID
-where ls.stafiID = 1
-*/
 
 create table dokumentet(
 	ID int primary key identity(1,1),
@@ -162,3 +141,21 @@ insert into dokumentet values ('Tema 2 e lendes','linku','2023-02-19 15:20:02',1
 insert into dokumentet values ('Tema 3 e lendes','linku','2023-02-26 15:20:02',1)
 insert into dokumentet values ('Tema 4 e lendes','linku','2023-03-02 15:20:02',1)
 select * from dokumentet
+
+create table notat(
+	ID int primary key identity(1,1),
+	lendaID int,
+	nxenesiID int,
+	stafiID int,
+	notaNumer int,
+	notaShkronje varchar(5),
+	dataVendosjes datetime,
+	foreign key (lendaID) references lenda(ID),
+	foreign key (nxenesiID) references nxenesi(ID),
+	foreign key (stafiID) references stafi(ID)
+)
+
+insert into notat values(1,1,2,3,'C','2023-02-05 15:20:02.000')
+delete from notat where notat.notaShkronje = 'C'
+
+delete from notat where notat.nxenesiID = 1

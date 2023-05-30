@@ -10,7 +10,7 @@ export default function Nxenesi() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const result = await axios.get(`https://localhost:44334/nxenesi/${id}`);
+        const result = await axios.get(`https://localhost:5001/nxenesi/${id}`);
         const userData = result.data[0]
           
         setUserData(userData); 
