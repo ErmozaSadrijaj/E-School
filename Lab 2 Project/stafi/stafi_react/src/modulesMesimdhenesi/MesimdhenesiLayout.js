@@ -4,7 +4,7 @@ import { Outlet } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { Container, Row, Col } from 'react-bootstrap';
 import { FaFacebook, FaInstagram } from 'react-icons/fa';
-import {id} from '../router'
+import {id,userRole} from '../router'
 import {
   Collapse,
   Navbar,
@@ -28,14 +28,22 @@ const MesimdhenesiLayout = (props) => {
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
             <NavItem>
-              <NavLink className='link' tag={Link} to={`/mesimdhenesi/id=${id}`}>Profili</NavLink>
+              <NavLink className='link' tag={Link} to={`/${userRole}/id=${id}`}>Profili</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink className='link' tag={Link} to={`http://localhost:3005/mesimdhenesi/id=${id}/lendet`}>Lendet</NavLink>
+              <NavLink className='link' tag={Link} to={`/${userRole}/id=${id}/lendet`}>Lendet</NavLink>
             </NavItem>
-            <NavItem>
-              <NavLink className='link' tag={Link} to={`/mesimdhenesi/id=${id}/studentet`}>Studentet</NavLink>
-            </NavItem>
+            {userRole == 'mesimdhenesi' ? 
+            (
+              <NavItem>
+                <NavLink className='link' tag={Link} to={`/${userRole}/id=${id}/studentet`}>Studentet</NavLink>
+              </NavItem>
+            ):
+            (
+              <NavItem>
+                <NavLink className='link' tag={Link} to={`/${userRole}/id=${id}/perdoruesit`}>Perdoruesit</NavLink>
+              </NavItem>
+            )}
             <NavItem>
               <NavLink className='link' tag={Link} to="http://localhost:3003/blogs">Blogi</NavLink>
             </NavItem>

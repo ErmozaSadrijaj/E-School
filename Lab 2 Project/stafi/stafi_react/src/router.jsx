@@ -2,7 +2,13 @@ import {createBrowserRouter,Navigate} from 'react-router-dom'
 import MesimdhenesiLayout from './modulesMesimdhenesi/MesimdhenesiLayout'
 import Mesimdhenesi from './modulesMesimdhenesi/Mesimdhenesi';
 import MesimdhenesiStudentet from './modulesMesimdhenesi/MesimdhenesiStudentet';
-export const id = '1';
+import AdministratoriLendet from './modulesAdministratori.js/AdministratoriLendet';
+import AdministratoriPerdoruesit from './modulesAdministratori.js/AdministratoriPerdoruesit';
+
+export const id = '4';
+localStorage.setItem('UserRole','administratori')
+export const userRole = localStorage.getItem('UserRole')
+
 const router = createBrowserRouter([
     {
         path:'/',
@@ -10,15 +16,23 @@ const router = createBrowserRouter([
         children:[
             {
                 path:'/',
-                element:<Navigate to={`/mesimdhenesi/id=${id}`} replace />
+                element:<Navigate to={`/${userRole}/id=${id}`} replace />
             },
             {
-                path:`/mesimdhenesi/id=${id}`,
+                path:`/${userRole}/id=${id}`,
                 element:<Mesimdhenesi/>
             },
             {
-                path:`/mesimdhenesi/id=${id}/studentet`,
+                path:`/${userRole}/id=${id}/studentet`,
                 element:<MesimdhenesiStudentet/>
+            },
+            {
+                path:`/${userRole}/id=${id}/lendet`,
+                element:<AdministratoriLendet/>
+            },
+            {
+                path:`/${userRole}/id=${id}/perdoruesit`,
+                element:<AdministratoriPerdoruesit/>
             }
         ]
     }

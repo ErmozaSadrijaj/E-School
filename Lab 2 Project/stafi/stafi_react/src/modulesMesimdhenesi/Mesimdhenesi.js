@@ -12,6 +12,7 @@ export default function Mesimdhenesi(){
       async function fetchData() {
         try {
           const result = await axios.get(`https://localhost:44335/mesimdhenesi/${id}`);
+
           const userData = result.data[0]
             
           setUserData(userData); 
@@ -22,6 +23,7 @@ export default function Mesimdhenesi(){
     
       fetchData();
     }, []);
+
     /* ketu marrim te bloget e mesimdhenesit aktual */
     const [blogData, setBlogData] = useState({});
     useEffect(() => {
@@ -56,7 +58,6 @@ export default function Mesimdhenesi(){
         </div>
       );
     }
-    console.log(blogData)
     
     return(
         <div className='d-flex justify-content-center flex-column'>
@@ -79,10 +80,19 @@ export default function Mesimdhenesi(){
                 </div>
             </div>
             <div id="section1" className='d-flex flex-row flex-wrap justify-content-center mt-4 '>
-                <h1 className='border-bottom w-100 px-5'>Bloget e Mesimdhenesit</h1>
+                {userData.roli !== 'mesimdhenes' ? '' : <h1 className='border-bottom w-100 px-5'>Bloget e Mesimdhenesit</h1>}
                 
                 <div className='d-flex flex-row flex-wrap justify-content-center mt-3 mb-5 pb-5'>
-                    {blogPosts}
+                
+                  {userData.roli !== 'mesimdhenes' ? 
+                    ( <div id="section2" className="d-flex flex-row flex-wrap justify-content-around align-items-center m-5">
+                        
+                      </div>
+                    ) 
+                    : (blogPosts)
+                  }
+
+
                 </div>
             </div>
         </div>

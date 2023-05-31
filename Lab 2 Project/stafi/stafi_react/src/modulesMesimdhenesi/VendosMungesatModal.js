@@ -5,11 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 
 export default function VendosMungesatModal({ showModal, closeModal,nxID, nxenesiID, emriMbiemri }) {
-  const [numberValue, setNumberValue] = useState(1);
 
-  const handleNumberChange = (event) => {
-    setNumberValue(event.target.value);
-  };
 
   const handleVendosClick = async () => {
     try {

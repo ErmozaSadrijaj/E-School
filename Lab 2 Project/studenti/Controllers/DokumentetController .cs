@@ -70,7 +70,7 @@ namespace studenti.Controllers
                             ('" + dok.titulli + @"',
                             '" + dok.linku + @"',
                             '" + dok.dataPublikimit + @"',
-                            '" + dok.lendaID + @"'),                        
+                            '" + dok.lendaID + @"')                      
                             ";
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("DBAppCon");
@@ -93,13 +93,11 @@ namespace studenti.Controllers
         public JsonResult Put(Dokumentet dok)
         {
             string query = @"update dbo.dokumentet set 
-                            titulli = '" + dok.titulli + @"',
-                            linku = '" + dok.linku + @"',
-                            dataPublikimit = '" + dok.dataPublikimit + @"',
-                            lendaID = '" + dok.lendaID + @"'      ,                   
-
-                            where ID = " + dok.ID + @"
-                            ";
+                    titulli = '" + dok.titulli + @"',
+                    linku = '" + dok.linku + @"',
+                    lendaID = '" + dok.lendaID + @"'
+                    where ID = " + dok.ID + @"
+                    ";
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("DBAppCon");
             SqlDataReader myReader;
@@ -117,10 +115,11 @@ namespace studenti.Controllers
             return new JsonResult("Updated Successfully");
         }
 
+
         [HttpDelete("{id}")]
         public JsonResult Delete(int id)
         {
-            string query = @"delete from dbo.dokumenetet 
+            string query = @"delete from dbo.dokumentet 
                             where ID = " + id + @"
                             ";
             DataTable table = new DataTable();

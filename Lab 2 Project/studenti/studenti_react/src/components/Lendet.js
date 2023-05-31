@@ -4,7 +4,6 @@ import axios from 'axios';
 import {id,userRole} from '../router'
 
 
-
 export default function Lendet(){
 
     const [userData, setUserData] = useState([]);
@@ -40,7 +39,7 @@ export default function Lendet(){
                     <ol>
                         {lendetViti1.map((obj, index) => (
                             <li key={index}>
-                                    <a href={`${window.location.href}/lendaID=${obj.lendaID}`}>{obj.lenda}{obj.emri}</a>
+                                    <a href={`${window.location.href}/lendaID=${obj.lendaID}`}>{obj.lenda}</a>
                             </li>
                         ))}
                     </ol>
@@ -51,7 +50,7 @@ export default function Lendet(){
                     <ol>
                         {lendetViti2.map((obj, index) => (
                                 <li key={index}>
-                                    <a href={`${window.location.href}/lendaID=${obj.lendaID}`}>{obj.lenda}{obj.emri}</a>
+                                    <a href={`${window.location.href}/lendaID=${obj.lendaID}`}>{obj.lenda}</a>
                                 </li>
                             ))}
                     </ol>

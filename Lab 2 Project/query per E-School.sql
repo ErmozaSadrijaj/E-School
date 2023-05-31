@@ -78,20 +78,22 @@ create table lenda(
 	viti int,
 	gjenerata varchar(50)
 )
+select * from lenda where mesimdhenesi = 2
 
 insert into lenda values('Matematike',1,1,'19/20')
 insert into lenda values('Fizik',1,1,'19/20')
 insert into lenda values('Kimi',1,1,'19/20')
 insert into lenda values('Matematike',1,2,'19/20')
 insert into lenda values('Fizik',1,2,'19/20')
-insert into lenda values('Kimi',1,2,'19/20')
+insert into lenda values('Kimi',2,3,'19/20')
 insert into lenda values('Matematike',1,3,'19/20')
 insert into lenda values('Fizik',1,3,'19/20')
 insert into lenda values('Kimi',1,3,'19/20')
 insert into lenda values('Astrologji',1,3,'19/20')
 
 select * from lenda
-
+select l.ID,emri,s.emri_mbiemri,s.stafiID,viti,gjenerata from dbo.lenda l
+join stafi s on s.ID = l.mesimdhenesi
 create table lenda_nxenesi (
 	ID int primary key identity(1,1),
 	nxenesiID int,
@@ -102,7 +104,7 @@ create table lenda_nxenesi (
 
 insert into lenda_nxenesi values('emri dhe mbiemri','Matematike',1,1)
 insert into lenda_nxenesi values('emri dhe mbiemri2','Fizik',2,2)
-insert into lenda_nxenesi values('emri dhe mbiemri','Kimi',1,3)
+insert into lenda_nxenesi values('emri dhe mbiemri','Kimi',1,11)
 insert into lenda_nxenesi values('emri dhe mbiemri','Fizik',1,5)
 
 insert into lenda_nxenesi values('nxenesi 2','Fizik',2,5)
@@ -117,12 +119,21 @@ insert into lenda_nxenesi values('nxenesi 6','Fizik',6,5)
 select distinct ln.ID, ln.nxenesi,ln.lenda,ln.nxenesiID,ln.lendaID,l.viti from lenda_nxenesi ln inner join lenda l
 on l.ID = ln.lendaID where ln.nxenesiID = 1
 
-
+/*lendet e nje nxenesi*/
 select distinct l.viti,l.emri from nxenesi nx
 join lenda_nxenesi ln on nx.ID = ln.nxenesiID
 join lenda l on ln.lendaID = l.ID
 join stafi s on s.ID = l.mesimdhenesi
 where s.ID = 1 and s.roli = 'mesimdhenes' and nx.nxenesiID = 'N-123456789'
+/* mesimdhenesit e nje nxenesi*/
+select distinct s.emri_mbiemri,s.stafiID from stafi s
+join lenda l on s.ID = l.mesimdhenesi
+join lenda_nxenesi ln on ln.lendaID = l.ID
+where ln.nxenesiID = 1
+/*lendet e mesimdhenesit*/
+select distinct l.ID,l.emri,l.viti from lenda l 
+join stafi s on s.ID = l.mesimdhenesi
+where s.ID = 1
 
 
 
@@ -159,3 +170,5 @@ insert into notat values(1,1,2,3,'C','2023-02-05 15:20:02.000')
 delete from notat where notat.notaShkronje = 'C'
 
 delete from notat where notat.nxenesiID = 1
+
+select * from dokumentet
