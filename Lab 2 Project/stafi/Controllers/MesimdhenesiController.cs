@@ -25,7 +25,7 @@ namespace stafi.Controllers
 
         public JsonResult Get()
         {
-            string query = @"select ID,stafiID,emri_mbiemri,fjalekalimi,email,fotoPath,nrTelefonit,vendbanimi,Kualifikimi,roli from dbo.stafi where roli = 'mesimdhenes'";
+            string query = @"select ID,stafiID,emri_mbiemri,fjalekalimi,email,fotoPath,nrTelefonit,vendbanimi,Kualifikimi,roli from dbo.stafi where roli = 'mesimdhenesi'";
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("DBAppCon");
             SqlDataReader myReader;

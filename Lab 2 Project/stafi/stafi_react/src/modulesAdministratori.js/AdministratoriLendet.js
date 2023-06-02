@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Table,Button } from 'react-bootstrap';
-
+import ShtoLendenModal from './ShtoLendenModal';
+import NdryshoLendenModal from './NdryshoLendenModal';
+import LargoLendenModal from './LargoLendenModal'
 export default function AdministratoriLendet() {
 
   const [lendet, setLendet] = useState([]);
@@ -20,12 +22,44 @@ export default function AdministratoriLendet() {
     fetchData();
   }, []);
 
+  const [showShtoLendenModal, setShowShtoLendenModal] = useState(false);
+  const [showNdryshoLendenModal, setShowNdryshoLendenModal] = useState(false);
+  const [showLargoLendenModal, setShowLargoLendenModal] = useState(false);
+  const [selectedLendaID, setSelectedLendaID] = useState('');
+  const [selectedLendaEmri, setSelectedLendaEmri] = useState('');
+  const [selectedLendaStafiID, setSelectedLendaStafiID] = useState('');
+  const [selectedLendaViti, setSelectedLendaViti] = useState('');
+  const [selectedLendaGjenerata, setSelectedLendaGjenerata] = useState('');
 
-  
+  const openShtoLendenModal = () => {
+    setShowShtoLendenModal(true);
+  };
+  const openNdryshoLendenModal = (lendaID,emri,viti,gjenerata,stafiID) =>{
+    setSelectedLendaID(lendaID)
+    setSelectedLendaEmri(emri)
+    setSelectedLendaStafiID(stafiID)
+    setSelectedLendaViti(viti)
+    setSelectedLendaGjenerata(gjenerata)
+    setShowNdryshoLendenModal(true)
+  }
+  const openLargoLendenModal = (lendaID) =>{
+    setSelectedLendaID(lendaID)
+    setShowLargoLendenModal(true)
+  }
+  const closeShtoLendenModal = () => {
+    setShowShtoLendenModal(false);
+  };
+  const closeNdryshoLendenModal = () => {
+    setShowNdryshoLendenModal(false);
+  };
+  const closeLargoLendenModal = () => {
+    setShowLargoLendenModal(false);
+  };
+
   return (
     <div>
        <div className='p-4'>
-        <Button className='btn btn-success mt-5 float-end'>Shto nje Lende</Button> 
+        <Button className='btn btn-success mt-5 float-end' onClick={() => openShtoLendenModal()}>Shto nje Lende</Button> 
        </div>
       <div className='container pt-5 mb-5 pb-5'>
       {lendet.length > 0 ? (
@@ -52,8 +86,8 @@ export default function AdministratoriLendet() {
                 <td>{item.viti}</td>
                 <td>{item.gjenerata}</td>
                 <td>
-                    <Button className='btn btn-primary m-1'>Edit</Button>
-                    <Button className='btn btn-danger m-1'>Delete</Button>
+                    <Button className='btn btn-primary m-1' onClick={() => openNdryshoLendenModal(item.ID,item.emri,item.viti,item.gjenerata,item.stafiID)}>Edit</Button>
+                    <Button className='btn btn-danger m-1' onClick={() => openLargoLendenModal(item.ID)}>Delete</Button>
                 </td>
                 </tr>
             ))}
@@ -64,6 +98,9 @@ export default function AdministratoriLendet() {
             <h2 className='my-3'>Nuk ka ndonje Lende te regjistruar</h2>
         )}
       </div>
+      <ShtoLendenModal showModal={showShtoLendenModal} closeModal={closeShtoLendenModal}/>
+      <NdryshoLendenModal showModal={showNdryshoLendenModal} closeModal={closeNdryshoLendenModal} lendaID={selectedLendaID} emri={selectedLendaEmri} stafiID={selectedLendaStafiID} viti={selectedLendaViti} gjenerata={selectedLendaGjenerata}/>
+      <LargoLendenModal showModal={showLargoLendenModal} closeModal={closeLargoLendenModal} lendaID={selectedLendaID}/>
     </div>
   );
 }

@@ -108,7 +108,7 @@ namespace studenti.Controllers
         [HttpPost]
         public JsonResult Post(Lenda le)
         {
-            string query = @"insert into dbo.nxenesi values
+            string query = @"insert into dbo.lenda values
                             ('" + le.emri + @"',
                             '" + le.mesimdhenesi + @"',
                             '" + le.viti + @"',
@@ -134,12 +134,11 @@ namespace studenti.Controllers
         [HttpPut]
         public JsonResult Put(Lenda le)
         {
-            string query = @"update dbo.nxenesi set 
+            string query = @"update dbo.lenda set 
                             emri = '" + le.emri + @"',
                             mesimdhenesi = '" + le.mesimdhenesi + @"',
                             viti = '" + le.viti + @"',
-                            gjenerata = '" + le.gjenerata + @"'      ,                   
-
+                            gjenerata = '" + le.gjenerata + @"'                
                             where ID = " + le.ID + @"
                             ";
             DataTable table = new DataTable();
