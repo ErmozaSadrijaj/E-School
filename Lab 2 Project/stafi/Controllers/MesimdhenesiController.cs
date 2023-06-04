@@ -25,7 +25,7 @@ namespace stafi.Controllers
 
         public JsonResult Get()
         {
-            string query = @"select ID,stafiID,emri_mbiemri,fjalekalimi,email,fotoPath,nrTelefonit,vendbanimi,Kualifikimi,roli from dbo.stafi where roli = 'mesimdhenesi'";
+            string query = @"select ID,stafiID,emri_mbiemri,fjalekalimi,email,fotoPath,nrTelefonit,vendbanimi,Kualifikimi,roli from dbo.stafi where roli = 'mesimdhenes'";
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("DBAppCon");
             SqlDataReader myReader;
@@ -63,38 +63,77 @@ namespace stafi.Controllers
             }
             return new JsonResult(table);
         }
-        
+
 
         [HttpPost]
         public JsonResult Post(Stafi st)
         {
+            // Generate staff ID
+            string staffId = "M-" + GenerateRandomNumbers(9);
+
             string query = @"insert into dbo.stafi values
-                            ('" + st.stafiID + @"',
-                            '" + st.emri_mbiemri + @"',
-                            '" + st.fjalekalimi + @"',
-                            '" + st.email + @"',
-                            '" + st.fotoPath + @"',
-                            '" + st.nrTelefonit + @"',
-                            '" + st.vendbanimi + @"',
-                            '" + st.Kualifikimi + @"',
-                            '" + st.roli + @"')
-                            ";
+                    ('" + staffId + @"',
+                    '" + st.emri_mbiemri + @"',
+                    '" + st.fjalekalimi + @"',
+                    '" + st.email + @"',
+                    '" + st.fotoPath + @"',
+                    '" + st.nrTelefonit + @"',
+                    '" + st.vendbanimi + @"',
+                    '" + st.Kualifikimi + @"',
+                    '" + st.roli + @"')
+                    ";
+
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("DBAppCon");
             SqlDataReader myReader;
+
             using (SqlConnection myCon = new SqlConnection(sqlDataSource))
             {
                 myCon.Open();
+
+                // Check if the generated ID already exists
+                bool idExists = false;
+                string checkQuery = "SELECT COUNT(*) FROM dbo.stafi WHERE stafiID = @StaffId";
+                using (SqlCommand checkCommand = new SqlCommand(checkQuery, myCon))
+                {
+                    checkCommand.Parameters.AddWithValue("@StaffId", staffId);
+                    int count = (int)checkCommand.ExecuteScalar();
+                    idExists = count > 0;
+                }
+
+                if (idExists)
+                {
+                    // Regenerate staff ID
+                    staffId = "M-" + GenerateRandomNumbers(9);
+                }
+
                 using (SqlCommand myCommand = new SqlCommand(query, myCon))
                 {
                     myReader = myCommand.ExecuteReader();
-                    table.Load(myReader); ;
+                    table.Load(myReader);
                     myReader.Close();
                     myCon.Close();
                 }
             }
+
             return new JsonResult("Added Successfully");
         }
+
+        // Helper method to generate random numbers only
+        private string GenerateRandomNumbers(int length)
+        {
+            Random random = new Random();
+            string numbers = "";
+            for (int i = 0; i < length; i++)
+            {
+                numbers += random.Next(0, 10);
+            }
+            return numbers;
+        }
+
+
+
+
 
         [HttpPut]
         public JsonResult Put(Stafi st)

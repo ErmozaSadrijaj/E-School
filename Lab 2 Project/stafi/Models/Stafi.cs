@@ -8,7 +8,7 @@ namespace stafi.Models
     public class Stafi
     {
         public int ID { get; set; }
-        public int stafiID { get; set; }
+        public string stafiID { get; set; }
         public string emri_mbiemri { get; set; }
         public string fjalekalimi { get; set; }
         public string email { get; set; }

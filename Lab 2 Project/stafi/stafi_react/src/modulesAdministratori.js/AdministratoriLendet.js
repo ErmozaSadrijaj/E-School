@@ -86,8 +86,8 @@ export default function AdministratoriLendet() {
                 <td>{item.viti}</td>
                 <td>{item.gjenerata}</td>
                 <td>
-                    <Button className='btn btn-primary m-1' onClick={() => openNdryshoLendenModal(item.ID,item.emri,item.viti,item.gjenerata,item.stafiID)}>Edit</Button>
-                    <Button className='btn btn-danger m-1' onClick={() => openLargoLendenModal(item.ID)}>Delete</Button>
+                    <Button className='btn btn-primary m-1' onClick={() => openNdryshoLendenModal(item.ID,item.emri,item.viti,item.gjenerata,item.stafiID)}>Ndrysho</Button>
+                    <Button className='btn btn-danger m-1' onClick={() => openLargoLendenModal(item.ID)}>Largo</Button>
                 </td>
                 </tr>
             ))}

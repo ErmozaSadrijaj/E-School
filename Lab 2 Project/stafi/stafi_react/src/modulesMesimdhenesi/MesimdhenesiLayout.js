@@ -40,9 +40,14 @@ const MesimdhenesiLayout = (props) => {
               </NavItem>
             ):
             (
-              <NavItem>
-                <NavLink className='link' tag={Link} to={`/${userRole}/id=${id}/perdoruesit`}>Perdoruesit</NavLink>
-              </NavItem>
+              <div className='d-flex flex-row'>
+                <NavItem>
+                  <NavLink className='link' tag={Link} to={`/${userRole}/id=${id}/mesimdhenesit`}>Mesimdhenesit</NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink className='link' tag={Link} to={`/${userRole}/id=${id}/studentet`}>Studentet</NavLink>
+                </NavItem>
+              </div>
             )}
             <NavItem>
               <NavLink className='link' tag={Link} to="http://localhost:3003/blogs">Blogi</NavLink>

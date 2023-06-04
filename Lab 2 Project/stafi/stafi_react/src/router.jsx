@@ -3,7 +3,7 @@ import MesimdhenesiLayout from './modulesMesimdhenesi/MesimdhenesiLayout'
 import Mesimdhenesi from './modulesMesimdhenesi/Mesimdhenesi';
 import MesimdhenesiStudentet from './modulesMesimdhenesi/MesimdhenesiStudentet';
 import AdministratoriLendet from './modulesAdministratori.js/AdministratoriLendet';
-import AdministratoriPerdoruesit from './modulesAdministratori.js/AdministratoriPerdoruesit';
+import AdministratoriMesimdhenesit from './modulesAdministratori.js/AdministratoriMesimdhenesit';
 
 export const id = '4';
 localStorage.setItem('UserRole','administratori')
@@ -31,8 +31,8 @@ const router = createBrowserRouter([
                 element:<AdministratoriLendet/>
             },
             {
-                path:`/${userRole}/id=${id}/perdoruesit`,
-                element:<AdministratoriPerdoruesit/>
+                path:`/${userRole}/id=${id}/mesimdhenesit`,
+                element:<AdministratoriMesimdhenesit/>
             }
         ]
     }
