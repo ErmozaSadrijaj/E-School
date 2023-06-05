@@ -64,11 +64,11 @@ namespace stafi.Controllers
             return new JsonResult(table);
         }
 
-
         [HttpPost]
+        
         public JsonResult Post(Stafi st)
         {
-            // Generate staff ID
+            // Gjenerejome ID
             string staffId = "M-" + GenerateRandomNumbers(9);
 
             string query = @"insert into dbo.stafi values
@@ -91,7 +91,7 @@ namespace stafi.Controllers
             {
                 myCon.Open();
 
-                // Check if the generated ID already exists
+                // Kontrollojm nese ID egziston ne databaze
                 bool idExists = false;
                 string checkQuery = "SELECT COUNT(*) FROM dbo.stafi WHERE stafiID = @StaffId";
                 using (SqlCommand checkCommand = new SqlCommand(checkQuery, myCon))
@@ -103,7 +103,7 @@ namespace stafi.Controllers
 
                 if (idExists)
                 {
-                    // Regenerate staff ID
+                    // Rigjenerohet ID ne rast se egziston ne databaze
                     staffId = "M-" + GenerateRandomNumbers(9);
                 }
 
@@ -119,7 +119,7 @@ namespace stafi.Controllers
             return new JsonResult("Added Successfully");
         }
 
-        // Helper method to generate random numbers only
+        // Kjo sigurohet qe karakteret e gjeneruara te jene vetem numra
         private string GenerateRandomNumbers(int length)
         {
             Random random = new Random();

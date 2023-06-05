@@ -45,7 +45,7 @@ const MesimdhenesiLayout = (props) => {
                   <NavLink className='link' tag={Link} to={`/${userRole}/id=${id}/mesimdhenesit`}>Mesimdhenesit</NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink className='link' tag={Link} to={`/${userRole}/id=${id}/studentet`}>Studentet</NavLink>
+                  <NavLink className='link' tag={Link} to={`/${userRole}/id=${id}/administrator_studentet`}>Studentet</NavLink>
                 </NavItem>
               </div>
             )}

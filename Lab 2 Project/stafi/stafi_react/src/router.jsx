@@ -4,6 +4,9 @@ import Mesimdhenesi from './modulesMesimdhenesi/Mesimdhenesi';
 import MesimdhenesiStudentet from './modulesMesimdhenesi/MesimdhenesiStudentet';
 import AdministratoriLendet from './modulesAdministratori.js/AdministratoriLendet';
 import AdministratoriMesimdhenesit from './modulesAdministratori.js/AdministratoriMesimdhenesit';
+import AdministratoriStudentet from './modulesAdministratori.js/AdministratoriStudentet';
+import DetajetStudentit from './modulesAdministratori.js/DetajetStudentit';
+
 
 export const id = '4';
 localStorage.setItem('UserRole','administratori')
@@ -27,12 +30,20 @@ const router = createBrowserRouter([
                 element:<MesimdhenesiStudentet/>
             },
             {
+                path:`/${userRole}/id=${id}/administrator_studentet`,
+                element:<AdministratoriStudentet/>
+            },
+            {
                 path:`/${userRole}/id=${id}/lendet`,
                 element:<AdministratoriLendet/>
             },
             {
                 path:`/${userRole}/id=${id}/mesimdhenesit`,
                 element:<AdministratoriMesimdhenesit/>
+            },
+            {
+                path:`/${userRole}/id=${id}/administrator_studentet/:studentiID`,
+                element:<DetajetStudentit/>
             }
         ]
     }

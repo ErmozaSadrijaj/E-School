@@ -65,10 +65,14 @@ namespace studenti.Controllers
         [HttpPost]
         public JsonResult Post(Nxenesi nx)
         {
+            string nxenesiID = "N-" + GenerateRandomNumbers(9);
+
             string query = @"insert into dbo.nxenesi values
-                            ('" + nx.emri_mbiemri + @"',
+                            (
+                            '"+ nxenesiID + @"',
+                            '" + nx.emri_mbiemri + @"',
                             '" + nx.email + @"',
-                            '" + nx.passwordi + @"',
+                            '" + nx.fjalekalimi + @"',
                             '" + nx.fotoPath + @"',
                             '" + nx.vendbanimi + @"',
                             '" + nx.nrTelefonit + @"',
@@ -76,23 +80,54 @@ namespace studenti.Controllers
                             '" + nx.emriPrindit + @"',
                             '" + nx.prindiID + @"',
                             '" + nx.drejtimiID + @"',
-                            '" + nx.mesimdhenesiID + @"'),                        
+                            '" + nx.mesimdhenesiID + @"')                        
                             ";
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("DBAppCon");
             SqlDataReader myReader;
+
             using (SqlConnection myCon = new SqlConnection(sqlDataSource))
             {
                 myCon.Open();
+
+                // Kontrollojm nese ID egziston ne databaze
+                bool idExists = false;
+                string checkQuery = "SELECT COUNT(*) FROM dbo.nxenesi WHERE nxenesiID = @NxenesId";
+                using (SqlCommand checkCommand = new SqlCommand(checkQuery, myCon))
+                {
+                    checkCommand.Parameters.AddWithValue("@NxenesId", nxenesiID);
+                    int count = (int)checkCommand.ExecuteScalar();
+                    idExists = count > 0;
+                }
+
+                if (idExists)
+                {
+                    // Rigjenerohet ID ne rast se egziston ne databaze
+                    nxenesiID = "N-" + GenerateRandomNumbers(9);
+                }
+
                 using (SqlCommand myCommand = new SqlCommand(query, myCon))
                 {
                     myReader = myCommand.ExecuteReader();
-                    table.Load(myReader); ;
+                    table.Load(myReader);
                     myReader.Close();
                     myCon.Close();
                 }
             }
+
             return new JsonResult("Added Successfully");
+        }
+
+        // Kjo sigurohet qe karakteret e gjeneruara te jene vetem numra
+        private string GenerateRandomNumbers(int length)
+        {
+            Random random = new Random();
+            string numbers = "";
+            for (int i = 0; i < length; i++)
+            {
+                numbers += random.Next(0, 10);
+            }
+            return numbers;
         }
 
         [HttpPut]
@@ -101,7 +136,7 @@ namespace studenti.Controllers
             string query = @"update dbo.nxenesi set 
                             emri_mbiemri = '" + nx.emri_mbiemri + @"',
                             email = '" + nx.email + @"',
-                            fjalekalimi = '" + nx.passwordi + @"',
+                            fjalekalimi = '" + nx.fjalekalimi + @"',
                             fotoPath = '" + nx.fotoPath + @"'                         
                             vendbanimi = '" + nx.vendbanimi + @"',
                             nrTelefonit = '" + nx.nrTelefonit + @"',

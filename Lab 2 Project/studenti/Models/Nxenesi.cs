@@ -10,7 +10,7 @@ namespace studenti.Models
         public int nxenesiID { get; set; }
         public string emri_mbiemri { get; set; }
         public string email { get; set; }
-        public string passwordi { get; set; }
+        public string fjalekalimi { get; set; }
         public string fotoPath { get; set; }
         public string vendbanimi { get; set; }
         public string nrTelefonit { get; set; }

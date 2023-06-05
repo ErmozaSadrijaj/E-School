@@ -172,3 +172,5 @@ delete from notat where notat.notaShkronje = 'C'
 delete from notat where notat.nxenesiID = 1
 
 select * from dokumentet
+
+select * from stafi
