@@ -23,6 +23,17 @@ export default function AdministratoriMesimdhenesit(){
     fetchData();
   }, []);
 
+  /* ketu kemi filtrim e te dhenave ne baze te search */
+  const [searchText, setSearchText] = useState('');
+
+  const handleSearchChange = (e) => {
+    setSearchText(e.target.value);
+  };
+
+  const filteredData = mesimdhenesit.filter((item) =>
+    item.stafiID.includes(searchText)
+  );
+
     const [showShtoMesimdhenesinModal,setShowShtoMesimdhenesinModal] = useState(false)
     const [showLargoMesimdhenesinModal,setShowLargoMesimdhenesinModal] = useState(false)
     const [showNdryshoMesimdhenesinModal,setShowNdryshoMesimdhenesinModal] = useState(false)
@@ -67,9 +78,12 @@ export default function AdministratoriMesimdhenesit(){
     return(
         
         <div>
-        <div className='p-4'>
-         <Button className='btn btn-success mt-5 float-end' onClick={() => openShtoMesimdhenesinModal()}>Shto nje Mesimdhenes</Button> 
-        </div>
+            <br /><br />
+            <div className='text-center pt-5 d-flex flex-row justify-content-center align-items-center'>
+                <input type='text' className='form-control w-50 mx-auto' placeholder='Kerko Mesimdhenesin ne baze te ID' value={searchText} onChange={handleSearchChange}/>
+                <Button className='btn btn-success mx-5 float-end' onClick={() => openShtoMesimdhenesinModal()}>Shto nje Mesimdhenes</Button> 
+            </div>
+        
        <div className='container pt-5 mb-5 pb-5'>
        {mesimdhenesit.length > 0 ? (
            <>
@@ -88,7 +102,7 @@ export default function AdministratoriMesimdhenesit(){
              </tr>
              </thead>
              <tbody>
-             {mesimdhenesit.map((item, index) => (
+             {filteredData.map((item, index) => (
                  <tr key={index}>
                  <td>{index+1}</td>
                  <td>{item.emri_mbiemri}</td>
