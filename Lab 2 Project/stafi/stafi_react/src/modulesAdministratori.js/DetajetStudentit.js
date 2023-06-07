@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { Table, Button } from 'react-bootstrap';
-
+import NdryshoNxenesinModal from './NdryshoNxenesinModal';
 export default function DetajetStudentit() {
   const { studentiID } = useParams();
   const [, id] = studentiID.split('=');
@@ -87,11 +87,48 @@ export default function DetajetStudentit() {
   };
 
   const handleTableButtonClick = (table) => {
-    setActiveTable(table);
+    if (activeTable === table) {
+      // If the clicked button is already active, hide the table
+      setActiveTable(null);
+    } else {
+      // Otherwise, show the table corresponding to the clicked button
+      setActiveTable(table);
+    }
   };
 
+  const [showNdryshoNxenesinModal,setShowNdryshoNxenesinModal] = useState(false)
+  const [nxenesiID,setNxenesiID] = useState('')
+  const [emri_mbiemri,setEmri_mbiemri] = useState('')
+  const [fjalekalimi,setFjalekalimi] = useState('')
+  const [email,setEmail] = useState('')
+  const [fotoPath,setFotoPath] = useState('')
+  const [nrTelefonit,setNrTelefonit] = useState('')
+  const [vendbanimi,setVendbanimi] = useState('')
+  const [drejtimi,setDrejtimi] = useState('')
+  const [emriPrindit,setEmriPrindit] = useState('')
+  const [prindiID,setPrindiID] = useState('')
+  const [mesimdhenesiID,setMesimdhenesiID] = useState('')
+
+  const openNdryshoNxenesinModal = (nxenesiID,emri_mbiemri,fjalekalimi,email,fotoPath,nrTelefonit,vendbanimi,drejtimi,emriPrindit,prindiID,mesimdhenesiID)=>{
+    setNxenesiID(nxenesiID)
+    setEmri_mbiemri(emri_mbiemri)
+    setFjalekalimi(fjalekalimi)
+    setEmail(email)
+    setFotoPath(fotoPath)
+    setNrTelefonit(nrTelefonit)
+    setVendbanimi(vendbanimi)
+    setDrejtimi(drejtimi)
+    setEmriPrindit(emriPrindit)
+    setPrindiID(prindiID)
+    setMesimdhenesiID(mesimdhenesiID)
+    setShowNdryshoNxenesinModal(true)
+  }
+  const closeNdryshoNxenesinModal = () =>{
+    setShowNdryshoNxenesinModal(false)
+  }
+
   return (
-    <>
+    <div>
       <br />
       <br />
 
@@ -99,7 +136,7 @@ export default function DetajetStudentit() {
         <div className="card mt-4">
           <div className="card-header d-flex flex-row justify-content-between">
             <h3>Te Dhenat e Nxenesit</h3>
-            <Button className='m-2 w-25 float-end'>Ndrysho te Dhenat</Button>
+            <Button className='m-2 w-25 float-end' onClick={() => openNdryshoNxenesinModal(studenti.nxenesiID,studenti.emri_mbiemri,studenti.fjalekalimi,studenti.email,studenti.fotoPath,studenti.nrTelefonit,studenti.vendbanimi,studenti.drejtimi,studenti.emriPrindit,studenti.prindiID,studenti.mesimdhenesiID)}>Ndrysho te Dhenat</Button>
           </div>
           <div className="card-body d-flex flex-row justify-content-between">
             <p>
@@ -134,15 +171,26 @@ export default function DetajetStudentit() {
         </div>
       </div >
 
-      <div className="d-flex flex-row flex-wrap justify-content-center border-top">
-        <div className="container-fluid d-flex justify-content-center align-items-center flex-column pt-5 mb-5 w-50">
-          <h2 className="text-start">Lendet e Studentit:</h2>
-          <div className="d-flex flex-column flex-wrap align-content-center w-100">
-            <Button className="w-50 btn btn-primary mb-3" onClick={() => handleTableButtonClick('lendet')}>
+      <div className='d-flex flex-row flex-wrap justify-content-center'>
+            <Button className="btn btn-primary  m-4 fs-4" onClick={() => handleTableButtonClick('lendet')}>
               Gjenero Lendet
             </Button>
+            <Button className=" btn btn-primary  m-4 fs-4" onClick={() => handleTableButtonClick('mungesat')}>
+              Gjenero Mungesat
+            </Button>
+            <Button className="btn btn-primary  m-4 fs-4" onClick={() => handleTableButtonClick('notat')}>
+              Gjenero Notat
+            </Button>
+            <Button className=" btn btn-primary  m-4 fs-4" onClick={() => handleTableButtonClick('veretjet')}>
+              Gjenero Veretjet
+            </Button>
+      </div>
+     {/* Ketu kemi lendet */}
+          <div className="container">           
             {activeTable === 'lendet' && lendet.length > 0 ? (
+              
               <div>
+                 <h2 className="text-start">Lendet e Studentit:</h2>
                 <Table striped bordered hover className="">
                   <thead>
                     <tr>
@@ -171,17 +219,13 @@ export default function DetajetStudentit() {
             ) : lendet.length === 0 ? (
               <h2 className="my-3">Nxenesi nuk ka ndonje Lende te Regjistruar</h2>
             ) : null}
-          </div>
-        </div>
 
-        <div className="container d-flex justify-content-center align-items-center flex-column pt-5 mb-5 w-50">
-          <h2 className="text-start">Mungesat e Studentit:</h2>
-          <div className="d-flex flex-row flex-wrap justify-content-center w-100">
-            <Button className="w-50 btn btn-primary mb-3" onClick={() => handleTableButtonClick('mungesat')}>
-              Gjenero Mungesat
-            </Button>
+          </div>
+    {/* Ketu kemi mungesat */}
+          <div className='container' >
             {activeTable === 'mungesat' && mungesat.length > 0 ? (
               <div>
+                <h2 className="text-start">Mungesat e Studentit:</h2>
                 <Table striped bordered hover>
                   <thead>
                     <tr>
@@ -212,18 +256,11 @@ export default function DetajetStudentit() {
               <h2 className="my-3">Nxenesi nuk ka Mungesa te Regjistruara</h2>
             ) : null}
           </div>
-        </div>
-      </div>
-
-      <div className="d-flex flex-row flex-wrap justify-content-center border-top">
-        <div className="container d-flex justify-content-center align-items-center flex-column pt-5 mb-5 w-50">
-          <h2 className="text-start">Notat e Studentit:</h2>
-          <div className="d-flex flex-row flex-wrap justify-content-center w-100">
-            <Button className="w-50 btn btn-primary mb-3" onClick={() => handleTableButtonClick('notat')}>
-              Gjenero Notat
-            </Button>
+    {/* Ketu kemi notat */}      
+          <div className="container">           
             {activeTable === 'notat' && notat.length > 0 ? (
               <div>
+                <h2 className="text-start">Notat e Studentit:</h2>
                 <Table striped bordered hover className="mb-5 pb-5">
                   <thead>
                     <tr>
@@ -258,16 +295,12 @@ export default function DetajetStudentit() {
               <h2 className="my-3">Nxenesi nuk ka Nota te Regjistruara</h2>
             ) : null}
           </div>
-        </div>
-
-        <div className="container d-flex justify-content-center align-items-center flex-column pt-5 mb-5 w-50">
-          <h2 className="text-start">Veretjet e Studentit:</h2>
-          <div className="d-flex flex-row flex-wrap justify-content-center w-100">
-            <Button className="w-50 btn btn-primary mb-3" onClick={() => handleTableButtonClick('veretjet')}>
-              Gjenero Veretjet
-            </Button>
+    {/* Ketu kemi veretjet */}            
+          <div className="container">
+           
             {activeTable === 'veretjet' && veretjet.length > 0 ? (
               <div>
+                <h2 className="text-start">Veretjet e Studentit:</h2>
                 <Table striped bordered hover className="mb-5 pb-5 w-100">
                   <thead>
                     <tr>
@@ -298,8 +331,10 @@ export default function DetajetStudentit() {
               <h2 className="my-3">Nxenesi nuk ka Veretje te Regjistruara</h2>
             ) : null}
           </div>
-        </div>
-      </div>
-    </>
+
+          <br></br><br></br>
+
+          <NdryshoNxenesinModal showModal={showNdryshoNxenesinModal} closeModal={closeNdryshoNxenesinModal} nxenesiID={nxenesiID} emri_mbiemri={emri_mbiemri} fjalekalimi={fjalekalimi} email={email} fotoPath={fotoPath} nrTelefonit={nrTelefonit} vendbanimi={vendbanimi} drejtimi={drejtimi} emriPrindit={emriPrindit} prindiID={prindiID} mesimdhenesiID={mesimdhenesiID} />
+    </div>
   );
 }

@@ -133,21 +133,20 @@ namespace studenti.Controllers
         [HttpPut]
         public JsonResult Put(Nxenesi nx)
         {
-            string query = @"update dbo.nxenesi set 
-                            emri_mbiemri = '" + nx.emri_mbiemri + @"',
-                            email = '" + nx.email + @"',
-                            fjalekalimi = '" + nx.fjalekalimi + @"',
-                            fotoPath = '" + nx.fotoPath + @"'                         
-                            vendbanimi = '" + nx.vendbanimi + @"',
-                            nrTelefonit = '" + nx.nrTelefonit + @"',
-                            drejtimi = '" + nx.drejtimi + @"',
-                            emriPrindit = '" + nx.emriPrindit + @"',
-                            prindiID = '" + nx.prindiID + @"',
-                            drejtimiID = '" + nx.drejtimiID + @"',
-                            mesimdhenesiID = '" + nx.mesimdhenesiID + @"',
+            string query = @"UPDATE dbo.nxenesi SET 
+                                emri_mbiemri = '" + nx.emri_mbiemri + @"',
+                                email = '" + nx.email + @"',
+                                fjalekalimi = '" + nx.fjalekalimi + @"',
+                                fotoPath = '" + nx.fotoPath + @"',
+                                vendbanimi = '" + nx.vendbanimi + @"',
+                                nrTelefonit = '" + nx.nrTelefonit + @"',
+                                drejtimi = '" + nx.drejtimi + @"',
+                                emriPrindit = '" + nx.emriPrindit + @"',
+                                prindiID = '" + nx.prindiID + @"',
+                                drejtimiID = '" + nx.drejtimiID + @"',
+                                mesimdhenesiID = '" + nx.mesimdhenesiID + @"'
 
-                            where nxenesiID = " + nx.nxenesiID + @"
-                            ";
+                                WHERE nxenesiID = " + nx.nxenesiID + @"";
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("DBAppCon");
             SqlDataReader myReader;

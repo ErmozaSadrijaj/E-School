@@ -1,10 +1,18 @@
 import {useLocation} from 'react-router-dom'
 import React, { useState, useEffect } from 'react';
+import { Button } from 'react-bootstrap';
 import axios from 'axios';
 import Navbar from './Navbar'
 import Footer from './Footer'
 import '../assets/css/view_blog.css'
+import ShtoKomentinModal from './Modals/ShtoKomentinModal';
+
+
 function View_Blog() {
+
+    const userRole = localStorage.getItem('UserRole')
+    const userID = localStorage.getItem('UserID')
+
     const location = useLocation();
     const id = new URLSearchParams(location.search).get('id');
 
@@ -25,7 +33,17 @@ function View_Blog() {
         .catch(error => console.error(error));
     }, []);
 
-    console.log(comments)
+    const [showShtoKomentinModal,setShowShtoKomentinModal] = useState(false)
+    const [blogID,setBlogID] = useState('')
+
+    const openShtoKomentinModal =(blogID)=>{
+        setBlogID(blogID)
+        setShowShtoKomentinModal(true)
+    }
+    const closeShtoKomentinModal = () =>{
+        setShowShtoKomentinModal(false)
+    }
+    
     return (
         <>  
             <Navbar />
@@ -44,22 +62,31 @@ function View_Blog() {
             <div id='section2' className='d-flex mt-2 justify-content-center px-1 mx-5 rounded fs-5 '>
                 {blogPost?.permbatja}
             </div>
-        
-            <div>
-                <h5 className='fs-3 m-2'>Komentet:</h5>
-                <hr/>
-                <div>
+            <br></br>
+
+            <div className='comments-container'>
+                <div className='comments-header d-flex justify-content-between align-items-center border-top pt-5'>
+                    <h2 className='comments-heading fs-4'>Komentet:</h2>
+                    {userRole === 'nxenes' && (
+                    <Button className='add-comment-button' onClick={() => openShtoKomentinModal(id)}>Shto Komentin</Button>
+                    )}
+                </div>
+                <hr />
+                <div className='comments-list'>
                     {comments.map((comment) => (
-                        <div className='komentSection bg-warning d-flex justify-content-start flex-wrap flex-column mx-1 p-2'>
-                            <h6>{comment.autoriID}:</h6>
-                            <p>{comment.komenti}</p>
-                            <p className='d-flex justify-content-end'><b>{comment.data}</b></p>
-                        </div>
+                    <div className='comment-section bg-light p-3 rounded mb-3' key={comment.id}>
+                        <h6 className='comment-author fs-6'>{comment.autoriID}:</h6>
+                        <p className='comment-text'>{comment.komenti}</p>
+                        <p className='comment-date text-end fs-7'>{comment.data}</p>
+                    </div>
                     ))}
                 </div>
             </div>
 
+
             <Footer />
+
+            <ShtoKomentinModal showModal={showShtoKomentinModal} closeModal={closeShtoKomentinModal} blogID={blogID}/>
         </>
     )
 }
