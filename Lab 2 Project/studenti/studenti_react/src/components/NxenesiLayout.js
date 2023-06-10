@@ -4,7 +4,7 @@ import { Outlet } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { Container, Row, Col } from 'react-bootstrap';
 import { FaFacebook, FaInstagram } from 'react-icons/fa';
-import {id,userRole} from '../router'
+import {userID,userRole} from '../router'
 
 import {
   Collapse,
@@ -29,15 +29,15 @@ const NxenesiLayout = (props) => {
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
             <NavItem>
-              <NavLink className='link' tag={Link} to={`/${userRole}/id=${id}`}>Profili</NavLink>
+              <NavLink className='link' tag={Link} to={`/${userRole}/${userID}`}>Profili</NavLink>
             </NavItem>
             {userRole == 'mesimdhenesi' ? (
               <NavItem >
-                <NavLink className='link' tag={Link} to="http://localhost:3006/mesimdhenesi/id=1/studentet">Studentet</NavLink>
+                <NavLink className='link' tag={Link} to={`http://localhost:3006/mesimdhenesi/${userID}/studentet`}>Studentet</NavLink>
               </NavItem>
             ) : null}
             <NavItem>
-              <NavLink className='link' tag={Link} to={`/${userRole}/id=${id}/lendet`}>Lendet</NavLink>
+              <NavLink className='link' tag={Link} to={`/${userRole}/${userID}/lendet`}>Lendet</NavLink>
             </NavItem>
             <NavItem>
               <NavLink className='link' tag={Link} to="http://localhost:3003/blogs">Blogi</NavLink>

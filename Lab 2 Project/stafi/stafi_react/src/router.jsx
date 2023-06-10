@@ -7,10 +7,11 @@ import AdministratoriMesimdhenesit from './modulesAdministratori.js/Administrato
 import AdministratoriStudentet from './modulesAdministratori.js/AdministratoriStudentet';
 import DetajetStudentit from './modulesAdministratori.js/DetajetStudentit';
 
-
-export const id = '4';
-localStorage.setItem('UserRole','administratori')
-export const userRole = localStorage.getItem('UserRole')
+const url = document.URL
+const path = new URL(url).pathname;
+const content = path.substring(1);
+export const userRole = content.split('/')[0];
+export const userID = content.split('/')[1];
 
 const router = createBrowserRouter([
     {
@@ -19,30 +20,30 @@ const router = createBrowserRouter([
         children:[
             {
                 path:'/',
-                element:<Navigate to={`/${userRole}/id=${id}`} replace />
+                element:<Navigate to={`/${userRole}/:${userID}`} replace />
             },
             {
-                path:`/${userRole}/id=${id}`,
+                path:`/${userRole}/:${userID}`,
                 element:<Mesimdhenesi/>
             },
             {
-                path:`/${userRole}/id=${id}/studentet`,
+                path:`/${userRole}/:${userID}/studentet`,
                 element:<MesimdhenesiStudentet/>
             },
             {
-                path:`/${userRole}/id=${id}/administrator_studentet`,
+                path:`/${userRole}/:${userID}/administrator_studentet`,
                 element:<AdministratoriStudentet/>
             },
             {
-                path:`/${userRole}/id=${id}/lendet`,
+                path:`/${userRole}/:${userID}/lendet`,
                 element:<AdministratoriLendet/>
             },
             {
-                path:`/${userRole}/id=${id}/mesimdhenesit`,
+                path:`/${userRole}/:${userID}/mesimdhenesit`,
                 element:<AdministratoriMesimdhenesit/>
             },
             {
-                path:`/${userRole}/id=${id}/administrator_studentet/:studentiID`,
+                path:`/${userRole}/:${userID}/administrator_studentet/:studentiID`,
                 element:<DetajetStudentit/>
             }
         ]

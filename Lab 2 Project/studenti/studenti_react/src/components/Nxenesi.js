@@ -3,14 +3,14 @@ import { useEffect, useState } from 'react';
 import {Link} from 'react-router-dom'
 import axios from 'axios';
 import '../assets/css/nxenesi.css';
-import {id} from '../router'
+import {userID} from '../router'
 export default function Nxenesi() {
   
   const [userData, setUserData] = useState({});
   useEffect(() => {
     async function fetchData() {
       try {
-        const result = await axios.get(`https://localhost:5001/nxenesi/${id}`);
+        const result = await axios.get(`https://localhost:5001/nxenesi/${userID}`);
         const userData = result.data[0]
           
         setUserData(userData); 
@@ -44,9 +44,9 @@ export default function Nxenesi() {
       </div>
       <br /><br /><hr /><br /><br />
       <div id="section2" className="d-flex flex-row flex-wrap justify-content-around align-items-center m-5">
-        <Link className='p-4 fs-3 rounded bg-primary text-white bold' to={`/nxenesi/id=${id}/mungesat`}>Gjenero Mungesat</Link>
-        <Link className='p-4 fs-3 rounded bg-primary text-white bold' to={`/nxenesi/id=${id}/notat`}>Gjenero Notat</Link>
-        <Link className='p-4 fs-3 rounded bg-primary text-white bold' to={`/nxenesi/id=${id}/veretjet`}>Gjenero Vërejtjet</Link>
+        <Link className='p-4 fs-3 rounded bg-primary text-white bold' to={`/nxenesi/${userID}/mungesat`}>Gjenero Mungesat</Link>
+        <Link className='p-4 fs-3 rounded bg-primary text-white bold' to={`/nxenesi/${userID}/notat`}>Gjenero Notat</Link>
+        <Link className='p-4 fs-3 rounded bg-primary text-white bold' to={`/nxenesi/${userID}/veretjet`}>Gjenero Vërejtjet</Link>
       </div>
       <br /><br /><br />
     </div>

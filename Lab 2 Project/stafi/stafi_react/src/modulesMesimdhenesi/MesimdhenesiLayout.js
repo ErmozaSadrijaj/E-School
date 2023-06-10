@@ -4,7 +4,7 @@ import { Outlet } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { Container, Row, Col } from 'react-bootstrap';
 import { FaFacebook, FaInstagram } from 'react-icons/fa';
-import {id,userRole} from '../router'
+import {userID,userRole} from '../router'
 import {
   Collapse,
   Navbar,
@@ -28,24 +28,24 @@ const MesimdhenesiLayout = (props) => {
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
             <NavItem>
-              <NavLink className='link' tag={Link} to={`/${userRole}/id=${id}`}>Profili</NavLink>
+              <NavLink className='link' tag={Link} to={`/${userRole}/${userID}`}>Profili</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink className='link' tag={Link} to={`/${userRole}/id=${id}/lendet`}>Lendet</NavLink>
+              <NavLink className='link' tag={Link} to={`/${userRole}/${userID}/lendet`}>Lendet</NavLink>
             </NavItem>
             {userRole == 'mesimdhenesi' ? 
             (
               <NavItem>
-                <NavLink className='link' tag={Link} to={`/${userRole}/id=${id}/studentet`}>Studentet</NavLink>
+                <NavLink className='link' tag={Link} to={`/${userRole}/${userID}/studentet`}>Studentet</NavLink>
               </NavItem>
             ):
             (
               <div className='d-flex flex-row'>
                 <NavItem>
-                  <NavLink className='link' tag={Link} to={`/${userRole}/id=${id}/mesimdhenesit`}>Mesimdhenesit</NavLink>
+                  <NavLink className='link' tag={Link} to={`/${userRole}/${userID}/mesimdhenesit`}>Mesimdhenesit</NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink className='link' tag={Link} to={`/${userRole}/id=${id}/administrator_studentet`}>Studentet</NavLink>
+                  <NavLink className='link' tag={Link} to={`/${userRole}/${userID}/administrator_studentet`}>Studentet</NavLink>
                 </NavItem>
               </div>
             )}

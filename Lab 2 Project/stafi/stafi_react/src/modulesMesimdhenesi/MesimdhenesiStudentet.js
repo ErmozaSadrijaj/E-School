@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import '../assets/css/mesimdhenesi.css';
-import { id } from '../router';
+import { userID } from '../router';
 import { Button } from 'react-bootstrap';
 import VendosNotenModal from './VendosNotenModal';
 import VendosVeretjeModal from './VendosVeretjeModal';
@@ -14,7 +14,7 @@ export default function MesimdhenesiStudentet() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const result = await axios.get(`https://localhost:44335/mesimdhenesiNxenes/${id}`);
+        const result = await axios.get(`https://localhost:44335/mesimdhenesiNxenes/${userID}`);
         const userData = result.data;
         setUserData(userData);
       } catch (error) {
@@ -103,10 +103,10 @@ export default function MesimdhenesiStudentet() {
             <Button className='vendosBtn fw-bold border px-2 bg-primary text-light' onClick={() => openNotenModal(item.nxenesiID,item.emri_mbiemri,item.ID)}>
               Vendos Noten
             </Button>
-            <Button className='vendosBtn fw-bold border px-2 bg-primary text-light ' disabled={item.mesimdhenesiID == id ? false : true} onClick={() => openVeretjeModal(item.nxenesiID,item.emri_mbiemri,item.ID)}>
+            <Button className='vendosBtn fw-bold border px-2 bg-primary text-light ' disabled={item.mesimdhenesiID == userID ? false : true} onClick={() => openVeretjeModal(item.nxenesiID,item.emri_mbiemri,item.ID)}>
               Vendos Vëretjen
             </Button>
-            <Button className='vendosBtn fw-bold border px-2 bg-primary text-light' disabled={item.mesimdhenesiID == id ? false : true} onClick={() => openMungesatModal(item.nxenesiID,item.emri_mbiemri,item.ID)}>
+            <Button className='vendosBtn fw-bold border px-2 bg-primary text-light' disabled={item.mesimdhenesiID == userID ? false : true} onClick={() => openMungesatModal(item.nxenesiID,item.emri_mbiemri,item.ID)}>
               Vendos Mungesat
             </Button>
             </div>

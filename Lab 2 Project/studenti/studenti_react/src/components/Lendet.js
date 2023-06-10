@@ -1,7 +1,7 @@
 import '../assets/css/lendet.css'
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import {id,userRole} from '../router'
+import {userID,userRole} from '../router'
 
 
 export default function Lendet(){
@@ -12,9 +12,9 @@ export default function Lendet(){
               try {
                 let result = null
                 if(userRole !== 'mesimdhenesi'){
-                     result = await axios.get(`https://localhost:5001/lenda_nxenesi/${id}`);
+                     result = await axios.get(`https://localhost:5001/lenda_nxenesi/${userID}`);
                 }else{
-                     result = await axios.get(`https://localhost:5001/lenda/lendetEMesimdhenesit/${id}`);
+                     result = await axios.get(`https://localhost:5001/lenda/lendetEMesimdhenesit/${userID}`);
                 }
                 const userData = result.data
                 setUserData(userData); // set state here

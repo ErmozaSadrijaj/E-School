@@ -1,7 +1,7 @@
 import React,{useState,useEffect} from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import axios from 'axios';
-import { id } from '../router';
+import { userID } from '../router';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -36,7 +36,7 @@ export default function VendosNotenModal({ showModal, closeModal, nxID,nxenesiID
           const nt = {
             lendaID,
             nxenesiID:nxID,
-            stafiID: id,
+            stafiID: userID,
             notaNumer,
             notaShkronje,
             dataVendosjes: new Date().toISOString(),
@@ -59,7 +59,7 @@ export default function VendosNotenModal({ showModal, closeModal, nxID,nxenesiID
     useEffect(() => {
         async function fetchData() {
           try {
-            const result = await axios.get(`https://localhost:44335/MesimdhenesiNxenes/${id}/lendetEStudentit/${nxenesiID}`);
+            const result = await axios.get(`https://localhost:44335/MesimdhenesiNxenes/${userID}/lendetEStudentit/${nxenesiID}`);
             const lendet = result.data;
             setLendet(lendet);
           } catch (error) {

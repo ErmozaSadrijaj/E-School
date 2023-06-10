@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import '../assets/css/mesimdhenesi.css';
-import {id} from '../router'
+import {userID} from '../router'
 import {Link} from 'react-router-dom'
 
 
@@ -11,7 +11,7 @@ export default function Mesimdhenesi(){
     useEffect(() => {
       async function fetchData() {
         try {
-          const result = await axios.get(`https://localhost:44335/mesimdhenesi/${id}`);
+          const result = await axios.get(`https://localhost:44335/mesimdhenesi/${userID}`);
 
           const userData = result.data[0]
             
@@ -29,7 +29,7 @@ export default function Mesimdhenesi(){
     useEffect(() => {
       async function fetchData() {
         try {
-          const result = await axios.get(`http://localhost:3002/blogs/${id}`);
+          const result = await axios.get(`http://localhost:3002/blogs/${userID}`);
           const blogData = result.data
             
           setBlogData(blogData); 

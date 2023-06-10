@@ -6,9 +6,11 @@ import Mungesat from './components/Mungesat';
 import Notat from './components/Notat';
 import Veretjet from './components/Veretjet';
 import Lenda from './components/Lenda'
-export const id = '1';
-localStorage.setItem('UserRole','mesimdhenesi')
+
+localStorage.setItem('UserRole','nxenesi')
+localStorage.setItem('userID','1')
 export const userRole = localStorage.getItem('UserRole')
+export const userID = localStorage.getItem('userID')
 
 const router = createBrowserRouter([
     {
@@ -17,30 +19,30 @@ const router = createBrowserRouter([
         children:[
             {
                 path:'/',
-                element:<Navigate to={`/${userRole}/id=${id}`} replace />
+                element:<Navigate to={`/:userRole/:userID`} replace />
             },
             {
-                path:`/${userRole}/id=${id}`,
+                path:`/:userRole/:userID`,
                 element:<Nxenesi/>
             },
             {
-                path:`/${userRole}/id=${id}/lendet`,
+                path:`/:userRole/:userID/lendet`,
                 element:<Lendet/>
             },
             {
-                path:`/${userRole}/id=${id}/mungesat`,
+                path:`/:userRole/:userID/mungesat`,
                 element:<Mungesat/>
             },
             {
-                path:`/${userRole}/id=${id}/notat`,
+                path:`/:userRole/:userID/notat`,
                 element:<Notat/>
             },
             {
-                path:`/${userRole}/id=${id}/veretjet`,
+                path:`/:userRole/:userID/veretjet`,
                 element:<Veretjet/>
             },
             {
-                path:`/${userRole}/id=${id}/lendet/:lendaID`,
+                path:`/:userRole/:userID/lendet/:lendaID`,
                 element: <Lenda />
             }
         ]

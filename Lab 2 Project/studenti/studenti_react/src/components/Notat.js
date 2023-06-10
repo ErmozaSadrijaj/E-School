@@ -1,18 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useParams } from 'react-router-dom';
 import { Table } from 'react-bootstrap';
 
 export default function Notat() {
-  const url = document.URL;
-  const a = url.split("=")[1];
-  const id = a.split("/")[0];
-
+  const {userID} = useParams()
   const [userData, setUserData] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
       try {
-        const result = await axios.get(`https://localhost:5001/notat/${id}`);
+        const result = await axios.get(`https://localhost:5001/notat/${userID}`);
         const userData = result.data;
         setUserData(userData);
       } catch (error) {

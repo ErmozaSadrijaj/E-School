@@ -195,3 +195,13 @@ C:\Users\Pc\Desktop\E-School\Lab 2 Project\studenti\obj\Debug\net6.0\refint\stud
 C:\Users\Pc\Desktop\E-School\Lab 2 Project\studenti\obj\Debug\net6.0\studenti.pdb
 C:\Users\Pc\Desktop\E-School\Lab 2 Project\studenti\obj\Debug\net6.0\studenti.genruntimeconfig.cache
 C:\Users\Pc\Desktop\E-School\Lab 2 Project\studenti\obj\Debug\net6.0\ref\studenti.dll
+D:\UBT\E-School\Lab 2 Project\studenti\bin\Debug\net6.0\EntityFramework.SqlServer.dll
+D:\UBT\E-School\Lab 2 Project\studenti\bin\Debug\net6.0\EntityFramework.dll
+D:\UBT\E-School\Lab 2 Project\studenti\bin\Debug\net6.0\Microsoft.AspNet.Identity.Core.dll
+D:\UBT\E-School\Lab 2 Project\studenti\bin\Debug\net6.0\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\UBT\E-School\Lab 2 Project\studenti\bin\Debug\net6.0\Microsoft.AspNet.Identity.Owin.dll
+D:\UBT\E-School\Lab 2 Project\studenti\bin\Debug\net6.0\Microsoft.Owin.dll
+D:\UBT\E-School\Lab 2 Project\studenti\bin\Debug\net6.0\Microsoft.Owin.Security.dll
+D:\UBT\E-School\Lab 2 Project\studenti\bin\Debug\net6.0\Microsoft.Owin.Security.Cookies.dll
+D:\UBT\E-School\Lab 2 Project\studenti\bin\Debug\net6.0\Microsoft.Owin.Security.OAuth.dll
+D:\UBT\E-School\Lab 2 Project\studenti\bin\Debug\net6.0\Owin.dll

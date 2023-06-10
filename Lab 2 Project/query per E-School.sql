@@ -174,3 +174,79 @@ delete from notat where notat.nxenesiID = 1
 select * from dokumentet
 
 select * from stafi
+
+
+
+create table blogs(
+	ID int primary key identity(1,1),
+	titulli varchar(255),
+	permbatja varchar(max),
+	dataPublikimit date,
+	kliket int,
+	fotoPath varchar(max),
+	aprovuar varchar(5),
+	autoriID int
+	foreign key (autoriID) references stafi(ID)
+)
+
+insert into blogs values ('titulli','permbatja','2023-02-06',10,'fotoPath','po',1)
+insert into blogs values ('titulli3','permbatja','2023-02-06',10,'fotoPath','po',1)
+insert into blogs values ('titulli4','permbatja','2023-02-06',10,'fotoPath','po',1)
+insert into blogs values ('titulli5','permbatja','2023-02-06',10,'fotoPath','po',1)
+insert into blogs values ('titulli6','permbatja','2023-02-06',10,'fotoPath','po',1)
+insert into blogs values ('titulli7','permbatja','2023-02-06',10,'fotoPath','po',1)
+insert into blogs values ('titulli8','permbatja','2023-02-06',10,'fotoPath','po',1)
+insert into blogs values ('titulli9','permbatja','2023-02-06',10,'fotoPath','po',1)
+insert into blogs values ('titulli10','permbatja','2023-02-06',10,'fotoPath','po',1)
+insert into blogs values ('titulli11','permbatja','2023-02-06',10,'fotoPath','po',1)
+
+insert into blogs values ('titulli2','permbatja2','2023-02-06',10,'fotoPath2','jo',1)
+
+
+create table tags(
+	ID int primary key identity(1,1),
+	emri varchar(255)
+)
+
+
+create table blogs_tags(
+	ID int primary key identity(1,1),
+	blogID int,
+	tagID int,
+	foreign key (blogID) references blogs(ID),
+	foreign key (tagID) references tags(ID)
+)
+
+insert into blogs_tags values(1,1)
+insert into blogs_tags values(1,2)
+insert into blogs_tags values(1,3)
+
+select t.emri from  blogs_tags bt
+join tags t on bt.tagID = t.ID
+join blogs b on b.ID = bt.blogID
+where bt.ID = 1
+
+
+create table komentet(
+	ID int primary key identity(1,1),
+	komenti varchar(max),
+	dataPublikimit date,
+	autoriID varchar(25),
+	blogID int,
+	foreign key (blogID) references blogs(ID)
+)
+select * from komentet
+
+SELECT k.*, 
+    CASE 
+ WHEN LEFT(k.autoriID, 1) = 'M' THEN s.emri_mbiemri
+ WHEN LEFT(k.autoriID, 1) = 'N' THEN n.emri_mbiemri
+ ELSE NULL
+ END AS emri_mbiemri
+ FROM dbo.komentet k
+ LEFT JOIN stafi s ON LEFT(k.autoriID, 1) = 'M' AND s.StafiID = k.autoriID
+ LEFT JOIN nxenesi n ON LEFT(k.autoriID, 1) = 'N' AND n.NxenesiID = k.autoriID
+ where blogID = 1
+
+ select * from prindi
+ select * from nxenesi
