@@ -4,14 +4,12 @@ import { Button } from 'react-bootstrap';
 import axios from 'axios';
 import '../assets/css/view_blog.css'
 import ShtoKomentinModal from './Modals/ShtoKomentinModal';
-
+import LargoKomentinModal from './Modals/LargoKomentinModal';
+import { userID,userRole } from '../router';
+import { FaTrash,FaEdit } from 'react-icons/fa';
 
 function View_Blog() {
-    localStorage.setItem('UserRole','nxenes')
-    localStorage.setItem('UserID','N-123456789')
-    localStorage.setItem('UserSystemID',1)
-    const userRole = localStorage.getItem('UserRole')
-    const userID = localStorage.getItem('UserID')
+  
 
     const { blogID } = useParams();
 
@@ -42,13 +40,21 @@ function View_Blog() {
     }, []);
 
     const [showShtoKomentinModal,setShowShtoKomentinModal] = useState(false)
-    
-    const openShtoKomentinModal =()=>{
-       
+    const [showLargoKomentinModal,setShowLargoKomentinModal] = useState(false)
+    const [komentiID,setKomentiID] = useState('')
+
+    const openShtoKomentinModal =()=>{      
         setShowShtoKomentinModal(true)
+    }
+    const openLargoKomentinModal =(komentiID)=>{   
+        setKomentiID(komentiID)   
+        setShowLargoKomentinModal(true)
     }
     const closeShtoKomentinModal = () =>{
         setShowShtoKomentinModal(false)
+    }
+    const closeLargoKomentinModal = () =>{
+        setShowLargoKomentinModal(false)
     }
     const formatDateTime = (dateTimeStr) => {
         const dateTime = new Date(dateTimeStr);
@@ -77,20 +83,26 @@ function View_Blog() {
 
             <br></br>
 
-            <div className='comments-container'>
+            <div className='comments-container mx-5'>
                 <div className='comments-header d-flex justify-content-between align-items-center  pt-5'>
                     <h2 className='comments-heading fs-4'>Komentet:</h2>
-                    {userRole === 'nxenes' && (
-                    <Button className='add-comment-button' onClick={() => openShtoKomentinModal()}>Shto Komentin</Button>
-                    )}
+                    {userRole == 'nxenesi' ||userRole == 'mesimdhenesi' || userRole == 'administratori' || userRole == 'drejtori'? 
+                    <div>
+                        <Button className='add-comment-button' onClick={() => openShtoKomentinModal()}>Shto Komentin</Button>
+                    </div>
+                    :''}
                 </div>
                 <hr />
-                <div className='comments-list'>
+                <div className='comments-list' >
                     {comments.map((comment) => (
                     <div className='comment-section bg-light p-3 rounded mb-3' key={comment.blogId}>
                         <h6 className='comment-author fs-6'>{comment.emri_mbiemri}:</h6>
                         <p className='comment-text'>{comment.komenti}</p>
                         <p className='comment-date text-end fs-7'>{formatDateTime(blogPost.dataPublikimit)}</p>
+                        {comment.roli == userRole && comment.autoriID == userID?<div className='d-flex flex-row justify-content-end'>
+                            <Button className='add-comment-button btn btn-danger mx-2' onClick={() => openLargoKomentinModal(comment.ID)}><FaTrash /></Button>
+                            <Button className='add-comment-button btn btn-primary mx-2' onClick={() => openShtoKomentinModal()}><FaEdit/></Button>
+                        </div>:''}
                     </div>
                     ))}
                 </div>
@@ -99,6 +111,7 @@ function View_Blog() {
 
 
             <ShtoKomentinModal showModal={showShtoKomentinModal} closeModal={closeShtoKomentinModal} blogID={blogID} autoriID={userID}/>
+            <LargoKomentinModal showModal={showLargoKomentinModal} closeModal={closeLargoKomentinModal} komentiID={komentiID}/>
         </>
     )
 }

@@ -34,7 +34,6 @@ const Identifikohu = () => {
 
         const response = await axios.get(`https://localhost:5004/admin/users/nxenes/${id}/${password}`);
         const userData = response.data;
-      
         if (userData.length != 0) {
           const userID = userData[0].ID
           const userRole = userData[0].role

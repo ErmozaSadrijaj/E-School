@@ -30,9 +30,7 @@ const MesimdhenesiLayout = (props) => {
             <NavItem>
               <NavLink className='link' tag={Link} to={`/${userRole}/${userID}`}>Profili</NavLink>
             </NavItem>
-            <NavItem>
-              <NavLink className='link' tag={Link} to={`/${userRole}/${userID}/lendet`}>Lendet</NavLink>
-            </NavItem>
+           
             {userRole == 'mesimdhenesi' ? 
             (
               <NavItem>
@@ -40,7 +38,11 @@ const MesimdhenesiLayout = (props) => {
               </NavItem>
             ):
             (
+              
               <div className='d-flex flex-row'>
+                <NavItem>
+                    <NavLink className='link' tag={Link} to={`/${userRole}/${userID}/lendet`}>Lendet</NavLink>
+                </NavItem>
                 <NavItem>
                   <NavLink className='link' tag={Link} to={`/${userRole}/${userID}/mesimdhenesit`}>Mesimdhenesit</NavLink>
                 </NavItem>
@@ -49,8 +51,15 @@ const MesimdhenesiLayout = (props) => {
                 </NavItem>
               </div>
             )}
+            {userRole == 'drejtori'?
+           <div className='d-flex flex-row'>
+              <NavItem>
+                  <NavLink className='link' tag={Link} to={`/${userRole}/${userID}/administratoret`}>Administratoret</NavLink>
+              </NavItem>
+            </div>
+            :''}
             <NavItem>
-              <NavLink className='link' tag={Link} to="http://localhost:3003/blogs">Blogi</NavLink>
+              <NavLink className='link' tag={Link} to={`http://localhost:3003/${userRole}/${userID}/blogs`}>Blogi</NavLink>
             </NavItem>
             <NavItem>
               <NavLink className='link' tag={Link} to="/">Libraria</NavLink>

@@ -7,10 +7,12 @@ import Notat from './components/Notat';
 import Veretjet from './components/Veretjet';
 import Lenda from './components/Lenda'
 
-localStorage.setItem('UserRole','nxenesi')
-localStorage.setItem('userID','1')
-export const userRole = localStorage.getItem('UserRole')
-export const userID = localStorage.getItem('userID')
+const url = document.URL
+const path = new URL(url).pathname;
+const content = path.substring(1);
+export const userRole = content.split('/')[0];
+export const userID = content.split('/')[1];
+
 
 const router = createBrowserRouter([
     {

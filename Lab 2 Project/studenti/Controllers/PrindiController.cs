@@ -42,7 +42,48 @@ namespace studenti.Controllers
             }
             return new JsonResult(table);
         }
-        
+        [HttpGet("{id}")]
+
+        public JsonResult GetPrindin(int id)
+        {
+            string query = @"select ID,prindiID,emri_mbiemri,email from dbo.prindi where ID = "+id;
+            DataTable table = new DataTable();
+            string sqlDataSource = _configuration.GetConnectionString("DBAppCon");
+            SqlDataReader myReader;
+            using (SqlConnection myCon = new SqlConnection(sqlDataSource))
+            {
+                myCon.Open();
+                using (SqlCommand myCommand = new SqlCommand(query, myCon))
+                {
+                    myReader = myCommand.ExecuteReader();
+                    table.Load(myReader); ;
+                    myReader.Close();
+                    myCon.Close();
+                }
+            }
+            return new JsonResult(table);
+        }
+        [HttpGet("nxenesitEPrindit/{id}")]
+
+        public JsonResult GetNxenesitEPrindit(int id)
+        {
+            string query = @"select n.ID, n.emri_mbiemri ,n.nxenesiID,n.fotoPath,n.drejtimi from nxenesi n join prindi p on p.ID = n.prindiID where n.prindiID = " + id;
+            DataTable table = new DataTable();
+            string sqlDataSource = _configuration.GetConnectionString("DBAppCon");
+            SqlDataReader myReader;
+            using (SqlConnection myCon = new SqlConnection(sqlDataSource))
+            {
+                myCon.Open();
+                using (SqlCommand myCommand = new SqlCommand(query, myCon))
+                {
+                    myReader = myCommand.ExecuteReader();
+                    table.Load(myReader); ;
+                    myReader.Close();
+                    myCon.Close();
+                }
+            }
+            return new JsonResult(table);
+        }
         [HttpPost]
         public JsonResult Post(Prindi pr)
         {

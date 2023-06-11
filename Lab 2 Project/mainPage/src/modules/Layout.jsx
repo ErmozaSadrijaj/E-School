@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import '../assets/css/layout.css';
 import { Outlet } from 'react-router-dom';
 import { Link } from 'react-router-dom';
@@ -34,7 +34,7 @@ const Layout = (props) => {
               <NavLink className='link' tag={Link} to="/rrethNesh">Rreth Nesh</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink className='link' tag={Link} to="http://localhost:3003/blogs">Blogi</NavLink>
+              <NavLink className='link' tag={Link} to="http://localhost:3003/vizitori/blogs">Blogi</NavLink>
             </NavItem>
             <NavItem>
               <NavLink className='link' tag={Link} to="/kontakti">Kontakti</NavLink>

@@ -90,7 +90,8 @@ namespace blogi.Controllers
                             ('" + ko.komenti+ @"',
                             '" + ko.dataPublikimit + @"',
                             '" + ko.autoriID + @"',
-                            '" + ko.blogID + @"')
+                            '" + ko.blogID + @"',
+                            '" + ko.roli + @"')
                             ";
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("DBAppCon");
@@ -117,7 +118,7 @@ namespace blogi.Controllers
                             dataPublikimit = '" + ko.dataPublikimit + @"',
                             autoriID = '" + ko.autoriID + @"',
                             blogID = '" + ko.blogID + @"',
-                                                 
+                            roli = '"+ko.roli+@"'                      
 
                             where ID = " + ko.ID + @"
                             ";

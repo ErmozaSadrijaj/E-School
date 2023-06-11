@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import '../assets/css/blog.css'
 import axios from 'axios'
 import { AiOutlineCloseCircle } from 'react-icons/ai';
+import { userID, userRole } from '../router';
 
 
 export default function Blogs()  {
@@ -86,7 +87,10 @@ export default function Blogs()  {
             <hr />
             <span className='d-flex flex-wrap flex-row justify-content-between'>
               <p className='p-1 mx-2'><b>Autori:</b> {blogPost.emri_mbiemri}</p>
-              <Link className='p-2 mx-2 readMoreBtn bg-primary' to={`/view_blog/${blogPost.ID}`}>Lexo me Shumë</Link>
+              {userRole == 'vizitori' 
+              && <Link className='p-2 mx-2 readMoreBtn bg-primary' to={`/${userRole}/blogs/view_blog/${blogPost.ID}`}>Lexo me Shumë</Link>}
+              {userRole !== 'vizitori' 
+              && <Link className='p-2 mx-2 readMoreBtn bg-primary' to={`/${userRole}/${userID}/blogs/view_blog/${blogPost.ID}`}>Lexo me Shumë</Link>}
             </span>
           </div>
         ))}

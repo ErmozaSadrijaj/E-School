@@ -12,6 +12,7 @@ namespace blogi.Models
         public string dataPublikimit { get; set; }
         public int autoriID { get; set; }
         public int blogID { get; set; }
+        public string roli { get; set; }
 
 
     }

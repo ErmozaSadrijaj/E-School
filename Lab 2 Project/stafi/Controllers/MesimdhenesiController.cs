@@ -25,7 +25,7 @@ namespace stafi.Controllers
 
         public JsonResult Get()
         {
-            string query = @"select ID,stafiID,emri_mbiemri,fjalekalimi,email,fotoPath,nrTelefonit,vendbanimi,Kualifikimi,roli from dbo.stafi where roli = 'mesimdhenes'";
+            string query = @"select ID,stafiID,emri_mbiemri,fjalekalimi,email,fotoPath,nrTelefonit,vendbanimi,Kualifikimi,roli from dbo.stafi where roli = 'mesimdhenesi'";
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("DBAppCon");
             SqlDataReader myReader;
@@ -42,7 +42,7 @@ namespace stafi.Controllers
             }
             return new JsonResult(table);
         }
-
+       
         [HttpGet("{id}")]
         public JsonResult Get(string id)
         {
@@ -71,11 +71,20 @@ namespace stafi.Controllers
             // Gjenerejome ID
             string staffId = "M-" + GenerateRandomNumbers(9);
 
+            // Marrim 2 karakteret e para nga emri_mbiemri
+            string prefix = st.emri_mbiemri.Substring(0, 2).ToLower();
+
+            // marrim 5 karakteret e fundit nga ID
+            string suffix = staffId.Substring(Math.Max(0, staffId.Length - 5));
+
+            // Gjenerohet nje email
+            string email = $"{prefix}{suffix}@bedriPejani.net";
+
             string query = @"insert into dbo.stafi values
                     ('" + staffId + @"',
                     '" + st.emri_mbiemri + @"',
                     '" + st.fjalekalimi + @"',
-                    '" + st.email + @"',
+                    '" + email + @"',
                     '" + st.fotoPath + @"',
                     '" + st.nrTelefonit + @"',
                     '" + st.vendbanimi + @"',
@@ -105,6 +114,23 @@ namespace stafi.Controllers
                 {
                     // Rigjenerohet ID ne rast se egziston ne databaze
                     staffId = "M-" + GenerateRandomNumbers(9);
+
+                    // Behet update email me  staffId te re
+                    suffix = staffId.Substring(Math.Max(0, staffId.Length - 5));
+                    email = $"{prefix}{suffix}@bedriPejani.net";
+
+                    // behet update query
+                    query = @"insert into dbo.stafi values
+                    ('" + staffId + @"',
+                    '" + st.emri_mbiemri + @"',
+                    '" + st.fjalekalimi + @"',
+                    '" + email + @"',
+                    '" + st.fotoPath + @"',
+                    '" + st.nrTelefonit + @"',
+                    '" + st.vendbanimi + @"',
+                    '" + st.Kualifikimi + @"',
+                    '" + st.roli + @"')
+                    ";
                 }
 
                 using (SqlCommand myCommand = new SqlCommand(query, myCon))

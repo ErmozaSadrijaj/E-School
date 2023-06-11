@@ -3,6 +3,8 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { Table, Button } from 'react-bootstrap';
 import NdryshoNxenesinModal from './NdryshoNxenesinModal';
+import ShtoLendenStudentitModal from './ShtoLendenStudentitModal'
+
 export default function DetajetStudentit() {
   const { studentiID } = useParams();
   const [, id] = studentiID.split('=');
@@ -95,7 +97,7 @@ export default function DetajetStudentit() {
       setActiveTable(table);
     }
   };
-
+  const [showShtoLendenStudentitModal,setShowLendenStudentitModal] = useState(false)
   const [showNdryshoNxenesinModal,setShowNdryshoNxenesinModal] = useState(false)
   const [nxenesiID,setNxenesiID] = useState('')
   const [emri_mbiemri,setEmri_mbiemri] = useState('')
@@ -123,10 +125,20 @@ export default function DetajetStudentit() {
     setMesimdhenesiID(mesimdhenesiID)
     setShowNdryshoNxenesinModal(true)
   }
+  const openShtoLendenStudentitModal = (nxenesiID) =>{
+    setNxenesiID(nxenesiID)
+    setShowLendenStudentitModal(true)
+  }
   const closeNdryshoNxenesinModal = () =>{
     setShowNdryshoNxenesinModal(false)
   }
+  const closeShtoLendenStudentitModal = () =>{
+    setShowLendenStudentitModal(false)
+  }
 
+
+
+  
   return (
     <div>
       <br />
@@ -207,14 +219,13 @@ export default function DetajetStudentit() {
                         <td>{item.lenda}</td>
                         <td>{item.viti}</td>
                         <td>
-                          <Button className="btn btn-primary m-1">Ndrysho</Button>
-                          <Button className="btn btn-danger m-1">Largo</Button>
+                          <Button className="btn btn-danger m-1"  >Largo</Button>
                         </td>
                       </tr>
                     ))}
                   </tbody>
                 </Table>
-                <Button className="w-100 btn btn-success">Shto nje Lende</Button>
+                <Button className="w-100 btn btn-success" onClick={() => openShtoLendenStudentitModal(studenti.ID)}>Shto nje Lende</Button>
               </div>
             ) : lendet.length === 0 ? (
               <h2 className="my-3">Nxenesi nuk ka ndonje Lende te Regjistruar</h2>
@@ -283,7 +294,6 @@ export default function DetajetStudentit() {
                         <td>{item.Mesimdhenesi}</td>
                         <td>{formatDateTime(item.dataVendosjes)}</td>
                         <td>
-                          <Button className="btn btn-primary m-1">Ndrysho</Button>
                           <Button className="btn btn-danger m-1">Largo</Button>
                         </td>
                       </tr>
@@ -335,6 +345,8 @@ export default function DetajetStudentit() {
           <br></br><br></br>
 
           <NdryshoNxenesinModal showModal={showNdryshoNxenesinModal} closeModal={closeNdryshoNxenesinModal} nxenesiID={nxenesiID} emri_mbiemri={emri_mbiemri} fjalekalimi={fjalekalimi} email={email} fotoPath={fotoPath} nrTelefonit={nrTelefonit} vendbanimi={vendbanimi} drejtimi={drejtimi} emriPrindit={emriPrindit} prindiID={prindiID} mesimdhenesiID={mesimdhenesiID} />
+          <ShtoLendenStudentitModal showModal={showShtoLendenStudentitModal} closeModal={closeShtoLendenStudentitModal} nxenesiID={nxenesiID} />
+
     </div>
   );
 }

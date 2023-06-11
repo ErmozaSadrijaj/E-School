@@ -4,39 +4,122 @@ import { Outlet } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { Container, Row, Col } from 'react-bootstrap';
 import { FaFacebook, FaInstagram } from 'react-icons/fa';
-import {id,userRole} from '../router'
+import {userID,userRole} from '../router'
 import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
 
-const MesimdhenesiLayout = (props) => {
+const BlogLayout = (props) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
 
   return (
     <div>
-       <Navbar className='container-fluid' light expand="md">
+      
+       <Navbar className={`container-fluid  ${userRole == 'mesimdhenesi' || userRole == 'administratori' ||userRole == 'drejtori' ? 'navbar-blue' : 'navbar-orange'}`} light expand="md">
                 <NavbarBrand href="/">Logo</NavbarBrand>
                 <NavbarToggler onClick={toggle} />
-                <Collapse isOpen={isOpen} navbar>
-                    <Nav className="mr-auto" navbar>
+                <Collapse isOpen={isOpen} navbar className='w-100'>
+                    {userRole == 'vizitori' ? 
+                    <div className='d-flex flex-row flex-wrap'>
+                      <Nav className="mr-auto" navbar>
                         <NavItem>
-                        <NavLink className='link' tag={Link} to="http://localhost:3001">Faqja Kryesore</NavLink>
+                        <NavLink className='link' tag={Link} to="http://localhost:3001">Faqja Kryesore</NavLink>                       
                         </NavItem>
                         <NavItem>
                         <NavLink className='link' tag={Link} to="http://localhost:3001/rrethNesh">Rreth Nesh</NavLink>
                         </NavItem>
                         <NavItem>
-                        <NavLink className='link' tag={Link} to="http://localhost:3003/blogs">Blogi</NavLink>
+                        <NavLink className='link' tag={Link} to={`http://localhost:3003/${userRole}/blogs`}>Blogi</NavLink>
                         </NavItem>
                         <NavItem>
                         <NavLink className='link' tag={Link} to="http://localhost:3001/kontakti">Kontakti</NavLink>
                         </NavItem>
-                    </Nav>
-                    <Nav navbar>
+                      </Nav>
+                      <Nav navbar>
+                          <NavItem>
+                          <NavLink className='link' tag={Link} to="http://localhost:3001/identifikohu">Identifikohu</NavLink>
+                          </NavItem>
+                      </Nav>
+                    </div>:''}
+
+
+                    {userRole == 'nxenesi' || userRole == 'prindi'?
+                    <div className='d-flex flex-row flex-wrap'>
+                      <Nav className="mr-auto" navbar>
                         <NavItem>
-                        <NavLink className='link' tag={Link} to="http://localhost:3001/identifikohu">Kyqu</NavLink>
+                          <NavLink className='link' tag={Link} to={`http://localhost:3005/${userRole}/${userID}`}>Profili</NavLink>
                         </NavItem>
-                    </Nav>
+                        {userRole == 'mesimdhenesi' ? (
+                          <NavItem >
+                            <NavLink className='link' tag={Link} to={`http://localhost:3006/mesimdhenesi/${userID}/studentet`}>Studentet</NavLink>
+                          </NavItem>
+                        ) : null}
+                        {userRole == 'nxenesi' ?  <NavItem>
+                          <NavLink className='link' tag={Link} to={`http://localhost:3005/${userRole}/${userID}/lendet`}>Lendet</NavLink>
+                        </NavItem>:''}
+                        <NavItem>
+                          <NavLink className='link' tag={Link} to={`http://localhost:3003/${userRole}/${userID}/blogs`}>Blogi</NavLink>
+                        </NavItem>
+                        <NavItem>
+                          <NavLink className='link' tag={Link} to="/">Libraria</NavLink>
+                        </NavItem>
+                      </Nav>
+                      <Nav navbar>
+                        <NavItem>
+                          <NavLink className='link' tag={Link} to="http://localhost:3001">Dil</NavLink>
+                        </NavItem>
+                      </Nav>
+                    </div>:''}
+
+
+
+                    {userRole == 'mesimdhenesi' || userRole == 'administratori' || userRole =='drejtori' ? 
+                    <div className='d-flex flex-row flex-wrap'>
+                      <Nav className="mr-auto" navbar>
+                        <NavItem>
+                          <NavLink className='link' tag={Link} to={`http://localhost:3006/${userRole}/${userID}`}>Profili</NavLink>
+                        </NavItem>
+                      
+                        {userRole == 'mesimdhenesi' ? 
+                        (
+                          <NavItem>
+                            <NavLink className='link' tag={Link} to={`http://localhost:3006/${userRole}/${userID}/studentet`}>Studentet</NavLink>
+                          </NavItem>
+                        ):
+                        (
+                          
+                          <div className='d-flex flex-row'>
+                            <NavItem>
+                                <NavLink className='link' tag={Link} to={`http://localhost:3006/${userRole}/${userID}/lendet`}>Lendet</NavLink>
+                            </NavItem>
+                            <NavItem>
+                              <NavLink className='link' tag={Link} to={`http://localhost:3006/${userRole}/${userID}/mesimdhenesit`}>Mesimdhenesit</NavLink>
+                            </NavItem>
+                            <NavItem>
+                              <NavLink className='link' tag={Link} to={`http://localhost:3006/${userRole}/${userID}/administrator_studentet`}>Studentet</NavLink>
+                            </NavItem>
+                          </div>
+                        )}
+                        {userRole == 'drejtori'?
+                        <div className='d-flex flex-row'>
+                            <NavItem>
+                                <NavLink className='link' tag={Link} to={`http://localhost:3006/${userRole}/${userID}/administratoret`}>Administratoret</NavLink>
+                            </NavItem>
+                          </div>
+                          :''}
+                          <NavItem>
+                            <NavLink className='link' tag={Link} to={`http://localhost:3003/${userRole}/${userID}/blogs`}>Blogi</NavLink>
+                          </NavItem>
+                          <NavItem>
+                            <NavLink className='link' tag={Link} to="/">Libraria</NavLink>
+                          </NavItem>
+                        </Nav>
+                        <Nav navbar>
+                          <NavItem>
+                            <NavLink className='link' tag={Link} to="http://localhost:3001">Dil</NavLink>
+                          </NavItem>
+                        </Nav>
+                    </div>:''}
                 </Collapse>
             </Navbar>
       <Outlet/>
@@ -60,4 +143,4 @@ const MesimdhenesiLayout = (props) => {
   );
 }
 
-export default MesimdhenesiLayout;
+export default BlogLayout;

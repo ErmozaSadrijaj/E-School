@@ -3,9 +3,9 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import {Button} from 'react-bootstrap'
 import { BiTrash,BiPencil } from 'react-icons/bi';
-import DeleteTopicModal from './LargoDokumentinModal'
-import ShtoDokumentinModal from './ShtoDokumentinModal';
-import NdryshoDokumentinModal from './NdryshoDokumentinModal';
+import DeleteTopicModal from './Modals/LargoDokumentinModal'
+import ShtoDokumentinModal from './Modals/ShtoDokumentinModal';
+import NdryshoDokumentinModal from './Modals/NdryshoDokumentinModal';
 
 
 export default function Lenda() {

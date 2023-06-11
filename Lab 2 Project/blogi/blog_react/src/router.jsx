@@ -3,10 +3,12 @@ import BlogLayout from './components/BlogLayout'
 import Blogs from './components/Blogs';
 import View_Blog from './components/View_Blog';
 
+const url = document.URL
+const path = new URL(url).pathname;
+const content = path.substring(1);
+export let userRole = content.split('/')[0];
+export const userID = content.split('/')[1];
 
-export const id = '4';
-localStorage.setItem('UserRole','administratori')
-export const userRole = localStorage.getItem('UserRole')
 
 const router = createBrowserRouter([
     {
@@ -15,16 +17,25 @@ const router = createBrowserRouter([
         children:[
             {
                 path:'/',
-                element:<Navigate to={`/blogs`} replace />
+                element:<Navigate to={`/${userRole}/${userID}/blogs`} replace />
             },
             {
-                path:`/blogs`,
+                path:`/${userRole}/${userID}/blogs`,
                 element:<Blogs/>
             },
             {
-                path:`/view_blog/:blogID`,
+                path:`/${userRole}/blogs`,
+                element:<Blogs/>
+            },
+            {
+                path:`/${userRole}/blogs/view_blog/:blogID`,
+                element:<View_Blog/>
+            },
+            {
+                path:`/${userRole}/${userID}/blogs/view_blog/:blogID`,
                 element:<View_Blog/>
             }
+        
         ]
     }
 ])

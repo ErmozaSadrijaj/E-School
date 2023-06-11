@@ -63,6 +63,27 @@ namespace studenti.Controllers
             }
             return new JsonResult(table);
         }
+        /*Ketu merren lendet qe nuk i takojn nxenesit me ane te ID te nxenesit */
+        [HttpGet("lendetEMbetura/{id}")]
+        public JsonResult GetLendetEMbetura(string id)
+        {
+            string query = "SELECT l.emri,l.ID,l.viti FROM lenda l LEFT JOIN lenda_nxenesi ln ON ln.lendaID = l.ID AND ln.nxenesiID = '" + id + "' WHERE ln.nxenesiID IS NULL";
+            DataTable table = new DataTable();
+            string sqlDataSource = _configuration.GetConnectionString("DBAppCon");
+            SqlDataReader myReader;
+            using (SqlConnection myCon = new SqlConnection(sqlDataSource))
+            {
+                myCon.Open();
+                using (SqlCommand myCommand = new SqlCommand(query, myCon))
+                {
+                    myReader = myCommand.ExecuteReader();
+                    table.Load(myReader); ;
+                    myReader.Close();
+                    myCon.Close();
+                }
+            }
+            return new JsonResult(table);
+        }
         [HttpPost]
         public JsonResult Post(Lenda_Nxenesi le)
         {

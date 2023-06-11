@@ -1,8 +1,15 @@
-.navbar{
+.navbar-orange{
     position: fixed;
     z-index: 3;
     background-color: rgb(255, 115, 0,0.8) !important;
+    font-size: 18px;
   }
+  .navbar-blue{
+    position: fixed;
+    z-index: 3;
+    background-color: rgba(0, 115, 255, 1) !important;
+  }
+ 
   .navbar .link{
     color: white;
   }

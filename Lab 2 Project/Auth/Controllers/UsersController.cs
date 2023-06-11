@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -25,17 +26,22 @@ namespace Auth.Controllers
         [HttpGet("nxenes/{param1}/{param2}")]
         public JsonResult GetNxenesi(string param1, string param2)
         {
+            
             string query = null;
             string roli = null;
             if (param1.StartsWith("N"))
             {
+               
                 roli = "nxenesi";
                 query = @"select ID from dbo.nxenesi where nxenesiID = @param1 and fjalekalimi = @param2";
             }
             else if (param1.StartsWith("P"))
             {
+
+               Debug.WriteLine(param1+" "+param2);
                 roli = "prindi";
                 query = @"select ID from dbo.prindi where prindiID = @param1 and fjalekalimi = @param2";
+                Debug.WriteLine(query);
             }
 
             DataTable table = new DataTable();
