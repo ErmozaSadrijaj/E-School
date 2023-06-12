@@ -5,6 +5,7 @@ import axios from 'axios';
 import '../assets/css/view_blog.css'
 import ShtoKomentinModal from './Modals/ShtoKomentinModal';
 import LargoKomentinModal from './Modals/LargoKomentinModal';
+import NdryshoKomentinModal from './Modals/NdryshoKomentinModal';
 import { userID,userRole } from '../router';
 import { FaTrash,FaEdit } from 'react-icons/fa';
 
@@ -41,7 +42,9 @@ function View_Blog() {
 
     const [showShtoKomentinModal,setShowShtoKomentinModal] = useState(false)
     const [showLargoKomentinModal,setShowLargoKomentinModal] = useState(false)
+    const [showNdryshoKomentinModal,setShowNdryshoKomentinModal] = useState(false)
     const [komentiID,setKomentiID] = useState('')
+    const [komenti,setKomenti] = useState('')
 
     const openShtoKomentinModal =()=>{      
         setShowShtoKomentinModal(true)
@@ -50,11 +53,19 @@ function View_Blog() {
         setKomentiID(komentiID)   
         setShowLargoKomentinModal(true)
     }
+    const openNdryshoKomentinModal =(komentiID,komenti)=>{      
+        setKomentiID(komentiID)
+        setKomenti(komenti)
+        setShowNdryshoKomentinModal(true)
+    }
     const closeShtoKomentinModal = () =>{
         setShowShtoKomentinModal(false)
     }
     const closeLargoKomentinModal = () =>{
         setShowLargoKomentinModal(false)
+    }
+    const closeNdryshoKomentinModal = () =>{
+        setShowNdryshoKomentinModal(false)
     }
     const formatDateTime = (dateTimeStr) => {
         const dateTime = new Date(dateTimeStr);
@@ -101,7 +112,7 @@ function View_Blog() {
                         <p className='comment-date text-end fs-7'>{formatDateTime(blogPost.dataPublikimit)}</p>
                         {comment.roli == userRole && comment.autoriID == userID?<div className='d-flex flex-row justify-content-end'>
                             <Button className='add-comment-button btn btn-danger mx-2' onClick={() => openLargoKomentinModal(comment.ID)}><FaTrash /></Button>
-                            <Button className='add-comment-button btn btn-primary mx-2' onClick={() => openShtoKomentinModal()}><FaEdit/></Button>
+                            <Button className='add-comment-button btn btn-primary mx-2' onClick={() => openNdryshoKomentinModal(comment.ID,comment.komenti)}><FaEdit/></Button>
                         </div>:''}
                     </div>
                     ))}
@@ -112,6 +123,7 @@ function View_Blog() {
 
             <ShtoKomentinModal showModal={showShtoKomentinModal} closeModal={closeShtoKomentinModal} blogID={blogID} autoriID={userID}/>
             <LargoKomentinModal showModal={showLargoKomentinModal} closeModal={closeLargoKomentinModal} komentiID={komentiID}/>
+            <NdryshoKomentinModal showModal={showNdryshoKomentinModal} closeModal={closeNdryshoKomentinModal} komentiID={komentiID} komenti={komenti}/>
         </>
     )
 }

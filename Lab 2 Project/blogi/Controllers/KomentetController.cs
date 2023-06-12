@@ -60,13 +60,15 @@ namespace blogi.Controllers
         {
             string query = @"SELECT k.*, 
                                     CASE 
-                                        WHEN LEFT(k.autoriID, 1) = 'M' THEN s.emri_mbiemri
-                                        WHEN LEFT(k.autoriID, 1) = 'N' THEN n.emri_mbiemri
+                                        WHEN  k.roli = 'mesimdhenesi' THEN s.emri_mbiemri
+										WHEN  k.roli = 'administratori' THEN s.emri_mbiemri
+                                        WHEN  k.roli = 'drejtori' THEN s.emri_mbiemri
+                                        WHEN  k.roli = 'nxenesi' THEN n.emri_mbiemri
                                         ELSE NULL
                                     END AS emri_mbiemri
                                 FROM dbo.komentet k
-                                LEFT JOIN stafi s ON LEFT(k.autoriID, 1) = 'M' AND s.StafiID = k.autoriID
-                                LEFT JOIN nxenesi n ON LEFT(k.autoriID, 1) = 'N' AND n.NxenesiID = k.autoriID where blogID ='" + id + "'";
+                                LEFT JOIN stafi s ON k.autoriID = s.ID 
+                                LEFT JOIN nxenesi n ON k.autoriID = n.ID  where blogID = '" + id + "'";
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("DBAppCon");
             SqlDataReader myReader;
@@ -114,12 +116,8 @@ namespace blogi.Controllers
         public JsonResult Put(Komentet ko)
         {
             string query = @"update dbo.komentet set 
-                            komenti = '" + ko.komenti + @"',
-                            dataPublikimit = '" + ko.dataPublikimit + @"',
-                            autoriID = '" + ko.autoriID + @"',
-                            blogID = '" + ko.blogID + @"',
-                            roli = '"+ko.roli+@"'                      
-
+                            komenti = '" + ko.komenti + @"'
+                                                
                             where ID = " + ko.ID + @"
                             ";
             DataTable table = new DataTable();
@@ -144,6 +142,29 @@ namespace blogi.Controllers
         {
             string query = @"delete from dbo.komentet 
                             where ID = " + id + @"
+                            ";
+            DataTable table = new DataTable();
+            string sqlDataSource = _configuration.GetConnectionString("DBAppCon");
+            SqlDataReader myReader;
+            using (SqlConnection myCon = new SqlConnection(sqlDataSource))
+            {
+                myCon.Open();
+                using (SqlCommand myCommand = new SqlCommand(query, myCon))
+                {
+                    myReader = myCommand.ExecuteReader();
+                    table.Load(myReader); ;
+                    myReader.Close();
+                    myCon.Close();
+                }
+            }
+            return new JsonResult("Deleted Successfully");
+        }
+
+        [HttpDelete("meBlog/{id}")]
+        public JsonResult DeleteMeBlog(int id)
+        {
+            string query = @"delete from dbo.komentet 
+                            where blogID = " + id + @"
                             ";
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("DBAppCon");

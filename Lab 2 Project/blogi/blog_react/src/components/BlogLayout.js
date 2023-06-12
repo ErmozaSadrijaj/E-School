@@ -108,6 +108,9 @@ const BlogLayout = (props) => {
                           </div>
                           :''}
                           <NavItem>
+                                <NavLink className='link' tag={Link} to={`http://localhost:3006/${userRole}/${userID}/menaxhoBlogjet`}>Menaxho Blogjet</NavLink>
+                            </NavItem>
+                          <NavItem>
                             <NavLink className='link' tag={Link} to={`http://localhost:3003/${userRole}/${userID}/blogs`}>Blogi</NavLink>
                           </NavItem>
                           <NavItem>

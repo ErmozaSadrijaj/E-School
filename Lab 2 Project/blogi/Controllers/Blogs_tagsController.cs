@@ -100,7 +100,7 @@ namespace blogi.Controllers
         public JsonResult Delete(int id)
         {
             string query = @"delete from dbo.blogs_tags 
-                            where ID = " + id + @"
+                            where blogID = " + id + @"
                             ";
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("DBAppCon");

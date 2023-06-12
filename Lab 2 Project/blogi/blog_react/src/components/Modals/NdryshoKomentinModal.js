@@ -5,22 +5,20 @@ import { ToastContainer, toast } from 'react-toastify';
 import { userRole } from '../../router';
 import axios from 'axios';
 
-const ShtoKomentinModal = ({ showModal, closeModal ,blogID,autoriID}) => {
-  
-  const handleShtoKomentin = async () => {
+const NdryshoKomentinModal = ({ showModal, closeModal ,komentiID,komenti}) => {
+
+  const handleNdryshoKomentin = async () => {
     try {
         const komenti  = document.querySelector('textarea[name="komenti"]').value;
+
         const komentiData = {
           komenti,
-          dataPublikimit:new Date().toISOString(),
-          autoriID,
-          blogID,
-          roli:userRole
+          ID:komentiID
         };
-        const response = await axios.post('https://localhost:5002/komentet/', komentiData);
+        const response = await axios.put('https://localhost:5002/komentet', komentiData);
         console.log(response.data);
       
-        toast.success('Komenti u shtua me sukses', { autoClose: 1500 });
+        toast.success('Komenti u ndryshua me sukses', { autoClose: 1500 });
         setTimeout(() => {
           closeModal();
           window.location.reload();
@@ -34,23 +32,18 @@ const ShtoKomentinModal = ({ showModal, closeModal ,blogID,autoriID}) => {
   return (
     <Modal show={showModal} onHide={closeModal} centered>
       <Modal.Header closeButton>
-        <Modal.Title>Shto Komentin</Modal.Title>
+        <Modal.Title>Ndrysho Komentin</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-      <textarea
-  className='form-control'
-  name='komenti'
-  rows={5}
-  placeholder='Shkruaj komentin...'
-/>
+          <textarea className='form-control' name='komenti' rows={5} placeholder='Shkruaj komentin...' defaultValue={komenti}/>
 
       </Modal.Body>
       <Modal.Footer>
         <Button variant='secondary' onClick={closeModal}>
           Anulo
         </Button>
-        <Button variant='primary' onClick={handleShtoKomentin}>
-          Shto Komentin
+        <Button variant='primary' onClick={handleNdryshoKomentin}>
+          Ndrysho Komentin
         </Button>
       </Modal.Footer>
       <ToastContainer position='top-center' />
@@ -58,4 +51,4 @@ const ShtoKomentinModal = ({ showModal, closeModal ,blogID,autoriID}) => {
   );
 };
 
-export default ShtoKomentinModal;
+export default NdryshoKomentinModal;

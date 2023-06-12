@@ -59,6 +59,9 @@ const MesimdhenesiLayout = (props) => {
             </div>
             :''}
             <NavItem>
+              <NavLink className='link' tag={Link} to={`http://localhost:3006/${userRole}/${userID}/menaxhoBlogjet`}>Menagjo Blogjet</NavLink>
+            </NavItem>
+            <NavItem>
               <NavLink className='link' tag={Link} to={`http://localhost:3003/${userRole}/${userID}/blogs`}>Blogi</NavLink>
             </NavItem>
             <NavItem>

@@ -7,6 +7,7 @@ import AdministratoriMesimdhenesit from './modulesAdministratori.js/Administrato
 import AdministratoriStudentet from './modulesAdministratori.js/AdministratoriStudentet';
 import DetajetStudentit from './modulesAdministratori.js/DetajetStudentit';
 import Administratori from './modulesDrejtori/Administratoret';
+import Blogjet from './modulesAdministratori.js/Blogjet';
 
 const url = document.URL
 const path = new URL(url).pathname;
@@ -50,6 +51,11 @@ const router = createBrowserRouter([
             {
                 path:`/${userRole}/:${userID}/administratoret`,
                 element:<Administratori/>
+            }
+            ,
+            {
+                path:`/${userRole}/:${userID}/menaxhoBlogjet`,
+                element:<Blogjet/>
             }
         ]
     }
