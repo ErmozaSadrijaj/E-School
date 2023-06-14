@@ -1,27 +1,78 @@
 import { Button } from "react-bootstrap";
+import { FaMapMarkerAlt, FaPhone, FaEnvelope } from "react-icons/fa";
 
-export default function kontakti(){
-    return(
-        <div>
-            <div id="ksection1" className="d-flex justify-content-center">
-                <form className=" w-75 d-flex flex-row flex-wrap align-items-center justify-content-center m-custom p-5 bg-warning rounded">
-                    <div className="inputs d-flex flex-column flex-wrap   w-50  ">
-                        <label className="my-2" htmlFor="name" placeholder="Emri dhe Mbiemri juaj">Emri dhe Mbiemri:</label>
-                        <input className="w-100" type="text" name="name" />
-                        <label className="my-2" htmlFor="email">Email:</label>
-                        <input className="w-100" type="email" required placeholder="Shkruani emailin tuaj..."/>
-                        <label className="my-2" htmlFor="msg">Mesazhi:</label>
-                        <textarea className="w-100" name="msg" placeholder="Shkruani mesazhin tuaj..."></textarea>
-                        <Button className="mt-3">Dergo</Button>
+export default function Kontakti() {
+  return (
+    <div>
+      <div id="ksection1" className="d-flex justify-content-center">
+        <div className="kontakti mt-5">
+          <h1 className="text-center mt-4">Kontakti</h1>
+          <hr />
+          <p className="text-center m-4">
+            A keni ndonjë pyetje? Ju lutemi mos hezitoni të na kontaktoni drejtpërdrejt. Ekipi ynë do të kthehet tek ju brenda pak orësh për t'ju ndihmuar.
+          </p>
+
+          <div className="row m-5">
+            <div className="col-md-9 mb-md-0 mb-5">
+              <form id="contact-form" name="contact-form" action="mail.php" method="POST">
+                <div className="row">
+                  <div className="col-md-6">
+                    <div className="md-form mb-0">
+                      <input type="text" id="name" name="name" className="form-control" />
+                      <label htmlFor="name">Emri</label>
                     </div>
-                    <div className="kontaktet px-5 w-50 ">
-                        <h3>Rruga Tepelena, 30000, Pejë</h3>
-                        <h3>+383 49-666-777 // 038-600-600</h3>
-                        <h3>gjimnaziinfo@bedripejani.net</h3>
-                        <iframe className='w-75' src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d46941.854190167585!2d20.237740462774116!3d42.66419733399847!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1352fc4a6b6d251b%3A0x8c076f05120c5c62!2sHigh%20School%20%22Bedri%20Pejani%22!5e0!3m2!1sen!2s!4v1682717985983!5m2!1sen!2s"  loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                  </div>
+                  <div className="col-md-6">
+                    <div className="md-form mb-0">
+                      <input type="text" id="email" name="email" className="form-control" />
+                      <label htmlFor="email">Mbiemri</label>
                     </div>
-                </form>
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="col-md-12">
+                    <div className="md-form mb-0">
+                      <input type="text" id="subject" name="subject" className="form-control" />
+                      <label htmlFor="subject">Email</label>
+                    </div>
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="col-md-12">
+                    <div className="md-form">
+                      <textarea type="text" id="message" name="message" rows="2" className="form-control md-textarea"></textarea>
+                      <label htmlFor="message">Mesazhi</label>
+                    </div>
+                  </div>
+                </div>
+              </form>
+              <div className="text-center text-md-left">
+                <a className="btn btn-primary" onClick="submit">
+                  <Button>Dërgo</Button>
+                </a>
+              </div>
+              <div className="status"></div>
             </div>
+            <div className="col-md-3 text-center ">
+              <ul className="list-unstyled mb-0">
+                <li>
+                  <FaMapMarkerAlt className="fa-2x mt-8" />
+                  <p>Rruga Tepelena, 30000, Pejë</p>
+                </li>
+                <li>
+                  <FaPhone className="fa-2x mt-2" />
+                  <p>+383 49-666-777</p>
+                </li>
+                <li>
+                  <FaEnvelope className="fa-2x mt-2" />
+                  <p>gjimnaziinfo@bedripejani.net</p>
+                </li>
+                <li></li>
+              </ul>
+            </div>
+          </div>
         </div>
-    )
+      </div>
+    </div>
+  );
 }

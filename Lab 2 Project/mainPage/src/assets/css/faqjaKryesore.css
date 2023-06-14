@@ -138,9 +138,6 @@ a, a:hover {
 }
 
 
-
-
-
 .rh1{
     background-color: rgb(255, 115, 0,0.8);
     border-left:2vh solid #212529;
@@ -151,9 +148,12 @@ a, a:hover {
     padding: 0;
 }
 #ksection1{
-    background-image: url('../images/logoKontakti.png');
-    background-repeat: no-repeat;
-    background-position: center;
+  background-color: azure;
+}
+h1{
+  font-size: 50px;
+  font-weight: bold;
+  font-style: italic;
 }
 .m-custom{
     margin: 10rem;
