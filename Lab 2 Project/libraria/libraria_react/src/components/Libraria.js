@@ -60,7 +60,7 @@ export default function Libraria() {
           <Form inline>
             <FormControl
               type="text"
-              placeholder="Search"
+              placeholder="Kerko librin"
               value={searchTerm}
               onChange={handleSearch}
             />
@@ -69,11 +69,11 @@ export default function Libraria() {
         <Col md={6}>
           <Form inline className="float-md-right">
             <FormControl as="select" value={sortOption} onChange={handleSort}>
-              <option value="">Sort By</option>
-              <option value="kliket-desc">Most Clicked</option>
-              <option value="kliket-asc">Least Clicked</option>
-              <option value="date-desc">Latest Publish Date</option>
-              <option value="date-asc">Oldest Publish Date</option>
+              <option value="">Sorto Librat:</option>
+              <option value="kliket-desc">Me te Klikuarit</option>
+              <option value="kliket-asc">Me pak te Klikuarit</option>
+              <option value="date-desc">Nga Data me e Fundit e Publikimit</option>
+              <option value="date-asc">Nga Data me e Hershme e Publikimit</option>
             </FormControl>
           </Form>
         </Col>

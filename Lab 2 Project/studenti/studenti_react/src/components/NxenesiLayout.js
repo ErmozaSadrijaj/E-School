@@ -43,7 +43,7 @@ const NxenesiLayout = (props) => {
               <NavLink className='link' tag={Link} to={`http://localhost:3003/${userRole}/${userID}/blogs`}>Blogi</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink className='link' tag={Link} to="/">Libraria</NavLink>
+              <NavLink className='link' tag={Link} to={`http://localhost:3007/${userRole}/${userID}/librat`}>Libraria</NavLink>
             </NavItem>
           </Nav>
           <Nav navbar>

@@ -49,6 +49,12 @@ const MesimdhenesiLayout = (props) => {
                 <NavItem>
                   <NavLink className='link' tag={Link} to={`/${userRole}/${userID}/administrator_studentet`}>Studentet</NavLink>
                 </NavItem>
+                <NavItem>
+                  <NavLink className='link' tag={Link} to={`http://localhost:3006/${userRole}/${userID}/menaxhoBlogjet`}>Menagjo Blogjet</NavLink>
+                </NavItem>       
+                <NavItem>
+                    <NavLink className='link' tag={Link} to={`http://localhost:3006/${userRole}/${userID}/menaxhoLibrarine`}>Menagjo Librarine</NavLink>
+                </NavItem>
               </div>
             )}
             {userRole == 'drejtori'?
@@ -58,14 +64,12 @@ const MesimdhenesiLayout = (props) => {
               </NavItem>
             </div>
             :''}
-            <NavItem>
-              <NavLink className='link' tag={Link} to={`http://localhost:3006/${userRole}/${userID}/menaxhoBlogjet`}>Menagjo Blogjet</NavLink>
-            </NavItem>
+            
             <NavItem>
               <NavLink className='link' tag={Link} to={`http://localhost:3003/${userRole}/${userID}/blogs`}>Blogi</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink className='link' tag={Link} to="/">Libraria</NavLink>
+              <NavLink className='link' tag={Link} to={`http://localhost:3007/${userRole}/${userID}/librat`}>Libraria</NavLink>
             </NavItem>
           </Nav>
           <Nav navbar>

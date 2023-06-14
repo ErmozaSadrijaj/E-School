@@ -18,10 +18,10 @@ const BlogLayout = (props) => {
        <Navbar className={`container-fluid  ${userRole == 'mesimdhenesi' || userRole == 'administratori' ||userRole == 'drejtori' ? 'navbar-blue' : 'navbar-orange'}`} light expand="md">
                 <NavbarBrand href="/">Logo</NavbarBrand>
                 <NavbarToggler onClick={toggle} />
-                <Collapse isOpen={isOpen} navbar className='w-100'>
+                <Collapse isOpen={isOpen} navbar className='w-100 float-end'>
                     {userRole == 'vizitori' ? 
                     <div className='d-flex flex-row flex-wrap'>
-                      <Nav className="mr-auto" navbar>
+                      <Nav className="mr-auto " navbar>
                         <NavItem>
                         <NavLink className='link' tag={Link} to="http://localhost:3001">Faqja Kryesore</NavLink>                       
                         </NavItem>
@@ -61,7 +61,7 @@ const BlogLayout = (props) => {
                           <NavLink className='link' tag={Link} to={`http://localhost:3003/${userRole}/${userID}/blogs`}>Blogi</NavLink>
                         </NavItem>
                         <NavItem>
-                          <NavLink className='link' tag={Link} to="/">Libraria</NavLink>
+                          <NavLink className='link' tag={Link} to={`http://localhost:3007/${userRole}/${userID}/librat`}>Libraria</NavLink>
                         </NavItem>
                       </Nav>
                       <Nav navbar>
@@ -98,6 +98,12 @@ const BlogLayout = (props) => {
                             <NavItem>
                               <NavLink className='link' tag={Link} to={`http://localhost:3006/${userRole}/${userID}/administrator_studentet`}>Studentet</NavLink>
                             </NavItem>
+                            <NavItem>
+                                <NavLink className='link' tag={Link} to={`http://localhost:3006/${userRole}/${userID}/menaxhoBlogjet`}>Menagjo Blogjet</NavLink>
+                            </NavItem>
+                            <NavItem>
+                            <NavLink className='link' tag={Link} to={`http://localhost:3006/${userRole}/${userID}/menaxhoLibrarine`}>Menagjo Librarine</NavLink>
+                          </NavItem>
                           </div>
                         )}
                         {userRole == 'drejtori'?
@@ -107,15 +113,14 @@ const BlogLayout = (props) => {
                             </NavItem>
                           </div>
                           :''}
-                          <NavItem>
-                                <NavLink className='link' tag={Link} to={`http://localhost:3006/${userRole}/${userID}/menaxhoBlogjet`}>Menaxho Blogjet</NavLink>
-                            </NavItem>
+                          
                           <NavItem>
                             <NavLink className='link' tag={Link} to={`http://localhost:3003/${userRole}/${userID}/blogs`}>Blogi</NavLink>
                           </NavItem>
                           <NavItem>
-                            <NavLink className='link' tag={Link} to="/">Libraria</NavLink>
+                            <NavLink className='link' tag={Link} to={`http://localhost:3007/${userRole}/${userID}/librat`}>Libraria</NavLink>
                           </NavItem>
+                          
                         </Nav>
                         <Nav navbar>
                           <NavItem>
@@ -124,7 +129,7 @@ const BlogLayout = (props) => {
                         </Nav>
                     </div>:''}
                 </Collapse>
-            </Navbar>
+        </Navbar>
       <Outlet/>
       <footer className="bg-dark text-light py-3">
       <Container>

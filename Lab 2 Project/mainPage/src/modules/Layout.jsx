@@ -3,8 +3,6 @@ import '../assets/css/layout.css';
 import { Outlet } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { FaFacebook, FaTwitter, FaLinkedinIn, FaGithub } from 'react-icons/fa';
-{/*import { Container, Row, Col } from 'react-bootstrap';
-import { FaFacebook, FaInstagram, FaGitHub, FaLikedIn } from 'react-icons/fa';*/}
 
 import {
   Collapse,
@@ -16,7 +14,7 @@ import {
   NavLink,
 } from 'reactstrap';
 
-const Layout = (props) => {
+const Layout = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
@@ -57,7 +55,7 @@ const Layout = (props) => {
       <section className="text-center">
         <div className="row">
           <div className="">
-            <h4 className='titulli'>Gjimnazi "Bedri Pejani"</h4>
+            <h4 className='titulli'>Gjimnazi Bedri Pejani</h4>
 
             <p className='paragraph'>
               Lorem ipsum dolor sit amet consectetur adipisicing elit.

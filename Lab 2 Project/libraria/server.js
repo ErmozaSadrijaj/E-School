@@ -1,19 +1,19 @@
-const { MongoClient, ServerApiVersion } = require('mongodb');
+const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 const express = require('express');
-
-
 
 const app = express();
 const port = 3002;
+
+app.use(express.json()); // Analizo trupat e kërkesave JSON
+
 app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*'); // Allow requests from any origin
-  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE'); // Allow the specified HTTP methods
-  res.header('Access-Control-Allow-Headers', 'Content-Type'); // Allow the specified headers
+  res.header('Access-Control-Allow-Origin', '*'); // Lejo kërkesat nga çdo origjinë
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE'); // Lejo metodat HTTP të specifikuara
+  res.header('Access-Control-Allow-Headers', 'Content-Type'); // Lejo kokat e specifikuara
   next();
 });
-const uri = "mongodb+srv://endriptex:AhZN4Zeo34fAomBr@cluster0.3vuacui.mongodb.net/?retryWrites=true&w=majority";
 
-// Create a MongoClient with a MongoClientOptions object to set the Stable API version
+const uri = "mongodb+srv://endriptex:AhZN4Zeo34fAomBr@cluster0.3vuacui.mongodb.net/?retryWrites=true&w=majority";
 const client = new MongoClient(uri, {
   serverApi: {
     version: ServerApiVersion.v1,
@@ -24,26 +24,95 @@ const client = new MongoClient(uri, {
 
 app.get('/', async (req, res) => {
   try {
-    // Connect the client to the server (optional starting in v4.7)
     await client.connect();
-    console.log("Connected to MongoDB!");
+    console.log("Të lidhur me MongoDB!");
 
-    // Access the desired database and collection
     const db = client.db("libraria");
     const collection = db.collection("librat");
 
-    // Query the collection to fetch data
     const librat = await collection.find().toArray();
-    console.log("Fetched data:", librat);
+    console.log("Të dhënat u marrën:", librat);
 
-    // Send the fetched data as a response to the client
     res.send(librat);
   } catch (error) {
     console.error(error);
-    res.status(500).send("Error fetching data from MongoDB");
+    res.status(500).send("Gabim në marrjen e të dhënave nga MongoDB");
+  }
+});
+
+app.post('/', async (req, res) => {
+  try {
+    await client.connect();
+    console.log("Të lidhur me MongoDB!");
+
+    const db = client.db("libraria");
+    const collection = db.collection("librat");
+
+    const newLibrat = req.body; // Kemi parasysh që trupi i kërkesës përmban të dhënat për të futur
+
+    // Fut të dhënat e reja në koleksion
+    const result = await collection.insertOne(newLibrat);
+    console.log("Të dhënat u futën:", result);
+
+    res.send("Të dhënat u futen me sukses");
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Gabim në futjen e të dhënave në MongoDB");
+  }
+});
+
+app.put('/:id', async (req, res) => {
+  try {
+    await client.connect();
+    console.log("Të lidhur me MongoDB!");
+
+    const db = client.db("libraria");
+    const collection = db.collection("librat");
+
+    const libriID = req.params.id;
+    const updatedLibrat = req.body;
+
+    // Remove the _id field from the updated data to prevent updating the _id field
+    delete updatedLibrat._id;
+
+    // Update the data in the collection
+    const result = await collection.updateOne({ _id: libriID }, { $set: updatedLibrat });
+    console.log("Updated data:", result);
+
+    res.send("Data updated successfully");
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Error updating data in MongoDB");
+  }
+});
+
+
+// ...
+
+app.delete('/:id', async (req, res) => {
+  try {
+    await client.connect();
+    console.log("Të lidhur me MongoDB!");
+
+    const db = client.db("libraria");
+    const collection = db.collection("librat");
+
+    const libriID = req.params.id;
+    const objectIdLibriID =new ObjectId(libriID);
+    console.log(objectIdLibriID)
+    // Delete the document from the collection
+    const result = await collection.deleteOne({ _id: libriID });
+    console.log("Deleted data:", result);
+
+    res.send("Data deleted successfully");
+  } catch (error) {
+    console.error(error);
+  } finally {
+    await client.close();
+    console.log("MongoDB connection closed.");
   }
 });
 
 app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
+  console.log(`Serveri është i aktivizuar në portin ${port}`);
 });

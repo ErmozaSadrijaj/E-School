@@ -8,7 +8,7 @@ import AdministratoriStudentet from './modulesAdministratori.js/AdministratoriSt
 import DetajetStudentit from './modulesAdministratori.js/DetajetStudentit';
 import Administratori from './modulesDrejtori/Administratoret';
 import Blogjet from './modulesAdministratori.js/Blogjet';
-
+import MenaxhoLibrarine from './modulesAdministratori.js/MenaxhoLibrarine'
 const url = document.URL
 const path = new URL(url).pathname;
 const content = path.substring(1);
@@ -56,6 +56,11 @@ const router = createBrowserRouter([
             {
                 path:`/${userRole}/:${userID}/menaxhoBlogjet`,
                 element:<Blogjet/>
+            }
+            ,
+            {
+                path:`/${userRole}/:${userID}/menaxhoLibrarine`,
+                element:<MenaxhoLibrarine/>
             }
         ]
     }
