@@ -1,8 +1,33 @@
   .navbar{
     position: fixed;
     z-index: 3;
-    background-color: rgb(255, 115, 0,0.8) !important;
+    background-color: #FF8100 !important;
   }
   .navbar .link{
     color: white;
+    font-size: 15px;
+    font-style: italic; 
+    font-weight: bold;
   }
+  .navbar-brand{
+    width: 230px;
+    margin-top: -43px;
+    margin-bottom: -45px;
+  }
+  .navbar .link:hover {
+    color: black;
+
+  }
+  
+  footer{
+    background-color: #FF8100;
+  }
+  .titulli{
+  color:black;
+  font-style: italic;
+  font-weight: bold;
+}
+.paragraph{
+  font-size: 17px;
+  line-height: 1.375;
+}

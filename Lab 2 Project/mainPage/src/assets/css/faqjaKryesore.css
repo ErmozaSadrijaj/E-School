@@ -8,46 +8,138 @@
 }
 
 #section1 .gjimnaziImg{
-    width: 100%;
+    margin-top: 50px;
     height:80vh  !important;
+    width: 95%;
+    
 }
-.overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 80vh;
-    z-index: 2;
-    background-color: rgba(0, 0, 0, 0.5); 
-  }
-
-#section1 .teksti {
-    position: absolute;
-    top: 50%;
-    left: 30px;
-    transform: translateY(-50%);
-    z-index: 3;
-    background-color: rgba(0, 0, 0, 0.2);
-    border-radius: 20px;
+h3{
+    color: #ff7100;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 25px;
 }
-#section1 h2,h4{
-    color: rgb(255, 115, 0,0.8);
-    font-size: 5vh;
-    padding: 3vh;
-}
-
-#section2 .content2 img{
-    width: 60vh;
-    height: 40vh;
-    margin: 5vh;
+h2{
+    justify-content: right;
+    display: flex;
+    margin-right: 100px;
+    color: #ff7100;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 25px;
 }
 
 #section3{
-    background-color: #ff7100;
+    background-color: #ff8100;
     padding: 5vh 20vh;
     text-align: center;
     color: white;
 }
+
+
+a, a:hover {
+	text-decoration: none;
+	transition: #ff8100 0.2s ease-in-out;
+}
+
+#pageHeaderTitle {
+	margin: 2rem 0;
+	text-transform: uppercase;
+	text-align: center;
+	font-size: 2.5rem;
+}
+
+/* Cards */
+.postcard {
+  flex-wrap: wrap;
+  display: flex;
+  box-shadow: 0 4px 21px -12px rgba(0, 0, 0, 0.66);
+  border-radius: 10px;
+  margin: 0 0 2rem 0;
+  overflow: hidden;
+  position: relative;
+  color: #ffffff;
+
+	&.dark {
+		background-color:#304269;
+	}
+  .postcard__title {
+    font-size: 1.75rem;
+  }
+
+  .postcard__img {
+    max-height: 180px;
+    width: 100%;
+    object-fit: cover;
+    position: relative;
+  }
+
+  .postcard__img_link {
+    display: contents;
+  }
+
+  .postcard__bar {
+    width: 50px;
+    height: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    background-color: red;
+    transition: width 0.2s ease;
+  }
+
+  .postcard__text {
+    padding: 1.5rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .postcard__preview-txt {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: justify;
+    height: 100%;
+  }
+
+  
+  &:hover .postcard__bar {
+    width: 100px;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .postcard {
+    flex-wrap: inherit;
+
+    .postcard__title {
+      font-size: 2rem;
+    }
+
+    .postcard__img {
+      max-width: 300px;
+      max-height: 100%;
+      transition: transform 0.3s ease;
+    }
+
+    .postcard__text {
+      padding: 3rem;
+      width: 100%;
+    }  
+    &:hover .postcard__img {
+      transform: scale(1.1);
+    }
+    &:nth-child(2n+0) {
+      flex-direction: row-reverse;
+    }
+  }
+}
+.table{
+    height: 450px;
+}
+
+
+
+
 
 .rh1{
     background-color: rgb(255, 115, 0,0.8);

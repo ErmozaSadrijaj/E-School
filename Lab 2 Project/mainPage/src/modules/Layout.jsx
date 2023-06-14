@@ -2,8 +2,9 @@ import { useState } from 'react';
 import '../assets/css/layout.css';
 import { Outlet } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import { Container, Row, Col } from 'react-bootstrap';
-import { FaFacebook, FaInstagram } from 'react-icons/fa';
+import { FaFacebook, FaTwitter, FaLinkedinIn, FaGithub } from 'react-icons/fa';
+{/*import { Container, Row, Col } from 'react-bootstrap';
+import { FaFacebook, FaInstagram, FaGitHub, FaLikedIn } from 'react-icons/fa';*/}
 
 import {
   Collapse,
@@ -23,10 +24,12 @@ const Layout = (props) => {
   return (
     <div>
       <Navbar className='container-fluid' color="light" light expand="md">
-        <NavbarBrand href="/">Logo</NavbarBrand>
+        <NavbarBrand href="/">
+          <img src='./src/assets/images/logo.png' alt='#' className="navbar-brand"></img>
+          </NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
-          <Nav className="mr-auto" navbar>
+          <Nav className="ms-auto" navbar>
             <NavItem>
               <NavLink className='link' tag={Link} to="/">Faqja Kryesore</NavLink>
             </NavItem>
@@ -48,22 +51,53 @@ const Layout = (props) => {
         </Collapse>
       </Navbar>
       <Outlet/>
-      <footer className="bg-dark text-light py-3">
-      <Container>
-        <Row>
-          <Col xs={12} md={4} className="text-center text-md-left">
-            <p className="m-0">All rights reserved</p>
-          </Col>
-          <Col xs={12} md={4} className="text-center">
-            <p className="m-0">Gjimnazi Bedri Pejani</p>
-          </Col>
-          <Col xs={12} md={4} className="text-center text-md-right">
-            <a href="https://www.facebook.com/"><FaFacebook className="text-light mx-3" size={24} /></a>
-            <a href="https://www.instagram.com/"><FaInstagram className="text-light mx-3" size={24} /></a>
-          </Col>
-        </Row>
-      </Container>
-    </footer>
+
+  <footer className="text-center text-lg-start text-white">
+    <div className="container p-4 pb-0">
+      <section className="text-center">
+        <div className="row">
+          <div className="">
+            <h4 className='titulli'>Gjimnazi "Bedri Pejani"</h4>
+
+            <p className='paragraph'>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Molestiae modi cum ipsam ad, illo possimus laborum ut
+              reiciendis obcaecati. Ducimus, quas. Corrupti, pariatur eaque?
+              Reiciendis assumenda iusto sapiente inventore animi?Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Molestiae modi cum ipsam ad, illo possimus laborum ut
+              reiciendis obcaecati. Ducimus, quas. Corrupti, pariatur eaque?
+              Reiciendis assumenda iusto sapiente inventore animi?
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <hr className="mb-2" />
+      <section className="mb-0 text-center">
+  <a className="btn btn-outline-dark btn-floating m-2" href="/" role="button">
+    <FaFacebook />
+  </a>
+
+  <a className="btn btn-outline-dark btn-floating m-2" href="/" role="button">
+    <FaTwitter />
+  </a>
+
+  <a className="btn btn-outline-dark btn-floating m-2" href="/" role="button">
+    <FaLinkedinIn />
+  </a>
+
+  <a className="btn btn-outline-dark btn-floating m-2" href="/" role="button">
+    <FaGithub />
+  </a>
+</section>
+
+    </div>
+    <hr className="mb-0" />
+    <div className="text-center p-2">
+      © 2023 Copyright: All Rights Reserved
+      <a className="text-white" href="https://mdbootstrap.com/"> </a>
+    </div>
+  </footer>
     </div>
   );
 }
