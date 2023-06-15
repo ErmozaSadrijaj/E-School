@@ -21,13 +21,13 @@ const Layout = () => {
 
   return (
     <div>
-      <Navbar className='container-fluid' color="light" light expand="md">
+      <Navbar className='container-fluid ' color="light" light expand="md">
         <NavbarBrand href="/">
-          <img src='./src/assets/images/logo.png' alt='#' className="navbar-brand"></img>
+          <img src='./src/assets/images/logo.png' alt='#' className="navbar-brand my-1"></img>
           </NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
-          <Nav className="ms-auto" navbar>
+          <Nav className="ms-auto " navbar>
             <NavItem>
               <NavLink className='link' tag={Link} to="/">Faqja Kryesore</NavLink>
             </NavItem>

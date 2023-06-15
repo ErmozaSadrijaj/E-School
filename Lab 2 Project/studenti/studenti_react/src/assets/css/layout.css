@@ -5,9 +5,13 @@
   background-color: #FF8100 !important;
 }
 .navbar .link{
-  color: white;
-  font-size: 18px;
+  color: white !important;
+  font-size: 20px !important;
   font-weight: bold;
+}
+.navbar .link:hover{
+  color: rgb(5, 5, 5) !important;
+ 
 }
 .navbar-brand{
   width: 230px;

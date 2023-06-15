@@ -24,7 +24,7 @@
 }
 
 :root {
-    --gradient: linear-gradient(to left top, #DD2476 10%, #FF512F 90%) !important;
+    --gradient: linear-gradient(to left top, #0077ffa6 10%, #003cff79 90%) !important;
   }
   
   body {
@@ -40,7 +40,7 @@
   }
   .card {
     background: #ff8100;
-    border: 1px solid #dd2476;
+    border: none !important;
     color: white;
     margin-bottom: 2rem;
   }
@@ -51,27 +51,21 @@
 box-shadow: -7px 10px 20px -3px rgba(0,0,0,0.75);
 transition: 0.3s ease-in-out;
   }
+
   
   .btn {
-    border: 5px solid;
-    border-image-slice: 1;
-    background: var(--gradient) !important;
-    -webkit-background-clip: text !important;
-    -webkit-text-fill-color: black;
-    border-image-source:  var(--gradient) !important; 
-    text-decoration: none;
+    color: white !important;
     transition: all .4s ease;
+    text-decoration: none !important;
   }
   
   .btn:hover, .btn:focus {
-        background: var(--gradient) !important;
+    color: white !important;
+    background: var(--gradient) !important;
     -webkit-background-clip: none !important;
-    -webkit-text-fill-color: #fff !important;
-    border: 5px solid #fff !important; 
     box-shadow: #222 1px 0 10px;
     text-decoration: underline;
   }
-
 
 
 

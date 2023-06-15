@@ -9,8 +9,9 @@ const Result =() =>
     <p>Mesazhi është dërguar me sukses! </p>
   );
 };
-function kontakti (props) {
-    const [result, showResult] = useState(false);
+function Kontakti () {
+  
+    const [result, showResult] = useState(false)
   const sendEmail = (e) => {
     e.preventDefault();
 
@@ -127,4 +128,4 @@ function kontakti (props) {
     </div>
   );
 }
- export default kontakti;
+ export default Kontakti;

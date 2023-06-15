@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Pc\\Desktop\\E-School\\Lab 2 Project\\Auth\\Auth.csproj": {}
+    "D:\\UBT\\E-School\\Lab 2 Project\\Auth\\Auth.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Pc\\Desktop\\E-School\\Lab 2 Project\\Auth\\Auth.csproj": {
+    "D:\\UBT\\E-School\\Lab 2 Project\\Auth\\Auth.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Pc\\Desktop\\E-School\\Lab 2 Project\\Auth\\Auth.csproj",
+        "projectUniqueName": "D:\\UBT\\E-School\\Lab 2 Project\\Auth\\Auth.csproj",
         "projectName": "Auth",
-        "projectPath": "C:\\Users\\Pc\\Desktop\\E-School\\Lab 2 Project\\Auth\\Auth.csproj",
+        "projectPath": "D:\\UBT\\E-School\\Lab 2 Project\\Auth\\Auth.csproj",
         "packagesPath": "C:\\Users\\Pc\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Pc\\Desktop\\E-School\\Lab 2 Project\\Auth\\obj\\",
+        "outputPath": "D:\\UBT\\E-School\\Lab 2 Project\\Auth\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Pc\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -60,6 +60,12 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[3.1.32, 3.1.32]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"

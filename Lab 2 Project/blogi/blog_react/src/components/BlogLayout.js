@@ -15,15 +15,15 @@ const BlogLayout = (props) => {
   return (
     <div>
       
-       <Navbar className={`container-fluid  ${userRole == 'mesimdhenesi' || userRole == 'administratori' ||userRole == 'drejtori' ? 'navbar-blue' : 'navbar-orange'}`} color="light" light expand="md">
+       <Navbar className={`container-fluid float-end  ${userRole == 'mesimdhenesi' || userRole == 'administratori' ||userRole == 'drejtori' ? 'navbar-blue' : 'navbar-orange'}`} color="light" light expand="md">
        <NavbarBrand href="/">
-          <img src='../src/assets/images/logo.png' alt='#' className="navbar-brand"></img>
+          <img src='../assets/images/logo.png' alt='Logo' className="navbar-brand m-1"/>
           </NavbarBrand>
                 <NavbarToggler onClick={toggle} />
                 <Collapse isOpen={isOpen} navbar className='w-100 float-end'>
                     {userRole == 'vizitori' ? 
-                    <div className='d-flex flex-row flex-wrap'>
-                      <Nav className="mr-auto " navbar>
+                    <div className='d-flex flex-row flex-wrap ms-auto mx-4'>
+                      <Nav className="ms-auto " navbar>
                         <NavItem>
                         <NavLink className='link' tag={Link} to="http://localhost:3001">Faqja Kryesore</NavLink>                       
                         </NavItem>
@@ -46,8 +46,8 @@ const BlogLayout = (props) => {
 
 
                     {userRole == 'nxenesi' || userRole == 'prindi'?
-                    <div className='d-flex flex-row flex-wrap'>
-                      <Nav className="mr-auto" navbar>
+                    <div className='d-flex flex-row flex-wrap ms-auto mx-4'>
+                      <Nav className="ms-auto" navbar>
                         <NavItem>
                           <NavLink className='link' tag={Link} to={`http://localhost:3005/${userRole}/${userID}`}>Profili</NavLink>
                         </NavItem>
@@ -76,8 +76,8 @@ const BlogLayout = (props) => {
 
 
                     {userRole == 'mesimdhenesi' || userRole == 'administratori' || userRole =='drejtori' ? 
-                    <div className='d-flex flex-row flex-wrap'>
-                      <Nav className="mr-auto" navbar>
+                    <div className='d-flex flex-row flex-wrap ms-auto mx-4'>
+                      <Nav className="ms-auto" navbar>
                         <NavItem>
                           <NavLink className='link' tag={Link} to={`http://localhost:3006/${userRole}/${userID}`}>Profili</NavLink>
                         </NavItem>

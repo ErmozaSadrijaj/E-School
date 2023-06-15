@@ -83,22 +83,33 @@ export default function Libraria() {
         {sortedLibrat.map((libri) => (
           <Col key={libri._id} md={4} sm={6} xs={12} className="mb-4">
             <Card>
-              <Card.Img variant="top" src={libri.fotoPath} alt="Book Cover" />
+              <Card.Img
+                variant="top"
+                src={libri.fotoPath}
+                alt="Book Cover"
+                style={{ height: "300px", objectFit: "cover" }}
+              />
               <Card.Body>
-                <div className='d-flex flex-row flex-wrap justify-content-between fs-5 mb-2'>
-                    <Card.Title >{libri.titulli}</Card.Title>
-                    <Card.Title>{libri.autori}</Card.Title>
+                <div className="d-flex flex-row flex-wrap justify-content-between fs-5 mb-2">
+                  <Card.Title>{libri.titulli}</Card.Title>
+                  <Card.Title>{libri.autori}</Card.Title>
                 </div>
                 <Card.Text>Data: {formatDate(libri.dataPublikimit)}</Card.Text>
-                <Card.Text>ISBN:{libri.isbn}</Card.Text>
-                <Button variant="primary" className="w-100" href={libri.linku} target="_blank">
-                    Lexo Librin...
+                <Card.Text>ISBN: {libri.isbn}</Card.Text>
+                <Button
+                  variant="primary"
+                  className="w-100"
+                  href={libri.linku}
+                  target="_blank"
+                >
+                  Lexo Librin...
                 </Button>
               </Card.Body>
             </Card>
           </Col>
         ))}
       </Row>
+          <br/><br/>
     </Container>
   );
 }

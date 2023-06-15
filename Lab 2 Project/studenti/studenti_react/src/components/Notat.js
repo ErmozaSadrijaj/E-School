@@ -29,6 +29,7 @@ export default function Notat() {
   return (
     <>
       <div className='container pt-5 mb-5 pb-5'>
+      <br/><br/>
       {userData.length > 0 ? (
           <>
         <h2 className='my-3'>Notat e Nxenesit</h2>
@@ -62,7 +63,7 @@ export default function Notat() {
             <h2 className='my-3'>Nxenesi nuk ka Nota te Vendosura</h2>
         )}
       </div>
-      <br/> <br/> <br/> <br/><br/> <br/> <br/> <br/><br/> <br/> <br/> <br/><br/>
+      <br/> <br/> <br/> <br/><br/> <br/> <br/> 
     </>
   );
 }

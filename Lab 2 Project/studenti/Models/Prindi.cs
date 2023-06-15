@@ -9,9 +9,9 @@ namespace studenti.Models
     {
         public int ID { get; set; }
         public string prindiID { get; set; }
-        public int emri_mbiemri { get; set; }
-        public int email { get; set; }
-        public int fjalekalimi { get; set; }
+        public string emri_mbiemri { get; set; }
+        public string email { get; set; }
+        public string fjalekalimi { get; set; }
 
     }
 }

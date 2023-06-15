@@ -27,7 +27,7 @@ const MesimdhenesiLayout = (props) => {
              <img src='./stafi_react/src/assets/images/logo.png' alt='#' className="navbar-brand"></img>
           </NavbarBrand>        <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
-          <Nav className="mr-auto" navbar>
+          <Nav className="ms-auto mx-4" navbar>
             <NavItem>
               <NavLink className='link' tag={Link} to={`/${userRole}/${userID}`}>Profili</NavLink>
             </NavItem>
@@ -51,6 +51,9 @@ const MesimdhenesiLayout = (props) => {
                   <NavLink className='link' tag={Link} to={`/${userRole}/${userID}/administrator_studentet`}>Studentet</NavLink>
                 </NavItem>
                 <NavItem>
+                  <NavLink className='link' tag={Link} to={`/${userRole}/${userID}/prinderit`}>Prinderit</NavLink>
+                </NavItem>
+                <NavItem>
                   <NavLink className='link' tag={Link} to={`http://localhost:3006/${userRole}/${userID}/menaxhoBlogjet`}>Menagjo Blogjet</NavLink>
                 </NavItem>       
                 <NavItem>
@@ -72,8 +75,7 @@ const MesimdhenesiLayout = (props) => {
             <NavItem>
               <NavLink className='link' tag={Link} to={`http://localhost:3007/${userRole}/${userID}/librat`}>Libraria</NavLink>
             </NavItem>
-          </Nav>
-          <Nav navbar>
+        
             <NavItem>
               <NavLink className='link' tag={Link} to="http://localhost:3001">Dil</NavLink>
             </NavItem>

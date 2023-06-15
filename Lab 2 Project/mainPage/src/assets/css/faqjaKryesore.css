@@ -59,8 +59,8 @@ a, a:hover {
   overflow: hidden;
   position: relative;
   color: #ffffff;
-
-	&.dark {
+}
+	.dark {
 		background-color:#304269;
 	}
   .postcard__title {
@@ -102,15 +102,15 @@ a, a:hover {
   }
 
   
-  &:hover .postcard__bar {
+  :hover .postcard__bar {
     width: 100px;
   }
-}
+
 
 @media screen and (min-width: 769px) {
   .postcard {
     flex-wrap: inherit;
-
+  }
     .postcard__title {
       font-size: 2rem;
     }
@@ -125,14 +125,14 @@ a, a:hover {
       padding: 3rem;
       width: 100%;
     }  
-    &:hover .postcard__img {
+    :hover .postcard__img {
       transform: scale(1.1);
     }
-    &:nth-child(2n+0) {
+    :nth-child(2n+0) {
       flex-direction: row-reverse;
     }
   }
-}
+
 .table{
     height: 450px;
 }

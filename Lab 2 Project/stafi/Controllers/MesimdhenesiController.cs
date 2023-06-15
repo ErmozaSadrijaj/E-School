@@ -197,23 +197,22 @@ namespace stafi.Controllers
         [HttpDelete("{id}")]
         public JsonResult Delete(int id)
         {
-            string query = @"delete from dbo.stafi 
-                            where ID = " + id + @"
-                            ";
-            DataTable table = new DataTable();
+            string query = @"DELETE FROM dbo.nxenesi WHERE mesimdhenesiID = @id;
+                            DELETE FROM dbo.stafi WHERE ID = @id;";
+
             string sqlDataSource = _configuration.GetConnectionString("DBAppCon");
-            SqlDataReader myReader;
+
             using (SqlConnection myCon = new SqlConnection(sqlDataSource))
             {
-                myCon.Open();
                 using (SqlCommand myCommand = new SqlCommand(query, myCon))
                 {
-                    myReader = myCommand.ExecuteReader();
-                    table.Load(myReader); ;
-                    myReader.Close();
+                    myCommand.Parameters.AddWithValue("@id", id);
+                    myCon.Open();
+                    myCommand.ExecuteNonQuery();
                     myCon.Close();
                 }
             }
+
             return new JsonResult("Deleted Successfully");
         }
     }

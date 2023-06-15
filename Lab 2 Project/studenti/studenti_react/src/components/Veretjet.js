@@ -33,6 +33,7 @@ export default function Veretjet() {
   return (
     <>
       <div className='container pt-5 mb-5 pb-5'>
+      <br/><br/>
         {userData.length > 0 ? (
           <>
             <h2 className='my-3'>Veretjet e Nxenesit</h2>
@@ -61,7 +62,7 @@ export default function Veretjet() {
             <h2 className='my-3'>Nxenesi nuk ka Vërejtje te Vendosura</h2>
         )}
       </div>
-      <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+      <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
     </>
   );
   

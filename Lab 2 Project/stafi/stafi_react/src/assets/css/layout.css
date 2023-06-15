@@ -8,6 +8,10 @@
   font-size: 18px;
   font-weight: bold;
 }
+.navbar .link:hover{
+  color: rgb(0, 0, 0) !important;
+  
+}
 .navbar-brand{
   width: 230px;
   margin-top: -43px;

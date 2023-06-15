@@ -28,7 +28,7 @@ const NxenesiLayout = (props) => {
           </NavbarBrand>       
          <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
-          <Nav className="mr-auto" navbar>
+          <Nav className="ms-auto" navbar>
             <NavItem>
               <NavLink className='link' tag={Link} to={`/${userRole}/${userID}`}>Profili</NavLink>
             </NavItem>

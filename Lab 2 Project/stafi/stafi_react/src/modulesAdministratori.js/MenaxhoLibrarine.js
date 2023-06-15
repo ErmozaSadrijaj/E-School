@@ -94,39 +94,65 @@ export default function Blogejt(){
            <>
          <h2 className='my-3'>Librat:</h2>
          <Table striped bordered hover className='mb-5 pb-5 w-100 fs-5'>
-             <thead>
-             <tr>
-                 <th>Nr.</th>
-                 <th>Titulli</th>
-                 <th>Autori</th>
-                 <th>Foto</th>
-                 <th>Kliket</th>
-                 <th>ISBN</th>
-                 <th>Linku</th>
-                 <th>Data e Publikimit</th>
-                 <th>Opsionet</th>
-             </tr>
-             </thead>
-             <tbody>
-             {filteredData.map((item, index) => (
-                 <tr key={index}>
-                 <td>{index+1}</td>
-                 <td>{item.titulli}</td>
-                 <td>{item.autori}</td>
-                 <td><img src={item.fotoPath} alt="img"/></td>
-                 <td>{item.kliket}</td>
-                 <td>{item.isbn}</td>
-                 <td>{item.linku}</td>
-                 <td>{formatDate(item.dataPublikimit)}</td>
-                 <td >
-                     <Button className='btn btn-primary m-1' onClick={() => openNdryshoLibrinModal(item._id,item.titulli,item.autori,item.linku,item.fotoPath,item.isbn,item.dataPublikimit)} >Ndrysho</Button>
-                     <Button className='btn btn-danger m-1' onClick={() => openLargoLibrinModal(item._id)} >Largo</Button>
-                     
-                 </td>
-                 </tr>
-             ))}
-             </tbody>
-         </Table>
+  <thead>
+    <tr>
+      <th>Nr.</th>
+      <th>Titulli</th>
+      <th>Autori</th>
+      <th>Foto</th>
+      <th>Kliket</th>
+      <th>ISBN</th>
+      <th>Linku</th>
+      <th>Data e Publikimit</th>
+      <th>Opsionet</th>
+    </tr>
+  </thead>
+  <tbody>
+    {filteredData.map((item, index) => (
+      <tr key={index}>
+        <td>{index + 1}</td>
+        <td>{item.titulli}</td>
+        <td>{item.autori}</td>
+        <td>
+          <img
+            src={item.fotoPath}
+            alt="img"
+            style={{ width: '100px', height: '100px', objectFit: 'cover' }}
+          />
+        </td>
+        <td>{item.kliket}</td>
+        <td>{item.isbn}</td>
+        <td>{item.linku}</td>
+        <td>{formatDate(item.dataPublikimit)}</td>
+        <td>
+          <Button
+            className='btn btn-primary m-1'
+            onClick={() =>
+              openNdryshoLibrinModal(
+                item._id,
+                item.titulli,
+                item.autori,
+                item.linku,
+                item.fotoPath,
+                item.isbn,
+                item.dataPublikimit
+              )
+            }
+          >
+            Ndrysho
+          </Button>
+          <Button
+            className='btn btn-danger m-1'
+            onClick={() => openLargoLibrinModal(item._id)}
+          >
+            Largo
+          </Button>
+        </td>
+      </tr>
+    ))}
+  </tbody>
+</Table>
+
          </>
          ) : (
              <h2 className='my-3'>Nuk ka ndonje Liber te regjistruar</h2>

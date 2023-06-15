@@ -111,8 +111,8 @@ function View_Blog() {
                         <p className='comment-text'>{comment.komenti}</p>
                         <p className='comment-date text-end fs-7'>{formatDateTime(blogPost.dataPublikimit)}</p>
                         {comment.roli == userRole && comment.autoriID == userID?<div className='d-flex flex-row justify-content-end'>
-                            <Button className='add-comment-button btn btn-danger mx-2' onClick={() => openLargoKomentinModal(comment.ID)}><FaTrash /></Button>
-                            <Button className='add-comment-button btn btn-primary mx-2' onClick={() => openNdryshoKomentinModal(comment.ID,comment.komenti)}><FaEdit/></Button>
+                            <Button className='add-comment-button btn btn-danger  mx-2' onClick={() => openLargoKomentinModal(comment.ID)}><FaTrash /></Button>
+                            <Button className='add-comment-button btn btn-primary  mx-2' onClick={() => openNdryshoKomentinModal(comment.ID,comment.komenti)}><FaEdit/></Button>
                         </div>:''}
                     </div>
                     ))}

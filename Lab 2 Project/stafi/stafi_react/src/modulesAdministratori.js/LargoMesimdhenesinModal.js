@@ -27,7 +27,8 @@ export default function LendaModal({ showModal, closeModal, ID }) {
         <Modal.Title>Elimino Mesimdhenesin</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        A jeni i sigurt qe deshironi te largoni kete Mesimdhenes?
+      A jeni i sigurt qe deshironi te largoni Mesimdhenesin? <br/>
+        (Eliminimi i ketij mesimdhenesi rezulton ne eliminimin e nxeneseve te tij gjithashtu)
       </Modal.Body>
       <Modal.Footer>
         <Button variant="secondary" onClick={closeModal}>

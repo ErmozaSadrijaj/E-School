@@ -19,32 +19,9 @@ const Layout = (props) => {
           <img src='./libraria_react/src/assets/images/logo.png' alt='#' className="navbar-brand"></img>
           </NavbarBrand>                <NavbarToggler onClick={toggle} />
                 <Collapse isOpen={isOpen} navbar className='w-100'>
-                    {userRole == 'vizitori' ? 
-                    <div className='d-flex flex-row flex-wrap'>
-                      <Nav className="mr-auto" navbar>
-                        <NavItem>
-                        <NavLink className='link' tag={Link} to="http://localhost:3001">Faqja Kryesore</NavLink>                       
-                        </NavItem>
-                        <NavItem>
-                        <NavLink className='link' tag={Link} to="http://localhost:3001/rrethNesh">Rreth Nesh</NavLink>
-                        </NavItem>
-                        <NavItem>
-                        <NavLink className='link' tag={Link} to={`http://localhost:3003/${userRole}/blogs`}>Blogi</NavLink>
-                        </NavItem>
-                        <NavItem>
-                        <NavLink className='link' tag={Link} to="http://localhost:3001/kontakti">Kontakti</NavLink>
-                        </NavItem>
-                      </Nav>
-                      <Nav navbar>
-                          <NavItem>
-                          <NavLink className='link' tag={Link} to="http://localhost:3001/identifikohu">Identifikohu</NavLink>
-                          </NavItem>
-                      </Nav>
-                    </div>:''}
-
 
                     {userRole == 'nxenesi' || userRole == 'prindi'?
-                    <div className='d-flex flex-row flex-wrap'>
+                    <div className='d-flex flex-row flex-wrap ms-auto mx-4'>
                       <Nav className="mr-auto" navbar>
                         <NavItem>
                           <NavLink className='link' tag={Link} to={`http://localhost:3005/${userRole}/${userID}`}>Profili</NavLink>
@@ -74,7 +51,7 @@ const Layout = (props) => {
 
 
                     {userRole == 'mesimdhenesi' || userRole == 'administratori' || userRole =='drejtori' ? 
-                    <div className='d-flex flex-row flex-wrap'>
+                    <div className='d-flex flex-row flex-wrap ms-auto mx-4'>
                       <Nav className="mr-auto" navbar>
                         <NavItem>
                           <NavLink className='link' tag={Link} to={`http://localhost:3006/${userRole}/${userID}`}>Profili</NavLink>

@@ -32,7 +32,8 @@ export default function Mungesat() {
 
   return (
     <>
-      <div className='container pt-5 mb-5 pb-5'>
+      <div className='container pt-5 mb-5 pb-5 '>
+        <br/><br/>
       {userData.length > 0 ? (
           <>
         <h2 className='my-3'>Mungesat e Nxenesit</h2>

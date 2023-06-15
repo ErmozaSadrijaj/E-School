@@ -71,9 +71,11 @@ export default function Lenda() {
 
   return (
     <>
+    
       <Button className='float-right btn btn-success float-end mx-5 my-3 p-2' onClick={() => openShtoDokumentinModal(id)}>
         Shto Dokumentin
       </Button>      
+      <br/><br/><br/>
       <div className='py-3 px-3'>
         {userData.map((item, index) => (
             <div key={index}>
@@ -93,7 +95,7 @@ export default function Lenda() {
             </div>
         ))}
       </div>
-
+      <br/><br/>
       <DeleteTopicModal showModal={showDeleteModal} closeModal={closeDeleteModal} dokumentiID={selectedDokumentiID}/>
       <ShtoDokumentinModal showModal={showShtoDokumentinModal} closeModal={closeShtoDokumentinModal} lendaID={selectedLendaID}/>
       <NdryshoDokumentinModal showModal={showNdryshoDokumentinModal} closeModal={closeNdryshoDokumentinModal} lendaID={selectedLendaID} dokumentiID={selectedDokumentiID} titulli={selectedTitulli} linku ={selectedLinku}/>

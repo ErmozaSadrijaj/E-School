@@ -47,6 +47,7 @@ export default function Nxenesi() {
   
   return (
     <div className='d-flex justify-content-center flex-column'>
+      <br/><br/>
       {userRole == 'nxenesi' ? 
           <div>
           <div id="section1" className='d-flex flex-row flex-wrap justify-content-center mt-4'>

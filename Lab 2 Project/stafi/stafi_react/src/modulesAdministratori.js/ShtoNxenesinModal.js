@@ -10,7 +10,6 @@ const ShtoNxenesinModal = ({ showModal, closeModal }) => {
         try {
             const emri_mbiemri = document.querySelector('input[name="emri"]').value;
             const fjalekalimi = document.querySelector('input[name="fjalekalimi"]').value;
-            const email = document.querySelector('input[name="email"]').value;
             const fotoPath = document.querySelector('input[name="foto"]').value;
             const nrTelefonit = document.querySelector('input[name="nrTelefonit"]').value;
             const vendbanimi = document.querySelector('input[name="vendbanimi"]').value;
@@ -30,7 +29,7 @@ const ShtoNxenesinModal = ({ showModal, closeModal }) => {
             
             const nxenesiData= {
                 emri_mbiemri,
-                email,
+              
                 fjalekalimi,            
                 fotoPath, 
                 vendbanimi,
@@ -106,10 +105,6 @@ const ShtoNxenesinModal = ({ showModal, closeModal }) => {
           <input type='password' name='fjalekalimi'  />
         </div>
 
-        <div className='w-100 d-flex flex-column p-2 fs-5'>
-          <label name='email'>Email:</label>
-          <input type='email' name='email'   />
-        </div>
         <div className='w-100 d-flex flex-column p-2 fs-5'>
           <label name='foto'>Foto:</label>
           <input type='link' name='foto' />

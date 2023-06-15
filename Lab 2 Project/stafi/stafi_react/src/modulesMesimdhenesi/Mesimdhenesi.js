@@ -61,6 +61,7 @@ export default function Mesimdhenesi(){
     
     return(
         <div className='d-flex justify-content-center flex-column'>
+          <br/><br/><br/>
             <div id="section1" className='d-flex flex-row flex-wrap justify-content-center mt-4'>
                 <div className="d-flex flex-row flex-wrap w-50 mt-5 sec2 p-3 rounded">
                     <div id="content1" className=" d-flex flex-column align-items-start justify-content-end w-50">
