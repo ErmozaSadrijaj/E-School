@@ -61,7 +61,7 @@ export default function faqjaKryesore(){
 	<div className="container py-4">
 		<h1 className="h1 text-center" id="pageHeaderTitle">Drejtimet</h1>
 
-		<article className="postcard dark red">
+		<article className="postcard dark red w-100">
 			<a className="postcard__img_link">
 				<img className="postcard__img" src="./src/assets/images/drejtimi1.jpg" alt="Image Title" />	
 			</a>
@@ -73,7 +73,7 @@ export default function faqjaKryesore(){
 		</article>
 
 
-		<article className="postcard dark red">
+		<article className="postcard dark red w-100">
 			<a className="postcard__img_link" >
 				<img className="postcard__img" src="./src/assets/images/drejtimi.jpg" alt="Image Title" />	
 			</a>

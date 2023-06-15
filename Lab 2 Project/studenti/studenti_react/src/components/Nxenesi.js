@@ -67,7 +67,7 @@ export default function Nxenesi() {
               </div>
             </div>
           </div>
-          <br /><br /><hr /><br /><br />
+          <br /><br /><hr /><br />
           
               <div id="section2" className="d-flex flex-row flex-wrap justify-content-around align-items-center m-5">
                 <Link className='p-4 fs-3 rounded bg-primary text-white bold' to={`/nxenesi/${userID}/mungesat`}>Gjenero Mungesat</Link>

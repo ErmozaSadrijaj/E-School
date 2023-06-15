@@ -128,24 +128,28 @@ export default function Blogs()  {
         ))}
       </div>
       <hr />
-      <div id='section3' className='d-flex justify-content-center m-1 flex-row flex-wrap'>
-        {filteredBlogPosts.map(blogPost => (
-          <div className="blogCard rounded d-flex flex-column flex-wrap m-3" key={blogPost._id}>
-            <img className='w-100 rounded' src={'https://images.pexels.com/photos/268533/pexels-photo-268533.jpeg?cs=srgb&dl=pexels-pixabay-268533.jpg&fm=jpg'} />
-            <h2 className='m-1'>{blogPost.titulli}</h2>
-            <hr />
-            <p className='m-1 fs-5'>{blogPost.permbatja.substring(0, 30)}...</p>
-            <hr />
-            <span className='d-flex flex-wrap flex-row justify-content-between'>
-              <p className='p-1 mx-2'><b>Autori:</b> {blogPost.emri_mbiemri}</p>
-              {userRole == 'vizitori' 
-              && <Link className='p-2 mx-2 readMoreBtn bg-primary' to={`/${userRole}/blogs/view_blog/${blogPost.ID}`} onClick={() => handleShtoKliket(blogPost.kliket)} >Lexo me Shumë</Link>}
-              {userRole !== 'vizitori' 
-              && <Link className='p-2 mx-2 readMoreBtn bg-primary' to={`/${userRole}/${userID}/blogs/view_blog/${blogPost.ID}`} onClick={() => handleShtoKliket(blogPost.kliket,blogPost.ID)} >Lexo me Shumë</Link>}
-            </span>
+      <div id='section3' className=' mt-5 flex-row container'>
+  <div class="row p-8">
+    {filteredBlogPosts.map(blogPost => (
+      <div class="col-md-4" key={blogPost._id}>
+        <div class="card">
+          <img src={'https://images.pexels.com/photos/268533/pexels-photo-268533.jpeg?cs=srgb&dl=pexels-pixabay-268533.jpg&fm=jpg'} class="card-img-top" alt="..." />
+          <div class="card-body">
+            <h5 class="card-title">{blogPost.titulli}</h5>
+            <br></br>
+            <h6 class="card-subtitle mb-2">Autori: {blogPost.emri_mbiemri}</h6>
+            <p class="card-text m-1 fs-5">{blogPost.permbatja.substring(0, 25)}...</p>
+            {userRole == 'vizitori'
+              && <Link className='btn p-2 mx-2 readMoreBtn bg-primary' to={`/${userRole}/blogs/view_blog/${blogPost.ID}`} onClick={() => handleShtoKliket(blogPost.kliket)}>Lexo me Shumë</Link>}
+            {userRole !== 'vizitori'
+              && <Link className='btn p-2 mx-2 readMoreBtn bg-primary' to={`/${userRole}/${userID}/blogs/view_blog/${blogPost.ID}`} onClick={() => handleShtoKliket(blogPost.kliket, blogPost.ID)}>Lexo me Shumë</Link>}
           </div>
-        ))}
+        </div>
       </div>
+    ))}
+  </div>
+</div>
+
       <ShtoBloginModal showModal={showShtoBloginModal} closeModal={closeShtoBloginModal}/>
     </div>
   );

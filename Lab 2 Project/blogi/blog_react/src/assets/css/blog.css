@@ -5,40 +5,82 @@
 .logo{
     height: 20vh;
 }
-.blogCard{
-    width: 18%;
-    background-color: rgba(255, 115, 0, 0.596);
-}
-.blogCard:hover{
-    cursor: pointer;
-    -webkit-box-shadow: -7px 10px 20px -3px rgba(0,0,0,0.75);
--moz-box-shadow: -7px 10px 20px -3px rgba(0,0,0,0.75);
-box-shadow: -7px 10px 20px -3px rgba(0,0,0,0.75);
-transition: 0.3s ease-in-out;
-}
 .topHeader{
     color: white;
 }
 .oneTag{
     font-weight: 600;
-    background-color: #ff7100;
+    background-color: #ff8100;
     border-radius: 10px;
 }
 .oneTag:hover{
     background-color: #cc5c00;
     cursor: pointer;
 }
-.iksbutoni:hover{
-    color: #ffffff;
-    cursor: pointer;
-}
+
 .readMoreBtn:hover{
     color: rgba(255, 255, 255, 0.596)!important;
     cursor: pointer;
 }
-.readMoreBtn{
-    text-decoration: none;
+
+:root {
+    --gradient: linear-gradient(to left top, #DD2476 10%, #FF512F 90%) !important;
+  }
+  
+  body {
+    background: azure !important;
+  }
+  .card-subtitle{
     color: white;
-    height: fit-content;
-    border-radius: 5px;
-}
+    font-size: 14px;
+  }
+  .card-title{
+    font-size: 25px;
+    font-weight: bold;
+  }
+  .card {
+    background: #ff8100;
+    border: 1px solid #dd2476;
+    color: white;
+    margin-bottom: 2rem;
+  }
+  .card:hover{
+    cursor: pointer;
+    -webkit-box-shadow: -7px 10px 20px -3px rgba(0,0,0,0.75);
+-moz-box-shadow: -7px 10px 20px -3px rgba(0,0,0,0.75);
+box-shadow: -7px 10px 20px -3px rgba(0,0,0,0.75);
+transition: 0.3s ease-in-out;
+  }
+  
+  .btn {
+    border: 5px solid;
+    border-image-slice: 1;
+    background: var(--gradient) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: black;
+    border-image-source:  var(--gradient) !important; 
+    text-decoration: none;
+    transition: all .4s ease;
+  }
+  
+  .btn:hover, .btn:focus {
+        background: var(--gradient) !important;
+    -webkit-background-clip: none !important;
+    -webkit-text-fill-color: #fff !important;
+    border: 5px solid #fff !important; 
+    box-shadow: #222 1px 0 10px;
+    text-decoration: underline;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+    

@@ -1,4 +1,6 @@
-  .navbar{
+  body{
+    background-color: azure;
+  }.navbar{
     position: fixed;
     z-index: 3;
     background-color: #FF8100 !important;

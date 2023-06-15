@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Egj0/sqvdG/DBVzJBwoDSRk3ozxISt/gr9LTTIBkV37raAyuH41uvkaKNNG632IxBUWmnEsbwvw4HFXO4qKxGQ==",
+  "dgSpecHash": "QAKZj8oATNUrkZWOQMCdon/iJHgsmcDjp3LxE/FSjKdVA4BCh+sbPlAC3T1V9Ecz6KjxaRUW6DQDOzPtVv/4EQ==",
   "success": true,
-  "projectFilePath": "D:\\UBT\\E-School\\Lab 2 Project\\blogi\\blogi.csproj",
+  "projectFilePath": "C:\\Users\\Pc\\Desktop\\E-School\\Lab 2 Project\\blogi\\blogi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Pc\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\3.1.9\\microsoft.aspnetcore.jsonpatch.3.1.9.nupkg.sha512",
     "C:\\Users\\Pc\\.nuget\\packages\\microsoft.aspnetcore.mvc.newtonsoftjson\\3.1.9\\microsoft.aspnetcore.mvc.newtonsoftjson.3.1.9.nupkg.sha512",
@@ -17,8 +17,7 @@
     "C:\\Users\\Pc\\.nuget\\packages\\runtime.win-x86.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x86.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "C:\\Users\\Pc\\.nuget\\packages\\system.data.sqlclient\\4.8.3\\system.data.sqlclient.4.8.3.nupkg.sha512",
     "C:\\Users\\Pc\\.nuget\\packages\\system.security.accesscontrol\\4.7.0\\system.security.accesscontrol.4.7.0.nupkg.sha512",
-    "C:\\Users\\Pc\\.nuget\\packages\\system.security.principal.windows\\4.7.0\\system.security.principal.windows.4.7.0.nupkg.sha512",
-    "C:\\Users\\Pc\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.32\\microsoft.netcore.app.host.win-x64.3.1.32.nupkg.sha512"
+    "C:\\Users\\Pc\\.nuget\\packages\\system.security.principal.windows\\4.7.0\\system.security.principal.windows.4.7.0.nupkg.sha512"
   ],
   "logs": []
 }
