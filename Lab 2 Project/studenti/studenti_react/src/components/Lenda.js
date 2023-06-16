@@ -6,6 +6,7 @@ import { BiTrash,BiPencil } from 'react-icons/bi';
 import DeleteTopicModal from './Modals/LargoDokumentinModal'
 import ShtoDokumentinModal from './Modals/ShtoDokumentinModal';
 import NdryshoDokumentinModal from './Modals/NdryshoDokumentinModal';
+import { userRole } from '../router';
 
 
 export default function Lenda() {
@@ -85,8 +86,10 @@ export default function Lenda() {
                 <li className='fs-4' key="titulli">
                     <strong className=''>Titulli: </strong>
                     <a href={item.linku}>{item.titulli}</a>
+                    {userRole !== 'nxenesi'?<div>
                     <Button className='bg-transparent border-0 float-end m-1' onClick={() => openDeleteModal(item.ID)}><BiTrash className='text-danger fs-2 '/></Button>
                     <Button className='bg-transparent border-0 float-end m-1' onClick={() => openNdryshoDokumentinModal(id,item.ID,item.titulli,item.linku)} value={item.ID}><BiPencil className='text-primary fs-2'/></Button>
+                    </div>:''}
                 </li>
                 <li className='list-unstyled' key="data">
                     {formatDateTime(item.dataPublikimit)}

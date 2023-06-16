@@ -4,22 +4,25 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 
-const ShtoLendenStudentitModal = ({ showModal, closeModal,nxenesiID }) => {
+const ShtoLendenStudentitModal = ({ showModal, closeModal,nxenesiID,nxenesi }) => {
 
     const handleShtoClick = async () => {
         try {
-            const emri = document.querySelector('input[name="emri"]').value;
-            const mesimdhenesi = document.querySelector('select[name="mesimdhenesi"]').value;
-            const gjenerata = document.querySelector('input[name="gjenerata"]').value;
-            const viti = document.querySelector('input[name="viti"]').value;
+
+            const lendaID = document.querySelector('select[name="lendet"]').value;
+            const selectElement = document.querySelector('select[name="lendet"]');
+            const selectedOption = selectElement.options[selectElement.selectedIndex];
+            const optionContent = selectedOption.textContent;
+            const lenda = optionContent.split(' ')[0];
+       
             const lendaData= {
-                emri,
-                mesimdhenesi,
-                viti,
-                gjenerata              
+                nxenesi,
+                lenda,
+                nxenesiID,
+                lendaID              
             };
     
-          const response = await axios.post('https://localhost:5001/lenda', lendaData);
+          const response = await axios.post('https://localhost:5001/lenda_nxenesi', lendaData);
           console.log(response.data);
     
           

@@ -53,7 +53,7 @@ export default function Nxenesi() {
           <div id="section1" className='d-flex flex-row flex-wrap justify-content-center mt-4'>
             <div className="d-flex flex-row flex-wrap w-50 mt-5 sec2 p-3 rounded">
               <div id="content1" className=" d-flex flex-column align-items-start justify-content-end w-50">
-                <img src="https://cdn-icons-png.flaticon.com/512/2815/2815428.png" className="w-50 p-0 mb-2 border rounded" alt='User' />
+                <img src={userData.fotoPath} className="w-50 p-0 mb-2 border rounded" alt='User' />
                 <p><b>Emri dhe Mbiemri:</b>{userData.emri_mbiemri}</p>
                 <p><b>ID:</b>{userData.nxenesiID}</p>
                 <p><b>Email:</b>{userData.email}</p>

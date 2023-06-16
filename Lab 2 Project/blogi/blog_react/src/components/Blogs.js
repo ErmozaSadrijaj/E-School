@@ -128,27 +128,38 @@ export default function Blogs()  {
         ))}
       </div>
       <hr />
-      <div id='section3' className=' mt-5 flex-row container'>
-        <div className="row p-8 ">
-          {filteredBlogPosts.map(blogPost => (
-            <div class="col-md-4" key={blogPost._id}>
-              <div class="card">
-                <img src={blogPost.fotoPath} class="card-img-top" alt="..." />
-                <div class="card-body">
-                  <h5 class="card-title">{blogPost.titulli}</h5>
-                  <br></br>
-                  <h6 class="card-subtitle mb-2">Autori: {blogPost.emri_mbiemri}</h6>
-                  <p class="card-text m-1 fs-5">{blogPost.permbatja.substring(0, 100)} ...</p>
-                  <br></br>{userRole == 'vizitori'
-                    && <Link className='btn p-2 mx-2 readMoreBtn bg-primary' to={`/${userRole}/blogs/view_blog/${blogPost.ID}`} onClick={() => handleShtoKliket(blogPost.kliket)}>Lexo me Shumë</Link>}
-                  {userRole !== 'vizitori'
-                    && <Link className='btn p-2 mx-2 readMoreBtn bg-primary' to={`/${userRole}/${userID}/blogs/view_blog/${blogPost.ID}`} onClick={() => handleShtoKliket(blogPost.kliket, blogPost.ID)}>Lexo me Shumë</Link>}
-                </div>
-              </div>
-            </div>
-          ))}
+      <div id='section3' className='mt-5 flex-row container'>
+  <div className="row p-8" style={{ display: 'flex', flexWrap: 'wrap' }}>
+    {filteredBlogPosts.map(blogPost => (
+      <div className="col-md-4" key={blogPost._id} style={{ display: 'flex', marginBottom: '20px' }}>
+        <div className="card aspect-ratio--1x1" style={{ width: '100%' }}>
+          <img
+            src={blogPost.fotoPath}
+            className="card-img-top"
+            alt="..."
+            style={{ objectFit: 'cover', height: '100%' }}
+          />
+          <div className="card-body">
+            <h5 className="card-title">{blogPost.titulli}</h5>
+            <br></br>
+            <h6 className="card-subtitle mb-2">Autori: {blogPost.emri_mbiemri}</h6>
+            <p className="card-text m-1 fs-5">{blogPost.permbatja.substring(0, 100)} ...</p>
+            <br></br>
+            {userRole === 'vizitori' &&
+              <Link className='btn p-2 mx-2 readMoreBtn bg-primary' to={`/${userRole}/blogs/view_blog/${blogPost.ID}`} onClick={() => handleShtoKliket(blogPost.kliket)}>Lexo me Shumë</Link>}
+            {userRole !== 'vizitori' &&
+              <Link className='btn p-2 mx-2 readMoreBtn bg-primary' to={`/${userRole}/${userID}/blogs/view_blog/${blogPost.ID}`} onClick={() => handleShtoKliket(blogPost.kliket, blogPost.ID)}>Lexo me Shumë</Link>}
+          </div>
         </div>
       </div>
+    ))}
+  </div>
+</div>
+
+
+
+
+
 
       <ShtoBloginModal showModal={showShtoBloginModal} closeModal={closeShtoBloginModal}/>
     </div>

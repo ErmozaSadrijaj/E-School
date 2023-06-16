@@ -88,35 +88,38 @@ const handleTableButtonClick = (table) => {
            <>
          <h2 className='my-3'>Blogjet e Aprovuara:</h2>
          <Table striped bordered hover className='mb-5 pb-5 w-100'>
-             <thead>
-             <tr>
-                 <th>Nr.</th>
-                 <th>Titulli</th>
-                 <th>Permbatja</th>
-                 <th>Foto</th>
-                 <th>Autori</th>
-                 <th>Kliket</th>
-                 <th>Data e Publikimit</th>
-                 <th>Opsionet</th>
-             </tr>
-             </thead>
-             <tbody>
-             {blogjetAprovuara.map((item, index) => (
-                 <tr key={index}>
-                 <td>{index+1}</td>
-                 <td>{item.titulli}</td>
-                 <td>{item.permbatja.substring(0, 60)}</td>
-                 <td><img src={item.fotoPath}/></td>
-                 <td>{item.emri_mbiemri}</td>
-                 <td>{item.kliket}</td>
-                 <td>{item.dataPublikimit}</td>
-                 <td >
-                     <Button className='btn btn-danger m-1' onClick={() => openLargoBloginModal(item.ID)}>Largo</Button>
-                 </td>
-                 </tr>
-             ))}
-             </tbody>
-         </Table>
+          <thead>
+            <tr>
+              <th>Nr.</th>
+              <th>Titulli</th>
+              <th>Permbatja</th>
+              <th>Foto</th>
+              <th>Autori</th>
+              <th>Kliket</th>
+              <th>Data e Publikimit</th>
+              <th>Opsionet</th>
+            </tr>
+          </thead>
+          <tbody>
+            {blogjetAprovuara.map((item, index) => (
+              <tr key={index}>
+                <td>{index + 1}</td>
+                <td>{item.titulli}</td>
+                <td>{item.permbatja.substring(0, 60)}</td>
+                <td style={{ width: '100px' }}>
+                  <img src={item.fotoPath} alt="Foto" style={{ maxWidth: '100%', height: 'auto' }} />
+                </td>
+                <td>{item.emri_mbiemri}</td>
+                <td>{item.kliket}</td>
+                <td>{item.dataPublikimit}</td>
+                <td>
+                  <Button className='btn btn-danger m-1' onClick={() => openLargoBloginModal(item.ID)}>Largo</Button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
+
          </>
          ) : (
              <h2 className='my-3'>Nuk ka ndonje Blog te aprovuar te regjistruar</h2>

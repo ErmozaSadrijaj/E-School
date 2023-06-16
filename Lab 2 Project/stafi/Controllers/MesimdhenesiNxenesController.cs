@@ -49,7 +49,7 @@ namespace stafi.Controllers
         [HttpGet("{id}/lendetEStudentit/{studentId}")]
         public JsonResult GetLendetEStudentit(string id, string studentId)
         {
-            string query = "select distinct l.ID,l.viti,l.emri from nxenesi nx join lenda_nxenesi ln on nx.ID = ln.nxenesiID join lenda l on ln.lendaID = l.ID join stafi s on s.ID = l.mesimdhenesi WHERE s.ID = '"+id+"' and s.roli = 'mesimdhenes' and nx.nxenesiID = '"+ studentId + "'";
+            string query = "select distinct l.ID,l.viti,l.emri from nxenesi nx join lenda_nxenesi ln on nx.ID = ln.nxenesiID join lenda l on ln.lendaID = l.ID join stafi s on s.ID = l.mesimdhenesi WHERE s.ID = '"+id+"' and s.roli = 'mesimdhenesi' and nx.nxenesiID = '"+ studentId + "'";
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("DBAppCon");
             SqlDataReader myReader;

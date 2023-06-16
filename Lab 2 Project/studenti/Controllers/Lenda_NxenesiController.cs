@@ -91,7 +91,7 @@ namespace studenti.Controllers
                             ('" + le.nxenesi + @"',
                             '" + le.lenda + @"',
                             '" + le.nxenesiID + @"',
-                            '" + le.lendaID + @"'),                        
+                            '" + le.lendaID + @"')                       
                             ";
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("DBAppCon");

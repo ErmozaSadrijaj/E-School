@@ -125,7 +125,8 @@ export default function DetajetStudentit() {
     setMesimdhenesiID(mesimdhenesiID)
     setShowNdryshoNxenesinModal(true)
   }
-  const openShtoLendenStudentitModal = (nxenesiID) =>{
+  const openShtoLendenStudentitModal = (nxenesiID,emri_mbiemri) =>{
+    setEmri_mbiemri(emri_mbiemri)
     setNxenesiID(nxenesiID)
     setShowLendenStudentitModal(true)
   }
@@ -225,7 +226,7 @@ export default function DetajetStudentit() {
                     ))}
                   </tbody>
                 </Table>
-                <Button className="w-100 btn btn-success" onClick={() => openShtoLendenStudentitModal(studenti.ID)}>Shto nje Lende</Button>
+                <Button className="w-100 btn btn-success" onClick={() => openShtoLendenStudentitModal(studenti.ID,studenti.emri_mbiemri)}>Shto nje Lende</Button>
               </div>
             ) : lendet.length === 0 ? (
               <h2 className="my-3">Nxenesi nuk ka ndonje Lende te Regjistruar</h2>
@@ -345,7 +346,7 @@ export default function DetajetStudentit() {
           <br></br><br></br>
 
           <NdryshoNxenesinModal showModal={showNdryshoNxenesinModal} closeModal={closeNdryshoNxenesinModal} nxenesiID={nxenesiID} emri_mbiemri={emri_mbiemri} fjalekalimi={fjalekalimi} email={email} fotoPath={fotoPath} nrTelefonit={nrTelefonit} vendbanimi={vendbanimi} drejtimi={drejtimi} emriPrindit={emriPrindit} prindiID={prindiID} mesimdhenesiID={mesimdhenesiID} />
-          <ShtoLendenStudentitModal showModal={showShtoLendenStudentitModal} closeModal={closeShtoLendenStudentitModal} nxenesiID={nxenesiID} />
+          <ShtoLendenStudentitModal showModal={showShtoLendenStudentitModal} closeModal={closeShtoLendenStudentitModal} nxenesiID={nxenesiID} nxenesi={emri_mbiemri} />
 
     </div>
   );

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Pc\\Desktop\\E-School\\Lab 2 Project\\blogi\\blogi.csproj": {}
+    "D:\\UBT\\E-School\\Lab 2 Project\\blogi\\blogi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Pc\\Desktop\\E-School\\Lab 2 Project\\blogi\\blogi.csproj": {
+    "D:\\UBT\\E-School\\Lab 2 Project\\blogi\\blogi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Pc\\Desktop\\E-School\\Lab 2 Project\\blogi\\blogi.csproj",
+        "projectUniqueName": "D:\\UBT\\E-School\\Lab 2 Project\\blogi\\blogi.csproj",
         "projectName": "blogi",
-        "projectPath": "C:\\Users\\Pc\\Desktop\\E-School\\Lab 2 Project\\blogi\\blogi.csproj",
+        "projectPath": "D:\\UBT\\E-School\\Lab 2 Project\\blogi\\blogi.csproj",
         "packagesPath": "C:\\Users\\Pc\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Pc\\Desktop\\E-School\\Lab 2 Project\\blogi\\obj\\",
+        "outputPath": "D:\\UBT\\E-School\\Lab 2 Project\\blogi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Pc\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -60,6 +60,12 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[3.1.32, 3.1.32]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
