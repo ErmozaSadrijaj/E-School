@@ -16,7 +16,7 @@ const Layout = (props) => {
       
        <Navbar className={`container-fluid  ${userRole == 'mesimdhenesi' || userRole == 'administratori' ||userRole == 'drejtori' ? 'navbar-blue' : 'navbar-orange'}`} light expand="md" color='light'>
        <NavbarBrand href="/">
-          <img src='./libraria_react/src/assets/images/logo.png' alt='#' className="navbar-brand"></img>
+       <img src={require('../../src/assets/images/logo.png')} alt='#' className="navbar-brand" />
           </NavbarBrand>                <NavbarToggler onClick={toggle} />
                 <Collapse isOpen={isOpen} navbar className='w-100'>
 

@@ -17,7 +17,7 @@ const BlogLayout = (props) => {
       
        <Navbar className={`container-fluid float-end  ${userRole == 'mesimdhenesi' || userRole == 'administratori' ||userRole == 'drejtori' ? 'navbar-blue' : 'navbar-orange'}`} color="light" light expand="md">
        <NavbarBrand href="/">
-          <img src='../assets/images/logo.png' alt='Logo' className="navbar-brand m-1"/>
+       <img src={require('../../src/assets/images/logo.png')} alt='#' className="navbar-brand" />
           </NavbarBrand>
                 <NavbarToggler onClick={toggle} />
                 <Collapse isOpen={isOpen} navbar className='w-100 float-end'>

@@ -24,7 +24,7 @@ const NxenesiLayout = (props) => {
     <div>
       <Navbar className='container-fluid' color="light"  light expand="md">
       <NavbarBrand href="/">
-          <img src='./studenti_react/src/assets/images/logo.png' alt='#' className="navbar-brand"></img>
+      <img src={require('../../src/assets/images/logo.png')} alt='#' className="navbar-brand" />
           </NavbarBrand>       
          <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
